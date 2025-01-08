@@ -58,11 +58,10 @@ const LoginForm = ({ setIsAuthenticated, setUser }) => {
         <button className="Login-Button" type="submit">
           Login
         </button>
-        <div className="Login-Seperator"></div>{" "}
-        {/*Acts as a seperator between login button and register button */}
+        <div className="Login-Seperator"></div> {/* Acts as a separator between login button and register button */}
         <h2 className="Login-ForgotPassword">Forgot Password</h2>
-        <Link to="/register">
-          <button className="Register-Button" Link to="/register">
+        <Link to="/register" className="Register-Link">
+          <button className="Register-Button" type="button">
             Create new account
           </button>
         </Link>

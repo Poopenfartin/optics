@@ -160,6 +160,42 @@ button:hover {
 }
 
 
+.workorder-functions {
+  display: flex; /* Use flexbox layout */
+  justify-content: space-between; /* Spread items apart */
+  align-items: center; /* Align items vertically centered */
+  width: 100%; /* Set the container width to 100% */
+  max-width: 100%; /* Ensure full width of parent element */
+  margin: 0 auto; /* Optional: Center the container horizontally */
+  padding: 10px; /* Optional: Add some padding */
+}
+
+.WO-SearchBox {
+  flex-grow: 1; /* Take up remaining space */
+  padding: 10px; /* Add padding inside the text box */
+  font-size: 16px; /* Font size */
+  border: 1px solid #ccc; /* Border */
+  border-radius: 5px; /* Rounded corners */
+  margin-right: 20px; /* Add space between text box and button */
+
+}
+
+.add-work-order-button {
+  padding: 10px 20px; /* Add padding inside the button */
+  font-size: 16px; /* Font size */
+  background: linear-gradient(135deg, #4CAF50, #45a049); /* Gradient background */
+  color: white; /* Text color */
+  border: none; /* Remove border */
+  border-radius: 5px; /* Rounded corners */
+  cursor: pointer; /* Pointer cursor */
+}
+
+.add-work-order-button:hover {
+  background: linear-gradient(135deg, #45a049, #4CAF50); /* Hover effect */
+}
+
+
+
 
 /* ---------------- END Work Order Table Styling ---------------- */
 

@@ -14,10 +14,8 @@ const WOForm = ({ onAdd }) => {
     }
   };
   return (
-    <div>
       <input type="text" placeholder="Input Work Order Number..." value={task} onChange={(e) => setTask(e.target.value)} />
-      <button onClick={addWO}>Add WO</button>
-    </div>
+
   );
 };
 export default WOForm;
