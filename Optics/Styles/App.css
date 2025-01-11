@@ -127,6 +127,7 @@ button:hover {
 
 .workorders-table td:hover {
   cursor: pointer;
+  color: #000;
   transform: scale(1.1);
 }
 
