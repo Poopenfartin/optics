@@ -561,4 +561,20 @@ button:hover {
 }
 
 
-/* ---------------- END REGISTER FORM Styling ---------------- */
+/* ---------------- END REGISTER FORM Styling ---------------- */ 
+
+/* ---------------- START Builing Landing Styling ---------------- */
+
+.building-landing-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px; /* Adjust the gap as needed */
+}
+
+.customers-heading {
+  font-family: 'Arial', sans-serif; /* Change to your desired font */
+  font-size: 100px; /* Adjust the font size as needed */
+  font-weight: bold; /* Adjust the font weight as needed */
+}
+/* ---------------- END Builing Landing Styling ---------------- */
