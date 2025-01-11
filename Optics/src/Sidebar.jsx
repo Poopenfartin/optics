@@ -196,6 +196,7 @@ const Sidebar = ({ logout, user }) => {
                     borderLeft: location.pathname === item.link ? "4px solid #00ff00" : "none",
                     color: location.pathname === item.link ? "#00ff00" : "#FFF",
                     cursor: "pointer",
+                    "&:hover": { backgroundColor: "#1f2a39" }
                   }}>
                   <ListItemIcon
                     sx={{
