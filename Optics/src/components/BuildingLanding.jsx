@@ -6,7 +6,7 @@ import "../../Styles/App.css"
 const BuildingLanding = ({}) => {
   return (
     <div>
-      <h1>BIG BALLZ</h1>
+      <h1>BIG BONNIE BALLZ</h1>
 
       <input
         type="text"
