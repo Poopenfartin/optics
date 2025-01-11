@@ -4,6 +4,7 @@ import axios from "axios";
 import "../Styles/App.css"; // Import Styles
 import Sidebar from "./Sidebar";
 import ProjectManagementTable from "./components/ProjectManagementTable";
+import BuildingLanding from "./components/BuildingLanding";
 import { Box, CssBaseline } from "@mui/material";
 import LoginForm from "./components/LoginForm";
 import RegisterForm from "./components/RegisterForm";
@@ -146,8 +147,8 @@ const App = () => {
                   />
                 }
               />
-              <Route path="/proposals" element={<h1>Proposals</h1>} />
-              <Route path="/buildings" element={<h1>Buildings</h1>} />
+              <Route path="/proposals" element={ <h1>Proposals</h1> } />
+              <Route path="/buildings" element={ <BuildingLanding />} />
             </>
           )}
           {!isAuthenticated && (
