@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Drawer, List, ListItem, ListItemIcon, ListItemText, Box, Typography, Button, IconButton } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import HouseIcon from "@mui/icons-material/House";
@@ -10,8 +10,17 @@ import { Link } from "react-router-dom";
 const Sidebar = ({ logout, user }) => {
   const [isOpen, setIsOpen] = useState(false); // Default to closed
 
+  useEffect(() => {
+    const savedState = localStorage.getItem("sidebarState");
+    if (savedState) {
+      setIsOpen(JSON.parse(savedState));
+    }
+  }, []);
+
   const toggleSidebar = () => {
-    setIsOpen(!isOpen);
+    const newState = !isOpen;
+    setIsOpen(newState);
+    localStorage.setItem("sidebarState", JSON.stringify(newState));
   };
 
   return (
@@ -27,14 +36,6 @@ const Sidebar = ({ logout, user }) => {
         <Drawer
           variant="persistent" // Set to persistent
           open={isOpen}
-          onClose={toggleSidebar}
-          ModalProps={{
-            BackdropProps: {
-              style: {
-                backgroundColor: "transparent"
-              }
-            }
-          }}
           sx={{
             width: 270,
             flexShrink: 0,

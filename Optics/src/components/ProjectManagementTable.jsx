@@ -3,8 +3,9 @@ import axios from "axios";
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 import Button from "@mui/material/Button";
 import EditIcon from "@mui/icons-material/Edit";
+import TopIcons from "./TopIcons"; 
 import Modal from "./Modal";
-import AddWorkOrderModal from "./AddWorkOrderModal"; // Import AddWorkOrderModal
+import AddWorkOrderModal from "./AddWorkOrderModal";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -112,6 +113,7 @@ const ProjectManagementTable = ({
 
   return (
     <div>
+      <TopIcons />
       <h1>Project Management</h1>
       <h2>WORK ORDERS</h2>
       <div className="workorder-functions">

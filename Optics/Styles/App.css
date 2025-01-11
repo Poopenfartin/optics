@@ -77,11 +77,6 @@ button:hover {
 }
 
 
-#WOForm {
-  opacity: 0;
-}
-
-
 .list-item-container {
   display: flex;
   font-weight: bold;
@@ -99,8 +94,65 @@ button:hover {
 
 
 
+/* ---------------- START DASHBOARD Styling ---------------- */
 
-/* ---------------- Work Order Table Styling ---------------- */
+
+.dashboard-container {
+  padding: 24px !important;
+}
+
+.dashboard-header {
+  font-size: 3rem !important; /* Smaller font size for header */
+  color: #ffffff !important; /* Set the header text color to white */
+  font-family: 'Source Sans Pro', sans-serif !important; /* Add the custom font */
+}
+
+.dashboard-subheader {
+  font-size: 1rem !important;  /* Smaller font size for subheader */
+  margin-bottom: 24px !important;
+  color: #00ff08 !important; /* Set the subheader text color to white */
+  font-family: 'Source Sans Pro', sans-serif !important; /* Add the custom font */
+}
+
+.dashboard-paper {
+  padding: 16px !important;
+  background-color: #1f2a40 !important; /* Set the card color to match the theme */
+  color: #ffffff !important; /* Set the paper text color to white */
+  font-size: 1rem !important; /* Smaller font size for paper content */
+  border: 1px solid #2a3f54 !important; /* Optional: Add a border for contrast */
+  font-family: 'Source Sans Pro', sans-serif !important; /* Add the custom font */
+}
+
+
+
+/* ---------------- END DASHBOARD Styling ---------------- */
+
+/* ---------------- START Top Icons Styling ---------------- */
+
+.top-icons-container {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  display: flex;
+  gap: 8px;
+}
+
+.settings-icon,
+.fullscreen-icon {
+  color: inherit;
+  transition: color 0.3s ease;
+}
+
+.settings-icon:hover,
+.fullscreen-icon:hover {
+  color: #00ff00; /* Change to your desired hover color */
+}
+
+
+/* ---------------- END Top Icons Styling ---------------- */
+
+
+/* ---------------- START Work Order Table Styling ---------------- */
 .workorders-table {
   width: 100%;
   border-collapse: collapse;
@@ -578,3 +630,10 @@ button:hover {
   font-weight: bold; /* Adjust the font weight as needed */
 }
 /* ---------------- END Builing Landing Styling ---------------- */
+
+
+
+
+
+
+

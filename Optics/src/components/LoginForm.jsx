@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import "../../Styles/App.css"; // Import Styles
-import { Link } from "react-router-dom"; // Import Link component
+import { Link, useNavigate } from "react-router-dom"; // Import Link component and useNavigate
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEnvelope, faLock } from "@fortawesome/free-solid-svg-icons";
 import Optics from "../assets/images/Optic_Logo.png";
@@ -9,6 +9,7 @@ import Optics from "../assets/images/Optic_Logo.png";
 const LoginForm = ({ setIsAuthenticated, setUser }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -17,13 +18,16 @@ const LoginForm = ({ setIsAuthenticated, setUser }) => {
         "http://localhost:5000/api/auth/login",
         { email, password }
       );
-      const { token, user } = response.data;
+      const { token, refreshToken, user } = response.data;
       localStorage.setItem("authToken", token);
+      localStorage.setItem("refreshToken", refreshToken);
       localStorage.setItem("user", JSON.stringify(user));
       setIsAuthenticated(true);
       setUser(user);
+      navigate("/");
     } catch (error) {
       console.error("Login failed:", error);
+      alert("Login failed. Please check your credentials.");
     }
   };
 

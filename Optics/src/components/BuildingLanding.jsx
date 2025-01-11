@@ -1,11 +1,13 @@
 import axios from "axios";
 import Button from "@mui/material/Button";
+import TopIcons from "./TopIcons"; 
 import "../../Styles/App.css"
 
 const BuildingLanding = ({ }) => {
   return (
     <div>
       <div>
+        <TopIcons />
         <h1>BIG BONNIE BOYZ</h1>
         <h2 className="customers-heading">Customers</h2>
       </div>

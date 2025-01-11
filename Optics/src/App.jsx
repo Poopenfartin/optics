@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { Route, Routes, useNavigate, useLocation } from "react-router-dom";
+import { Box, CssBaseline } from "@mui/material";
 import axios from "axios";
 import "../Styles/App.css"; // Import Styles
+
+// Component Imports
 import Sidebar from "./Sidebar";
 import ProjectManagementTable from "./components/ProjectManagementTable";
 import BuildingLanding from "./components/BuildingLanding";
-import { Box, CssBaseline } from "@mui/material";
+import Home from "./components/home"; // Corrected import statement
 import LoginForm from "./components/LoginForm";
 import RegisterForm from "./components/RegisterForm";
 
@@ -17,7 +20,8 @@ const App = () => {
   const location = useLocation();
 
   useEffect(() => {
-    const token = localStorage.getItem("authToken");
+    const accessToken = localStorage.getItem("authToken");
+    const refreshToken = localStorage.getItem("refreshToken");
     const userData = localStorage.getItem("user");
 
     // Exclude /register path from authentication check
@@ -26,7 +30,7 @@ const App = () => {
       return;
     }
 
-    if (token && userData && userData !== "undefined") {
+    if (accessToken && refreshToken && userData && userData !== "undefined") {
       try {
         const parsedUser = JSON.parse(userData);
         setIsAuthenticated(true);
@@ -45,7 +49,6 @@ const App = () => {
     }
   }, [navigate, location.pathname]);
 
-  // Fetch workorders when authenticated status changes
   useEffect(() => {
     if (isAuthenticated) {
       navigate("/");
@@ -59,9 +62,50 @@ const App = () => {
           setWorkorders(response.data);
           console.log("Work orders fetched:", response.data);
         })
-        .catch((error) => console.error("Error fetching work orders:", error));
+        .catch(async (error) => {
+          console.error("Error fetching work orders:", error);
+
+          // Handle token expiration
+          if (error.response && error.response.status === 401) {
+            const newAccessToken = await refreshToken();
+            if (newAccessToken) {
+              axios
+                .get("http://localhost:5000/api/workorders", {
+                  headers: {
+                    Authorization: `Bearer ${newAccessToken}`,
+                  },
+                })
+                .then((response) => {
+                  setWorkorders(response.data);
+                  console.log("Work orders fetched:", response.data);
+                })
+                .catch((error) =>
+                  console.error("Error fetching work orders with new token:", error)
+                );
+            } else {
+              setIsAuthenticated(false);
+              setUser(null);
+              navigate("/login");
+            }
+          }
+        });
     }
   }, [isAuthenticated]);
+
+  const refreshToken = async () => {
+    try {
+      const response = await axios.post("http://localhost:5000/api/refresh-token", {
+        token: localStorage.getItem("refreshToken"),
+      });
+
+      const newAccessToken = response.data.accessToken;
+      localStorage.setItem("authToken", newAccessToken);
+      return newAccessToken;
+    } catch (error) {
+      console.error("Error refreshing token:", error);
+      return null;
+    }
+  };
 
   const addWorkorder = (newWorkorder) => {
     setWorkorders([...workorders, newWorkorder]);
@@ -83,6 +127,7 @@ const App = () => {
 
   const logout = () => {
     localStorage.removeItem("authToken");
+    localStorage.removeItem("refreshToken");
     localStorage.removeItem("user"); // Remove user info from local storage
     setIsAuthenticated(false);
     setUser(null); // Reset user state
@@ -110,7 +155,7 @@ const App = () => {
             path="/"
             element={
               isAuthenticated ? (
-                <h1>Welcome to Optics</h1>
+                <Home user={user} /> // Pass user to Home component
               ) : (
                 <LoginForm
                   setIsAuthenticated={setIsAuthenticated}
