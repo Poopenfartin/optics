@@ -1,14 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Route, Routes, useNavigate, useLocation } from "react-router-dom";
 import { Box, CssBaseline } from "@mui/material";
 import axios from "axios";
-import "../Styles/App.css"; // Import Styles
+import "../Styles/App.css";
 
-// Component Imports
 import Sidebar from "./Sidebar";
 import ProjectManagementTable from "./components/ProjectManagementTable";
 import BuildingLanding from "./components/BuildingLanding";
-import Home from "./components/home"; // Corrected import statement
+import Home from "./components/home";
 import LoginForm from "./components/LoginForm";
 import RegisterForm from "./components/RegisterForm";
 
@@ -16,17 +15,23 @@ const App = () => {
   const [workorders, setWorkorders] = useState([]);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
   const location = useLocation();
+
+  // Save the current pathname to local storage whenever it changes
+  useEffect(() => {
+    localStorage.setItem("lastPathname", location.pathname);
+  }, [location.pathname]);
 
   useEffect(() => {
     const accessToken = localStorage.getItem("authToken");
     const refreshToken = localStorage.getItem("refreshToken");
     const userData = localStorage.getItem("user");
+    const lastPathname = localStorage.getItem("lastPathname");
 
-    // Exclude /register path from authentication check
     if (location.pathname === "/register") {
-      console.log("Accessing /register page, skipping authentication check");
+      setLoading(false);
       return;
     }
 
@@ -35,6 +40,10 @@ const App = () => {
         const parsedUser = JSON.parse(userData);
         setIsAuthenticated(true);
         setUser(parsedUser);
+        // Navigate to the saved pathname
+        if (lastPathname && lastPathname !== "/login") {
+          navigate(lastPathname);
+        }
       } catch (error) {
         console.error("Error parsing user data:", error);
         setIsAuthenticated(false);
@@ -47,11 +56,11 @@ const App = () => {
       console.log("User not authenticated, redirecting to login...");
       navigate("/login");
     }
+    setLoading(false);
   }, [navigate, location.pathname]);
 
   useEffect(() => {
     if (isAuthenticated) {
-      navigate("/");
       axios
         .get("http://localhost:5000/api/workorders", {
           headers: {
@@ -65,7 +74,6 @@ const App = () => {
         .catch(async (error) => {
           console.error("Error fetching work orders:", error);
 
-          // Handle token expiration
           if (error.response && error.response.status === 401) {
             const newAccessToken = await refreshToken();
             if (newAccessToken) {
@@ -79,9 +87,9 @@ const App = () => {
                   setWorkorders(response.data);
                   console.log("Work orders fetched:", response.data);
                 })
-                .catch((error) =>
-                  console.error("Error fetching work orders with new token:", error)
-                );
+                .catch((error) => {
+                  console.error("Error fetching work orders with new token:", error);
+                });
             } else {
               setIsAuthenticated(false);
               setUser(null);
@@ -128,18 +136,21 @@ const App = () => {
   const logout = () => {
     localStorage.removeItem("authToken");
     localStorage.removeItem("refreshToken");
-    localStorage.removeItem("user"); // Remove user info from local storage
+    localStorage.removeItem("user");
     setIsAuthenticated(false);
-    setUser(null); // Reset user state
+    setUser(null);
     alert("Logged out successfully");
     navigate("/login");
   };
 
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
   return (
     <Box sx={{ display: "flex" }}>
       <CssBaseline />
-      {isAuthenticated && <Sidebar logout={logout} user={user} />}{" "}
-      {/* Pass user to Sidebar */}
+      {isAuthenticated && <Sidebar logout={logout} user={user} />}
       <Box
         component="main"
         sx={{
@@ -155,29 +166,17 @@ const App = () => {
             path="/"
             element={
               isAuthenticated ? (
-                <Home user={user} /> // Pass user to Home component
+                <Home user={user} />
               ) : (
-                <LoginForm
-                  setIsAuthenticated={setIsAuthenticated}
-                  setUser={setUser}
-                />
+                <LoginForm setIsAuthenticated={setIsAuthenticated} setUser={setUser} />
               )
             }
           />
           <Route
             path="/login"
-            element={
-              <LoginForm
-                setIsAuthenticated={setIsAuthenticated}
-                setUser={setUser}
-              />
-            }
-          />{" "}
-          {/* Pass setUser to LoginForm */}
-          <Route
-            path="/register"
-            element={<RegisterForm setIsAuthenticated={setIsAuthenticated} />}
+            element={<LoginForm setIsAuthenticated={setIsAuthenticated} setUser={setUser} />}
           />
+          <Route path="/register" element={<RegisterForm setIsAuthenticated={setIsAuthenticated} />} />
           {isAuthenticated && (
             <>
               <Route
@@ -187,44 +186,23 @@ const App = () => {
                     workorders={workorders}
                     addWorkorder={addWorkorder}
                     deleteWorkorder={deleteWorkorder}
-                    user={user} // Pass user to the ProjectManagementTable
-                    setWorkorders={setWorkorders} // Pass setWorkorders to the ProjectManagementTable
+                    user={user}
+                    setWorkorders={setWorkorders}
                   />
                 }
               />
-              <Route path="/proposals" element={ <h1>Proposals</h1> } />
-              <Route path="/buildings" element={ <BuildingLanding />} />
+              <Route path="/proposals" element={<h1>Proposals</h1>} />
+              <Route path="/buildings" element={<BuildingLanding />} />
             </>
           )}
           {!isAuthenticated && (
             <>
               <Route
                 path="/project-management"
-                element={
-                  <LoginForm
-                    setIsAuthenticated={setIsAuthenticated}
-                    setUser={setUser}
-                  />
-                }
+                element={<LoginForm setIsAuthenticated={setIsAuthenticated} setUser={setUser} />}
               />
-              <Route
-                path="/proposals"
-                element={
-                  <LoginForm
-                    setIsAuthenticated={setIsAuthenticated}
-                    setUser={setUser}
-                  />
-                }
-              />
-              <Route
-                path="/buildings"
-                element={
-                  <LoginForm
-                    setIsAuthenticated={setIsAuthenticated}
-                    setUser={setUser}
-                  />
-                }
-              />
+              <Route path="/proposals" element={<LoginForm setIsAuthenticated={setIsAuthenticated} setUser={setUser} />} />
+              <Route path="/buildings" element={<LoginForm setIsAuthenticated={setIsAuthenticated} setUser={setUser} />} />
             </>
           )}
         </Routes>
