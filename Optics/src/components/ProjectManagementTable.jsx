@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { Divider } from "@mui/material";
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 import Button from "@mui/material/Button";
 import EditIcon from "@mui/icons-material/Edit";
@@ -125,8 +126,10 @@ const ProjectManagementTable = ({
             onClick={() => setIsAddModalOpen(true)}>
             Add Work Order
           </Button>
+          
 
       </div>
+      <Divider sx={{ mt: 3, backgroundColor: 'green' }} />
 
       <table className="workorders-table">
         <thead>

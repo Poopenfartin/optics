@@ -1,3 +1,14 @@
+/* 
+
+COLORS
+
+PRIMARY: #00ff08 (Green)
+SECONDARY: #1f2a40 (Blueish Gray)
+BACKGROUND: #141b2d (Deep Blue)
+
+ */
+
+
 /* ----------------- CSS STYLES ------------------ */
 
 .main-container {
@@ -441,6 +452,7 @@ button:hover {
   align-items: center;
   height: 100%;
   background-color: #2C3E50;
+  padding-bottom: 100px; 
 }
 
 

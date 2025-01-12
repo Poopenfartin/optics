@@ -1,7 +1,7 @@
 import React from "react";
 import { Box, Grid, Paper, Typography, Divider } from "@mui/material";
 import TopIcons from "./TopIcons"; // Import the TopIcons component
-import "../../Styles/App.css"; // Import the CSS file
+import "../../Styles/App.css";
 
 const Dashboard = ({ user }) => {
   return (
