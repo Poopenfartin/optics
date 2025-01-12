@@ -17,6 +17,7 @@ import EngineeringIcon from "@mui/icons-material/Engineering";
 import RequestQuoteIcon from "@mui/icons-material/RequestQuote";
 import LocationCityIcon from "@mui/icons-material/LocationCity";
 import NotificationsIcon from "@mui/icons-material/Notifications";
+import SupervisorAccountIcon from '@mui/icons-material/SupervisorAccount';
 import { Link, useLocation } from "react-router-dom";
 import { styled } from "@mui/material/styles";
 
@@ -65,8 +66,9 @@ const Sidebar = ({ logout, user }) => {
       icon: <EngineeringIcon />,
       link: "/project-management",
     },
+    { text: "Accounts", icon: <SupervisorAccountIcon />, link: "/accounts" },
     { text: "Proposals", icon: <RequestQuoteIcon />, link: "/proposals" },
-    { text: "Accounts", icon: <LocationCityIcon />, link: "/accounts" },
+    
   ];
 
   return (

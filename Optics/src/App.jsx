@@ -10,6 +10,7 @@ import Accounts from "./components/accounts";
 import Home from "./components/home";
 import LoginForm from "./components/LoginForm";
 import RegisterForm from "./components/RegisterForm";
+import Proposals from "./components/Proposals";
 
 const App = () => {
   const [workorders, setWorkorders] = useState([]);
@@ -191,7 +192,7 @@ const App = () => {
                   />
                 }
               />
-              <Route path="/proposals" element={<h1>Proposals</h1>} />
+              <Route path="/proposals" element={<Proposals />} />
               <Route path="/accounts" element={<Accounts />} />
             </>
           )}
