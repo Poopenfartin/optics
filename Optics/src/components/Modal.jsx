@@ -23,7 +23,7 @@ const Modal = ({ editedData, handleChange, handleSave, closeModal }) => {
           <label>Customer Name:</label>
           <textarea
             name="customerName"
-            value={editedData.customerName}
+            value={editedData.customerName || ''}
             onChange={handleChange}
           />
         </div>
@@ -31,7 +31,7 @@ const Modal = ({ editedData, handleChange, handleSave, closeModal }) => {
           <label>Name:</label>
           <textarea
             name="name"
-            value={editedData.name}
+            value={editedData.name || ''}
             onChange={handleChange}
           />
         </div>
@@ -39,7 +39,7 @@ const Modal = ({ editedData, handleChange, handleSave, closeModal }) => {
           <label>Job Description:</label>
           <textarea
             name="jobDescription"
-            value={editedData.jobDescription}
+            value={editedData.jobDescription || ''}
             onChange={handleChange}
           />
         </div>
@@ -48,7 +48,7 @@ const Modal = ({ editedData, handleChange, handleSave, closeModal }) => {
           <input
             type="number"
             name="price"
-            value={editedData.price}
+            value={editedData.price || ''}
             onChange={handleChange}
           />
         </div>
@@ -56,7 +56,7 @@ const Modal = ({ editedData, handleChange, handleSave, closeModal }) => {
           <label>Labor Notes:</label>
           <textarea
             name="laborNotes"
-            value={editedData.laborNotes}
+            value={editedData.laborNotes || ''}
             onChange={handleChange}
           />
         </div>
@@ -64,7 +64,7 @@ const Modal = ({ editedData, handleChange, handleSave, closeModal }) => {
           <label>Status:</label>
           <select
             name="status"
-            value={editedData.status}
+            value={editedData.status || 'Pending'}
             onChange={handleChange}
           >
             <option value="Pending">Pending</option>
@@ -72,6 +72,24 @@ const Modal = ({ editedData, handleChange, handleSave, closeModal }) => {
             <option value="Completed">Completed</option>
             <option value="Cancelled">Cancelled</option>
           </select>
+        </div>
+        <div className="form-field">
+          <label>Priority:</label> {/* New field */}
+          <input
+            type="text"
+            name="priority"
+            value={editedData.priority || ''}
+            onChange={handleChange}
+          />
+        </div>
+        <div className="form-field">
+          <label>Deadline:</label> {/* New field */}
+          <input
+            type="date"
+            name="deadline"
+            value={editedData.deadline || ''}
+            onChange={handleChange}
+          />
         </div>
         <div className="button-container">
           <button onClick={closeModal}>Cancel</button>

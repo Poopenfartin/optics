@@ -10,6 +10,8 @@ const AddWorkOrderModal = ({ isOpen, closeModal, addWorkorder, user }) => {
     laborNotes: '',
     status: 'Pending',
     projectManager: user.email, // Auto-populate with the user's email
+    priority: '', // Optional field
+    deadline: '', // Optional field
   });
 
   useEffect(() => {
@@ -24,7 +26,7 @@ const AddWorkOrderModal = ({ isOpen, closeModal, addWorkorder, user }) => {
     const { name, value } = e.target;
     setNewData({
       ...newData,
-      [name]: value,
+      [name]: value !== undefined && value !== null ? value : '', // Ensure value is never null or undefined
     });
   };
 
@@ -57,7 +59,7 @@ const AddWorkOrderModal = ({ isOpen, closeModal, addWorkorder, user }) => {
           <label>Customer Name:</label>
           <textarea
             name="customerName"
-            value={newData.customerName}
+            value={newData.customerName || ''}
             onChange={handleChange}
           />
         </div>
@@ -65,7 +67,7 @@ const AddWorkOrderModal = ({ isOpen, closeModal, addWorkorder, user }) => {
           <label>Name:</label>
           <textarea
             name="name"
-            value={newData.name}
+            value={newData.name || ''}
             onChange={handleChange}
           />
         </div>
@@ -73,7 +75,7 @@ const AddWorkOrderModal = ({ isOpen, closeModal, addWorkorder, user }) => {
           <label>Job Description:</label>
           <textarea
             name="jobDescription"
-            value={newData.jobDescription}
+            value={newData.jobDescription || ''}
             onChange={handleChange}
           />
         </div>
@@ -82,7 +84,7 @@ const AddWorkOrderModal = ({ isOpen, closeModal, addWorkorder, user }) => {
           <input
             type="number"
             name="price"
-            value={newData.price}
+            value={newData.price || ''}
             onChange={handleChange}
           />
         </div>
@@ -90,7 +92,7 @@ const AddWorkOrderModal = ({ isOpen, closeModal, addWorkorder, user }) => {
           <label>Labor Notes:</label>
           <textarea
             name="laborNotes"
-            value={newData.laborNotes}
+            value={newData.laborNotes || ''}
             onChange={handleChange}
           />
         </div>
@@ -98,7 +100,7 @@ const AddWorkOrderModal = ({ isOpen, closeModal, addWorkorder, user }) => {
           <label>Status:</label>
           <select
             name="status"
-            value={newData.status}
+            value={newData.status || 'Pending'}
             onChange={handleChange}
           >
             <option value="Pending">Pending</option>
@@ -106,6 +108,24 @@ const AddWorkOrderModal = ({ isOpen, closeModal, addWorkorder, user }) => {
             <option value="Completed">Completed</option>
             <option value="Cancelled">Cancelled</option>
           </select>
+        </div>
+        <div className="form-field">
+          <label>Priority:</label> {/* Optional field */}
+          <input
+            type="text"
+            name="priority"
+            value={newData.priority || ''}
+            onChange={handleChange}
+          />
+        </div>
+        <div className="form-field">
+          <label>Deadline:</label> {/* Optional field */}
+          <input
+            type="date"
+            name="deadline"
+            value={newData.deadline || ''}
+            onChange={handleChange}
+          />
         </div>
         <div className="button-container">
           <button onClick={closeModal}>Cancel</button>

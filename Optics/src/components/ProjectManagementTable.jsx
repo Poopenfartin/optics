@@ -4,21 +4,14 @@ import { Divider } from "@mui/material";
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 import Button from "@mui/material/Button";
 import EditIcon from "@mui/icons-material/Edit";
-import TopIcons from "./TopIcons"; 
+import TopIcons from "./TopIcons";
 import Modal from "./Modal";
 import AddWorkOrderModal from "./AddWorkOrderModal";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-const ProjectManagementTable = ({
-  workorders,
-  deleteWorkorder,
-  user,
-  setWorkorders,
-}) => {
-  const filteredWorkorders = workorders.filter(
-    (workorder) => workorder.projectManager === user.email
-  );
+const ProjectManagementTable = ({ workorders, deleteWorkorder, user, setWorkorders }) => {
+  const filteredWorkorders = workorders.filter(workorder => workorder.projectManager === user.email);
   const [editingId, setEditingId] = useState(null);
   const [editedData, setEditedData] = useState({});
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
@@ -80,9 +73,7 @@ const ProjectManagementTable = ({
           },
         }
       );
-      const updatedWorkorders = filteredWorkorders.map((workorder) =>
-        workorder._id === id ? { ...workorder, ...editedData } : workorder
-      );
+      const updatedWorkorders = filteredWorkorders.map(workorder => workorder._id === id ? { ...workorder, ...editedData } : workorder);
       setWorkorders(updatedWorkorders);
       setIsEditModalOpen(false);
       setEditingId(null);
@@ -118,19 +109,12 @@ const ProjectManagementTable = ({
       <h1>Project Management</h1>
       <h2>WORK ORDERS</h2>
       <div className="workorder-functions">
-          <input type="text"  className="WO-SearchBox" placeholder="Input Work Order Number..."/>
-          <Button
-            variant="contained"
-            color="primary"
-            className="add-work-order-button"
-            onClick={() => setIsAddModalOpen(true)}>
-            Add Work Order
-          </Button>
-          
-
+        <input type="text" className="WO-SearchBox" placeholder="Input Work Order Number..." />
+        <Button variant="contained" color="primary" className="add-work-order-button" onClick={() => setIsAddModalOpen(true)}>
+          Add Work Order
+        </Button>
       </div>
       <Divider sx={{ mt: 3, backgroundColor: 'green' }} />
-
       <table className="workorders-table">
         <thead>
           <tr>
@@ -140,11 +124,13 @@ const ProjectManagementTable = ({
             <th>Price</th>
             <th>Labor Notes</th>
             <th>Status</th>
+            <th>Priority</th>
+            <th>Deadline</th>
             <th>Actions</th>
           </tr>
         </thead>
         <tbody>
-          {filteredWorkorders.map((workorder) => (
+          {filteredWorkorders.map(workorder => (
             <tr key={workorder._id}>
               <td>{workorder.customerName}</td>
               <td>{workorder.name}</td>
@@ -152,15 +138,13 @@ const ProjectManagementTable = ({
               <td>{formatPrice(workorder.price)}</td>
               <td>{workorder.laborNotes}</td>
               <td>{workorder.status}</td>
+              <td>{workorder.priority}</td>
+              <td>{new Date(workorder.deadline).toLocaleDateString()}</td>
               <td>
-                <button
-                  className="WOAction-button"
-                  onClick={() => handleEdit(workorder)}>
+                <button className="WOAction-button" onClick={() => handleEdit(workorder)}>
                   <EditIcon />
                 </button>
-                <button
-                  className="WOAction-button"
-                  onClick={() => deleteWorkorder(workorder._id)}>
+                <button className="WOAction-button" onClick={() => deleteWorkorder(workorder._id)}>
                   <DeleteForeverIcon />
                 </button>
               </td>
@@ -181,7 +165,7 @@ const ProjectManagementTable = ({
           isOpen={isAddModalOpen}
           closeModal={() => setIsAddModalOpen(false)}
           addWorkorder={addWorkorder}
-          user={user} // Pass the user prop to AddWorkOrderModal
+          user={user}
         />
       )}
       <ToastContainer />

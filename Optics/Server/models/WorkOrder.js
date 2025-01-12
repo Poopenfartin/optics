@@ -1,4 +1,3 @@
-// models/WorkOrder.js
 const mongoose = require('mongoose');
 
 const WorkOrderSchema = new mongoose.Schema({
@@ -8,7 +7,9 @@ const WorkOrderSchema = new mongoose.Schema({
   price: { type: Number, required: true },
   laborNotes: { type: String, required: true },
   status: { type: String, required: true, enum: ['Pending', 'In Progress', 'Completed', 'Cancelled'], default: 'Pending' },
-  projectManager: { type: String, required: true }, 
+  projectManager: { type: String, required: true },
+  priority: { type: String, default: '' }, // Optional field
+  deadline: { type: Date, default: null } // Optional field
 }, { timestamps: true });
 
 const WorkOrder = mongoose.model('WorkOrder', WorkOrderSchema);
