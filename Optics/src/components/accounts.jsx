@@ -3,7 +3,7 @@ import Button from "@mui/material/Button";
 import TopIcons from "./TopIcons"; 
 import "../../Styles/App.css"
 
-const BuildingLanding = ({ }) => {
+const accounts = ({ }) => {
   return (
     <div>
       <div>
@@ -29,4 +29,4 @@ const BuildingLanding = ({ }) => {
   );
 };
 
-export default BuildingLanding;
+export default accounts;

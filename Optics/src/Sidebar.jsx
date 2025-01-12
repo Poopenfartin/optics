@@ -66,7 +66,7 @@ const Sidebar = ({ logout, user }) => {
       link: "/project-management",
     },
     { text: "Proposals", icon: <RequestQuoteIcon />, link: "/proposals" },
-    { text: "Buildings", icon: <LocationCityIcon />, link: "/buildings" },
+    { text: "Accounts", icon: <LocationCityIcon />, link: "/accounts" },
   ];
 
   return (

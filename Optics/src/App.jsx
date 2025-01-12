@@ -6,7 +6,7 @@ import "../Styles/App.css";
 
 import Sidebar from "./Sidebar";
 import ProjectManagementTable from "./components/ProjectManagementTable";
-import BuildingLanding from "./components/BuildingLanding";
+import Accounts from "./components/accounts";
 import Home from "./components/home";
 import LoginForm from "./components/LoginForm";
 import RegisterForm from "./components/RegisterForm";
@@ -192,7 +192,7 @@ const App = () => {
                 }
               />
               <Route path="/proposals" element={<h1>Proposals</h1>} />
-              <Route path="/buildings" element={<BuildingLanding />} />
+              <Route path="/accounts" element={<Accounts />} />
             </>
           )}
           {!isAuthenticated && (
@@ -202,7 +202,7 @@ const App = () => {
                 element={<LoginForm setIsAuthenticated={setIsAuthenticated} setUser={setUser} />}
               />
               <Route path="/proposals" element={<LoginForm setIsAuthenticated={setIsAuthenticated} setUser={setUser} />} />
-              <Route path="/buildings" element={<LoginForm setIsAuthenticated={setIsAuthenticated} setUser={setUser} />} />
+              <Route path="/accounts" element={<LoginForm setIsAuthenticated={setIsAuthenticated} setUser={setUser} />} />
             </>
           )}
         </Routes>
