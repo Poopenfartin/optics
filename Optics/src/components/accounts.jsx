@@ -1,29 +1,34 @@
+import React, { useState } from "react";
 import axios from "axios";
-import Button from "@mui/material/Button";
+import { Divider } from "@mui/material";
 import TopIcons from "./TopIcons"; 
-import "../../Styles/App.css"
 
-const accounts = ({ }) => {
+
+const accounts = ({}) => {
   return (
     <div>
-      <div>
-        <TopIcons />
-        <h1>BIG BONNIE BOYZ</h1>
-        <h2 className="customers-heading">Customers</h2>
-      </div>
+      <TopIcons />
+      <h1>Customer Accounts</h1>
+      <h2>ACCOUNTS</h2>
+      <div className="workorder-functions">
+        <input
+          type="text"
+          className="WO-SearchBox"
+          placeholder="Search for customer account..."
+        />
 
-      <input
-        type="text"
-        className="WO-SearchBox"
-        placeholder="Search for customer name..."
-      />
-      <Button
-        variant="contained"
-        color="primary"
-        className="add-work-order-button"
-        onClick={() => setIsAddModalOpen(true)}>
-        Add New Customer
-      </Button>
+      </div>
+      <Divider sx={{ mt: 3, backgroundColor: "green" }} />
+
+      <table className="workorders-table">
+        <thead>
+          <tr>
+            <th>Customer Name</th>
+            <th>Active?</th>
+            <th>Number of Buidlings</th>
+          </tr>
+        </thead>        
+      </table>
 
     </div>
   );
