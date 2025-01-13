@@ -16,10 +16,11 @@ import HouseIcon from "@mui/icons-material/House";
 import EngineeringIcon from "@mui/icons-material/Engineering";
 import RequestQuoteIcon from "@mui/icons-material/RequestQuote";
 import LocationCityIcon from "@mui/icons-material/LocationCity";
-import NotificationsIcon from "@mui/icons-material/Notifications";
+import NotificationsIcon from '@mui/icons-material/Notifications';
 import SupervisorAccountIcon from '@mui/icons-material/SupervisorAccount';
 import { Link, useLocation } from "react-router-dom";
 import { styled } from "@mui/material/styles";
+import logo from './assets/images/Optic_Logo.png'; // Import the logo
 
 const UnderlineTypography = styled(Typography)(({ theme }) => ({
   position: "relative",
@@ -43,7 +44,7 @@ const UnderlineTypography = styled(Typography)(({ theme }) => ({
 }));
 
 const Sidebar = ({ logout, user }) => {
-  const [isOpen, setIsOpen] = useState(false); // Default to closed
+  const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
 
   useEffect(() => {
@@ -68,7 +69,6 @@ const Sidebar = ({ logout, user }) => {
     },
     { text: "Accounts", icon: <SupervisorAccountIcon />, link: "/accounts" },
     { text: "Proposals", icon: <RequestQuoteIcon />, link: "/proposals" },
-    
   ];
 
   return (
@@ -94,7 +94,7 @@ const Sidebar = ({ logout, user }) => {
           </Box>
         )}
         <Drawer
-          variant="persistent" // Set to persistent
+          variant="persistent"
           open={isOpen}
           sx={{
             width: 270,
@@ -109,29 +109,38 @@ const Sidebar = ({ logout, user }) => {
           }}>
           <Box
             sx={{
+              padding: "16px 0",
+              background: "linear-gradient(to bottom, #1f2a40, #121a2f)",
               display: "flex",
               flexDirection: "row",
               justifyContent: "space-between",
               alignItems: "center",
-              padding: "0px",
-              margin: "15px 15px 25px 15px",
-              backgroundColor: "#1f2a40",
-              color: "#FFF",
             }}>
             <Link to="/" style={{ textDecoration: "none" }}>
-              <UnderlineTypography
-                variant="h6"
-                component="p"
-                style={{
-                  marginLeft: "10px",
-                  fontWeight: "700",
-                  fontSize: "16px",
-                  textAlign: "center",
-                  cursor: "pointer",
-                  color: "#FFF",
-                }}>
-                Optics
-              </UnderlineTypography>
+              <Box sx={{ display: "flex", alignItems: "center" }}>
+                <img
+                  src={logo}
+                  alt="Optics Logo"
+                  style={{
+                    width: "40px",
+                    height: "40px",
+                    marginRight: "4px", // Adjusted margin
+                  }}
+                />
+                <UnderlineTypography
+                  variant="h6"
+                  component="p"
+                  style={{
+                    marginLeft: "4px", // Adjusted margin
+                    fontWeight: "700",
+                    fontSize: "16px",
+                    textAlign: "center",
+                    cursor: "pointer",
+                    color: "#FFF",
+                  }}>
+                  Optics
+                </UnderlineTypography>
+              </Box>
             </Link>
             <IconButton onClick={toggleSidebar} sx={{ color: "#FFF" }}>
               <MenuIcon />
@@ -149,7 +158,7 @@ const Sidebar = ({ logout, user }) => {
             }}>
             <img
               src="https://img.freepik.com/free-psd/3d-illustration-human-avatar-profile_23-2150671142.jpg?w=826&t=st=1719374252~exp=1719374852~hmac=384d89c4c305fabcd0e40764416da0985d75085f7c38963ef024b12944d7975f"
-              alt="Website Logo"
+              alt="User Avatar"
               style={{
                 width: "100px",
                 height: "100px",
@@ -172,7 +181,7 @@ const Sidebar = ({ logout, user }) => {
                 <Typography
                   variant="body2"
                   component="p"
-                  style={{ margin: 0, color: "#00ff08" }}>
+                  style={{ margin: 0, color: "#00ff08"}}>
                   {user?.jobTitle}
                 </Typography>
               </Box>
@@ -234,3 +243,5 @@ const Sidebar = ({ logout, user }) => {
 };
 
 export default Sidebar;
+
+
