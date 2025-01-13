@@ -1,3 +1,4 @@
+// TopIcons.jsx (Ensure you have the correct filename)
 import React, { useState } from "react";
 import { Box, IconButton } from "@mui/material";
 import SettingsIcon from "@mui/icons-material/Settings";
@@ -21,11 +22,20 @@ const TopIcons = () => {
   };
 
   return (
-    <Box className="top-icons-container">
-      <IconButton className="fullscreen-icon" onClick={toggleFullScreen} color="inherit">
+    <Box 
+      className="top-icons-container"
+      sx={{
+        display: "flex",
+        justifyContent: "center",
+        gap: 1,
+        backgroundColor: "#121a2f",
+        padding: 1,
+        borderRadius: 2
+      }}>
+      <IconButton className="fullscreen-icon" onClick={toggleFullScreen} sx={{ color: "#FFFFFF" }}>
         {isFullScreen ? <FullscreenExitIcon /> : <FullscreenIcon />}
       </IconButton>
-      <IconButton className="settings-icon" color="inherit">
+      <IconButton className="settings-icon" sx={{ color: "#FFFFFF" }}>
         <SettingsIcon />
       </IconButton>
     </Box>
@@ -33,3 +43,4 @@ const TopIcons = () => {
 };
 
 export default TopIcons;
+
