@@ -115,9 +115,11 @@ const Sidebar = ({ logout, user }) => {
               flexDirection: "row",
               justifyContent: "space-between",
               alignItems: "center",
+              height: "64px",
+              marginBottom: "16px",
             }}>
             <Link to="/" style={{ textDecoration: "none" }}>
-              <Box sx={{ display: "flex", alignItems: "center" }}>
+              <Box sx={{ display: "flex", alignItems: "center", padding: "0 16px" }}>
                 <img
                   src={logo}
                   alt="Optics Logo"
@@ -142,7 +144,7 @@ const Sidebar = ({ logout, user }) => {
                 </UnderlineTypography>
               </Box>
             </Link>
-            <IconButton onClick={toggleSidebar} sx={{ color: "#FFF" }}>
+            <IconButton onClick={toggleSidebar} sx={{ color: "#FFF", padding: "0 16px" }}>
               <MenuIcon />
             </IconButton>
           </Box>
@@ -190,6 +192,7 @@ const Sidebar = ({ logout, user }) => {
                   color: "#FFF",
                   position: "absolute",
                   right: 0,
+                  padding: 0,
                 }}>
                 <NotificationsIcon />
               </IconButton>
