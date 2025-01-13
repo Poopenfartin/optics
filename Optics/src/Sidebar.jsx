@@ -214,7 +214,7 @@ const Sidebar = ({ logout, user }) => {
                   }}>
                   <ListItemIcon
                     sx={{
-                      color: location.pathname === item.link ? "#00ff00" : "#FFF",
+                      color: location.pathname === item.link ? "#00ff00" : "#FFF", 
                     }}>
                     {item.icon}
                   </ListItemIcon>

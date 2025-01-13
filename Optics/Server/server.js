@@ -20,10 +20,15 @@ app.get('/', (req, res) => {
 // Routes
 const workOrderRoutes = require('./routes/workorders');
 const { protect, router: authRoutes } = require('./routes/auth');
+const customerAccountRoutes = require('./routes/customerAccounts'); // Correct path here
+
 app.use('/api/auth', authRoutes);
 
 // Protecting the workorders routes
 app.use('/api/workorders', protect, workOrderRoutes);
+
+// Adding the customer accounts routes
+app.use('/api/customerAccounts', customerAccountRoutes); // Correct path here
 
 app.listen(port, () => {
   console.log(`Server is running on port: ${port}`);

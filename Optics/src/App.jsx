@@ -11,6 +11,7 @@ import Home from "./components/home";
 import LoginForm from "./components/LoginForm";
 import RegisterForm from "./components/RegisterForm";
 import Proposals from "./components/Proposals";
+import AccountProfile from "./components/AccountProfile";
 
 const App = () => {
   const [workorders, setWorkorders] = useState([]);
@@ -193,7 +194,8 @@ const App = () => {
                 }
               />
               <Route path="/proposals" element={<Proposals />} />
-              <Route path="/accounts" element={<Accounts />} />
+              <Route path="/accounts" element={<Accounts />} />              
+              <Route path="/accounts/:id" element={<AccountProfile />} />
             </>
           )}
           {!isAuthenticated && (
