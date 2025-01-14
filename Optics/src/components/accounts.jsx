@@ -3,17 +3,20 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { Divider } from "@mui/material";
 import TopIcons from "./TopIcons";
+import "../../Styles/App.css"
 
 const Accounts = () => {
   const [customerAccounts, setCustomerAccounts] = useState([]);
+  const [isFullScreen, setIsFullScreen] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
-    axios.get("http://localhost:5000/api/customerAccounts")
-      .then(response => {
+    axios
+      .get("http://localhost:5000/api/customerAccounts")
+      .then((response) => {
         setCustomerAccounts(response.data);
       })
-      .catch(error => {
+      .catch((error) => {
         console.error("There was an error fetching the customer accounts!", error);
       });
   }, []);
@@ -22,12 +25,14 @@ const Accounts = () => {
     navigate(`/accounts/${id}`);
   };
 
+  const toggleFullScreen = () => {
+    setIsFullScreen(!isFullScreen);
+  };
+
   return (
-    <div>
-      <TopIcons />
-      <h1>Customer Accounts</h1>
-      <h2>ACCOUNTS</h2>
-      <div className="workorder-functions">
+    <div className="hide-scrollbar">
+      <TopIcons isFullScreen={isFullScreen} toggleFullScreen={toggleFullScreen} />
+      <div className="workorder-functions" style={{  }}>
         <input type="text" className="WO-SearchBox" placeholder="Search for customer account..." />
       </div>
       <Divider sx={{ mt: 3, backgroundColor: "green" }} />
@@ -40,7 +45,7 @@ const Accounts = () => {
           </tr>
         </thead>
         <tbody>
-          {customerAccounts.map(account => (
+          {customerAccounts.map((account) => (
             <tr key={account._id} onClick={() => handleRowClick(account._id)}>
               <td>{account.customerName}</td>
               <td>{account.active ? "Yes" : "No"}</td>

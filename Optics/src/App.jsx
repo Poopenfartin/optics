@@ -157,7 +157,7 @@ const App = () => {
         component="main"
         sx={{
           flexGrow: 1,
-          bgcolor: "#141b2d;",
+          bgcolor: "#181818",
           p: 3,
           minHeight: "100vh",
           overflowY: "auto",

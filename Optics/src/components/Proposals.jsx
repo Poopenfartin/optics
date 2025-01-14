@@ -8,8 +8,6 @@ const proposals = ({}) => {
   return (
     <div>
       <TopIcons />
-      <h1>Proposals</h1>
-      <h2>JOB BIDS</h2>
       <div className="workorder-functions">
         <input
           type="text"

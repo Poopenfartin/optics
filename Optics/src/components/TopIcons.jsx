@@ -1,46 +1,42 @@
-// TopIcons.jsx (Ensure you have the correct filename)
-import React, { useState } from "react";
+import React from "react";
 import { Box, IconButton } from "@mui/material";
-import SettingsIcon from "@mui/icons-material/Settings";
 import FullscreenIcon from "@mui/icons-material/Fullscreen";
 import FullscreenExitIcon from "@mui/icons-material/FullscreenExit";
-import "../../Styles/App.css"; // Import the CSS file
+import SettingsIcon from "@mui/icons-material/Settings";
+import OpticsLogo from "../assets/images/Optic_Logo.png";
 
-const TopIcons = () => {
-  const [isFullScreen, setIsFullScreen] = useState(false);
-
-  const toggleFullScreen = () => {
-    if (!document.fullscreenElement) {
-      document.documentElement.requestFullscreen().catch((err) => {
-        alert(`Error attempting to enable full-screen mode: ${err.message} (${err.name})`);
-      });
-      setIsFullScreen(true);
-    } else {
-      document.exitFullscreen();
-      setIsFullScreen(false);
-    }
-  };
-
+const TopIcons = ({ isFullScreen, toggleFullScreen }) => {
   return (
-    <Box 
+    <Box
       className="top-icons-container"
       sx={{
         display: "flex",
-        justifyContent: "center",
+        alignItems: "center",
+        justifyContent: "space-between",
         gap: 1,
-        backgroundColor: "#121a2f",
         padding: 1,
-        borderRadius: 2
-      }}>
-      <IconButton className="fullscreen-icon" onClick={toggleFullScreen} sx={{ color: "#FFFFFF" }}>
-        {isFullScreen ? <FullscreenExitIcon /> : <FullscreenIcon />}
-      </IconButton>
-      <IconButton className="settings-icon" sx={{ color: "#FFFFFF" }}>
-        <SettingsIcon />
-      </IconButton>
+        borderRadius: 2,
+        position: "relative",
+        zIndex: 1000,
+        width: "100%",
+        top: 0,
+        marginBottom: "50px",
+      }}
+    >
+      <Box sx={{ display: "flex", alignItems: "center", marginRight: "auto", flexGrow: 1, justifyContent: "center" }}>
+        <img src={OpticsLogo} alt="Optics Logo" style={{ marginRight: "10px", width: "50px", height: "50px" }} />
+        <h1 style={{ margin: 0, color: '#00ff08', letterSpacing: "3px", fontSize: "28px", marginTop: "4px" }}>OPTICS</h1>
+      </Box>
+      <Box sx={{ display: "flex", alignItems: "center" }}>
+        <IconButton className="fullscreen-icon" onClick={toggleFullScreen} sx={{ color: "#FFF" }}>
+          {isFullScreen ? <FullscreenExitIcon /> : <FullscreenIcon />}
+        </IconButton>
+        <IconButton className="settings-icon" sx={{ color: "#FFF" }}>
+          <SettingsIcon />
+        </IconButton>
+      </Box>
     </Box>
   );
 };
 
 export default TopIcons;
-

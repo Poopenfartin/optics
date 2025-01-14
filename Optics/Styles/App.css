@@ -23,13 +23,17 @@ BACKGROUND: #141b2d (Deep Blue)
 
 
 
+
+
 h1 {
     display: block;
     font-family: 'Source Sans Pro', sans-serif;
     color: #FFF;
     font-size: 32px;
     font-weight: 700;
-    margin: 0;
+    margin: 0 0 100px 0;
+    text-align: center;
+    
 }
 
 
@@ -38,7 +42,7 @@ h2 {
   font-family: 'Source Sans Pro', sans-serif;
   color: #00ff08;
   font-size: 12px;
-  font-weight: 400;
+  font-weight: 900;
   margin: 0 0 45px 0;
 }
 
@@ -104,11 +108,40 @@ button:hover {
 
 
 
+/* ---------------- START SCROLL BAR HIDE ---------------- */
+
+
+/* Hide scrollbar for the entire page */
+body, html {
+  overflow: hidden; /* This hides the scrollbar */
+}
+
+/* Hide scrollbar for a specific container */
+.hide-scrollbar {
+  overflow: hidden; /* This hides the scrollbar */
+  width: 100%; /* Ensures the container still expands fully */
+  height: 100%; /* Ensures the container still expands fully */
+}
+
+/* Hide scrollbar but allow scrolling */
+.hide-scrollbar::-webkit-scrollbar {
+  display: none; /* For Chrome, Safari, and Opera */
+}
+
+.hide-scrollbar {
+  -ms-overflow-style: none; /* For Internet Explorer and Edge */
+  scrollbar-width: none; /* For Firefox */
+}
+
+
+/* ---------------- END SCROLL BAR HIDE ---------------- */
+
+
 /* ---------------- START DASHBOARD Styling ---------------- */
 
 
 .dashboard-container {
-  padding: 24px !important;
+  overflow: "hidden"
 }
 
 .dashboard-header {
@@ -171,7 +204,6 @@ button:hover {
 }
 
 .workorders-table th {
-  background-color: #141b2d;
   border: none;
   padding: 10px;
   text-align: center;
@@ -180,7 +212,6 @@ button:hover {
   font-size: 16px;
 }
 .workorders-table td {
-  border: 1px solid #45a049;
   padding: 10px;
   text-align: center;
   color: #FFF;
@@ -189,14 +220,13 @@ button:hover {
 
 .workorders-table td:hover {
   cursor: pointer;
-  color: #000;
+  color: #FFF;
   transform: scale(1.1);
 }
 
 
 
 .workorders-table tr {
-  background-color: #1f2a40;
 }
 
 .workorders-table tr:hover {
@@ -231,6 +261,7 @@ button:hover {
   max-width: 100%; /* Ensure full width of parent element */
   margin: 0 auto; /* Optional: Center the container horizontally */
   padding: 10px; /* Optional: Add some padding */
+  overflow: "hidden";
 }
 
 .WO-SearchBox {

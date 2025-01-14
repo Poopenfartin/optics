@@ -134,6 +134,7 @@ const Sidebar = ({ logout, user }) => {
                   component="p"
                   style={{
                     marginLeft: "4px", // Adjusted margin
+                    marginTop: "4px", // Adjusted margin
                     fontWeight: "700",
                     fontSize: "16px",
                     textAlign: "center",

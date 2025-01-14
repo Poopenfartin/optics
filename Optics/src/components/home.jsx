@@ -7,16 +7,24 @@ import "../../Styles/App.css";
 const Dashboard = ({ user }) => {
   return (
     <Box className="dashboard-container">
-      <Box sx={{ display: "flex", flexDirection: "column", ml: -.5, mb: -1 }}>
-        <Box sx={{ display: "flex", alignItems: "center", mt: 2}}>
-          <Typography variant="h4" component="h1" className="dashboard-header" sx={{ fontSize: "1rem" }}>
+      <TopIcons />
+      <Box sx={{ display: "flex", flexDirection: "column", ml: -0.5, mb: -1 }}>
+        <Box sx={{ display: "flex", alignItems: "center" }}>
+          <Typography
+            variant="h4"
+            component="h1"
+            className="dashboard-header"
+            sx={{ fontSize: "1rem" }}>
             Dashboard
           </Typography>
         </Box>
-        <TopIcons />
       </Box>
 
-      <Typography variant="h2" component="h2" className="dashboard-subheader" sx={{ marginLeft: "-0.15rem" }}>
+      <Typography
+        variant="h2"
+        component="h2"
+        className="dashboard-subheader"
+        sx={{ marginLeft: "-0.15rem" }}>
         Overview
       </Typography>
       <Divider sx={{ mb: 6, ml: 2, mr: 2 }} />
@@ -47,10 +55,7 @@ const Dashboard = ({ user }) => {
         </Grid>
         <Grid item xs={12} md={6}>
           <Paper className="dashboard-paper">
-            <Typography
-              variant="h6"
-              component="h2"
-            >
+            <Typography variant="h6" component="h2">
               Pending Work Orders
             </Typography>
             <Typography variant="h4" component="p">
@@ -64,24 +69,21 @@ const Dashboard = ({ user }) => {
           <Paper className="dashboard-paper">
             <Typography variant="h6" component="h2">
               Recent Activities
-          </Typography>
-          <Typography variant="body1">
-            - Project X: New work order created.
-          </Typography>
-          <Typography variant="body1">
-            - Project Y: Completed milestone 3.
-          </Typography>
-          <Typography variant="body1">
-            - Project Z: Proposal sent to client.
-          </Typography>
-        </Paper>
+            </Typography>
+            <Typography variant="body1">
+              - Project X: New work order created.
+            </Typography>
+            <Typography variant="body1">
+              - Project Y: Completed milestone 3.
+            </Typography>
+            <Typography variant="body1">
+              - Project Z: Proposal sent to client.
+            </Typography>
+          </Paper>
+        </Grid>
       </Grid>
-    </Grid>
-  </Box>
- );
+    </Box>
+  );
 };
 
 export default Dashboard;
-
-
-
