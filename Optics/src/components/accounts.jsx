@@ -1,11 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-<<<<<<< HEAD
 import { Divider, Box, Typography } from "@mui/material";
-=======
-import { Divider } from "@mui/material";
->>>>>>> 60d5191 (Added backend schema & routes for "Accounts" and "Account Profiles")
 import TopIcons from "./TopIcons";
 
 const Accounts = () => {
@@ -27,7 +23,6 @@ const Accounts = () => {
   };
 
   return (
-<<<<<<< HEAD
     <Box className="outer-container" sx={{ p: 3 }}>
       <TopIcons sx={{ zIndex: 2001, pointerEvents: 'auto', color: 'rgba(255, 255, 255, 0.9)' }} /> {/* Ensure icons are interactive */}
       <Box sx={{
@@ -115,40 +110,10 @@ const Accounts = () => {
         </Box>
       </Box>
     </Box>
-=======
-    <div>
-      <TopIcons />
-      <h1>Customer Accounts</h1>
-      <h2>ACCOUNTS</h2>
-      <div className="workorder-functions">
-        <input type="text" className="WO-SearchBox" placeholder="Search for customer account..." />
-      </div>
-      <Divider sx={{ mt: 3, backgroundColor: "green" }} />
-      <table className="workorders-table">
-        <thead>
-          <tr>
-            <th>Customer Name</th>
-            <th>Active?</th>
-            <th>Number of Buildings</th>
-          </tr>
-        </thead>
-        <tbody>
-          {customerAccounts.map(account => (
-            <tr key={account._id} onClick={() => handleRowClick(account._id)}>
-              <td>{account.customerName}</td>
-              <td>{account.active ? "Yes" : "No"}</td>
-              <td>{account.numberOfBuildings}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
->>>>>>> 60d5191 (Added backend schema & routes for "Accounts" and "Account Profiles")
   );
 };
 
 export default Accounts;
-<<<<<<< HEAD
 
 
 
@@ -167,5 +132,3 @@ export default Accounts;
 
 
 
-=======
->>>>>>> 60d5191 (Added backend schema & routes for "Accounts" and "Account Profiles")
