@@ -39,28 +39,33 @@ const Accounts = () => {
         isFullScreen={isFullScreen}
         toggleFullScreen={toggleFullScreen}
       />
-      <div className="workorder-functions" style={{}}>
-        <SearchInput placeholder="Search For Account..." width="50%"/>
-      </div>
-      <Divider sx={{ mt: 3, backgroundColor: "green" }} />
-      <table className="workorders-table">
-        <thead>
-          <tr>
-            <th>Customer Name</th>
-            <th>Active?</th>
-            <th>Number of Buildings</th>
-          </tr>
-        </thead>
-        <tbody>
-          {customerAccounts.map((account) => (
-            <tr key={account._id} onClick={() => handleRowClick(account._id)}>
-              <td>{account.customerName}</td>
-              <td>{account.active ? "Yes" : "No"}</td>
-              <td>{account.numberOfBuildings}</td>
+      <div className="table-container"> 
+        <h1>Accounts</h1>
+      <Divider sx={{ margin: "30px auto", backgroundColor: "green", width: "90%" }} />
+        <div className="workorder-functions">
+          <SearchInput placeholder="Search For Account..." width="50%" />
+        </div>
+        </div>
+        <table className="workorders-table">
+          <thead>
+            <tr>
+              <th>Customer Name</th>
+              <th>Active?</th>
+              <th>Number of Buildings</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {customerAccounts.map((account) => (
+              <tr key={account._id} onClick={() => handleRowClick(account._id)}>
+                <td>{account.customerName}</td>
+                <td>{account.active ? "Yes" : "No"}</td>
+                <td>{account.numberOfBuildings}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      
+
     </div>
   );
 };
