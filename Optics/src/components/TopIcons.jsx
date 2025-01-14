@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Box, IconButton } from "@mui/material";
 import FullscreenIcon from "@mui/icons-material/Fullscreen";
 import FullscreenExitIcon from "@mui/icons-material/FullscreenExit";
@@ -13,13 +13,14 @@ const UnderlineTypography = styled(Typography)(({ theme }) => ({
   display: "inline-block",
   fontFamily: "'Source Sans Pro', sans-serif", // Set the font family
   fontWeight: '550', // Set the font weight to bold (you can adjust this value to make it heavier)
+  lineHeight: '1.25', // Adjust the line-height for spacing
   "&:after": {
     content: '""',
     position: "absolute",
     width: "100%",
     transform: "scaleX(0)",
     height: "2px",
-    bottom: 0,
+    bottom: '-2px', // Adjust this value to add space between text and underline
     left: 0,
     backgroundColor: "#FFF",
     transformOrigin: "bottom right",
@@ -28,11 +29,22 @@ const UnderlineTypography = styled(Typography)(({ theme }) => ({
   "&:hover:after": {
     transform: "scaleX(1)",
     transformOrigin: "bottom left",
-    
   },
 }));
 
-const TopIcons = ({ isFullScreen, toggleFullScreen }) => {
+const TopIcons = () => {
+  const [isFullScreen, setIsFullScreen] = useState(false);
+
+  const toggleFullScreen = () => {
+    if (!document.fullscreenElement) {
+      document.documentElement.requestFullscreen();
+      setIsFullScreen(true);
+    } else if (document.exitFullscreen) {
+      document.exitFullscreen();
+      setIsFullScreen(false);
+    }
+  };
+
   return (
     <Box
       className="top-icons-container"
