@@ -44,6 +44,9 @@ const SearchInput = ({ placeholder, width}) => {
         },
         "& .MuiInputBase-input": {
           color: "#FFF",
+          width: "100%",
+          padding: "10px",
+          boxSizing: "border-box",
         },
         "& .MuiInputBase-input::placeholder": {
           color: "#FFF !important",
