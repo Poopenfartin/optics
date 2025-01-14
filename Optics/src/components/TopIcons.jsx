@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Box, IconButton } from "@mui/material";
 import FullscreenIcon from "@mui/icons-material/Fullscreen";
 import FullscreenExitIcon from "@mui/icons-material/FullscreenExit";
+import DarkModeIcon from '@mui/icons-material/DarkMode';
 import SettingsIcon from "@mui/icons-material/Settings";
 import OpticsLogo from "../assets/images/Optic_Logo.png";
 import { styled } from "@mui/material/styles";
@@ -12,15 +13,15 @@ const UnderlineTypography = styled(Typography)(({ theme }) => ({
   position: "relative",
   display: "inline-block",
   fontFamily: "'Source Sans Pro', sans-serif", // Set the font family
-  fontWeight: '550', // Set the font weight to bold (you can adjust this value to make it heavier)
-  lineHeight: '1.25', // Adjust the line-height for spacing
+  fontWeight: "550", // Set the font weight to bold (you can adjust this value to make it heavier)
+  lineHeight: "1.25", // Adjust the line-height for spacing
   "&:after": {
     content: '""',
     position: "absolute",
     width: "100%",
     transform: "scaleX(0)",
     height: "2px",
-    bottom: '-2px', // Adjust this value to add space between text and underline
+    bottom: "-2px", // Adjust this value to add space between text and underline
     left: 0,
     backgroundColor: "#FFF",
     transformOrigin: "bottom right",
@@ -50,7 +51,7 @@ const TopIcons = () => {
       className="top-icons-container"
       sx={{
         display: "flex",
-        cursor: 'pointer', 
+        cursor: "pointer",
         alignItems: "center",
         justifyContent: "space-between",
         gap: 1,
@@ -61,20 +62,46 @@ const TopIcons = () => {
         width: "100%",
         top: 0,
         marginBottom: "50px",
-      }}
-    >
-      <Box sx={{ display: "flex", alignItems: "center", marginRight: "auto", flexGrow: 1, justifyContent: "center" }}>
-        <img src={OpticsLogo} alt="Optics Logo" style={{ marginRight: "10px", width: "50px", height: "50px" }} />
-        <UnderlineTypography variant="h1" sx={{ margin: 0, color: '#00ff08', letterSpacing: "3px", fontSize: "28px", marginTop: "4px" }}>
+      }}>
+      <Box
+        sx={{
+          display: "flex",
+          alignItems: "center",
+          marginRight: "auto",
+          flexGrow: 1,
+          justifyContent: "center",
+        }}>
+        <img
+          src={OpticsLogo}
+          alt="Optics Logo"
+          style={{ marginRight: "10px", width: "50px", height: "50px" }}
+        />
+        <UnderlineTypography
+          variant="h1"
+          sx={{
+            margin: 0,
+            color: "#00ff08",
+            letterSpacing: "3px",
+            fontSize: "28px",
+            marginTop: "4px",
+          }}>
           OPTICS
         </UnderlineTypography>
       </Box>
       <Box sx={{ display: "flex", alignItems: "center" }}>
-        <IconButton className="fullscreen-icon" onClick={toggleFullScreen} sx={{ color: "#FFF" }}>
-          {isFullScreen ? <FullscreenExitIcon /> : <FullscreenIcon />}
-        </IconButton>
         <IconButton className="settings-icon" sx={{ color: "#FFF" }}>
           <SettingsIcon />
+        </IconButton>
+
+        <IconButton className="settings-icon" sx={{ color: "#FFF" }}>
+          <DarkModeIcon />
+        </IconButton>
+
+        <IconButton
+          className="fullscreen-icon"
+          onClick={toggleFullScreen}
+          sx={{ color: "#FFF" }}>
+          {isFullScreen ? <FullscreenExitIcon /> : <FullscreenIcon />}
         </IconButton>
       </Box>
     </Box>

@@ -5,7 +5,7 @@ import axios from "axios";
 import "../Styles/App.css";
 
 import Sidebar from "./Sidebar";
-import ProjectManagementTable from "./components/ProjectManagementTable";
+import ProjectManagement from "./components/ProjectManagement";
 import Accounts from "./components/accounts";
 import Home from "./components/home";
 import LoginForm from "./components/LoginForm";
@@ -117,24 +117,6 @@ const App = () => {
     }
   };
 
-  const addWorkorder = (newWorkorder) => {
-    setWorkorders([...workorders, newWorkorder]);
-  };
-
-  const deleteWorkorder = async (id) => {
-    try {
-      await axios.delete(`http://localhost:5000/api/workorders/${id}`, {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("authToken")}`,
-        },
-      });
-      setWorkorders(workorders.filter((workorder) => workorder._id !== id));
-    } catch (error) {
-      console.error("There was an error deleting the work order:", error);
-      alert("Failed to delete work order. Please try again.");
-    }
-  };
-
   const logout = () => {
     localStorage.removeItem("authToken");
     localStorage.removeItem("refreshToken");
@@ -184,10 +166,8 @@ const App = () => {
               <Route
                 path="/project-management"
                 element={
-                  <ProjectManagementTable
+                  <ProjectManagement
                     workorders={workorders}
-                    addWorkorder={addWorkorder}
-                    deleteWorkorder={deleteWorkorder}
                     user={user}
                     setWorkorders={setWorkorders}
                   />

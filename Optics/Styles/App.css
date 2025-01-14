@@ -106,17 +106,6 @@ button:hover {
   height: 25px; /* Sets a specific width for the container */
 }
 
-.table-container{
-  box-shadow:0px 4px 6px rgba(0,0,0,0.4);
-  padding: 30px 0;
-  margin: 0 auto;
-  width:90%;
-  background-color: #2c2c2c;
-  border-radius: 10px;
-}
-
-
-
 
 /* ---------------- START SCROLL BAR HIDE ---------------- */
 
@@ -209,15 +198,34 @@ body, html {
 
 
 /* ---------------- START Work Order Table Styling ---------------- */
+
+
+.table-container{
+  box-shadow:0px 4px 6px rgba(0,0,0,0.4);
+  padding: 30px 0;
+  margin: 0 auto;
+  width: 95%;
+  background-color: #2c2c2c;
+  border-radius: 10px;
+}
+
+
 .workorders-table {
   box-shadow:0px 4px 6px rgba(0,0,0,0.4);
   border-radius:10px;
   background-color: #2c2c2c; /* Set the table background color */
-  width: 90%;
+  width: 95%;
   border-collapse: collapse;
   margin: 10px auto;
   font-size: 12.5px;
 }
+
+
+.tabs-container {
+  width: 90%;
+  margin: 0 auto;
+}
+
 
 .workorders-table th {
   border-bottom: solid 1px #00ff08;
@@ -311,8 +319,6 @@ body, html {
 
 .workorder-functions {
   display: flex; /* Use flexbox layout */
-  justify-content: space-between; /* Spread items apart */
-  align-items: center; /* Align items vertically centered */
   width: 90%; /* Set the container width to 100% */
   max-width: 100%; /* Ensure full width of parent element */
   margin: 0 auto; /* Optional: Center the container horizontally */
@@ -325,7 +331,7 @@ body, html {
 
 .add-work-order-button {
   padding: 10px 20px; /* Add padding inside the button */
-  font-size: 16px; /* Font size */
+  font-size: 14px !important; /* Font size */
   background: linear-gradient(135deg, #4CAF50, #45a049); /* Gradient background */
   color: white; /* Text color */
   border: none; /* Remove border */
@@ -339,7 +345,13 @@ body, html {
 
 
 .page-header {
-  margin: 0 auto 20px auto;
+  margin: 0 auto;
+  text-align: left;
+  width: 90%;
+}
+
+.page-subheader {
+  margin: 0 auto 40px auto;
   text-align: left;
   width: 90%;
 }

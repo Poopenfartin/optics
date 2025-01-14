@@ -59,6 +59,7 @@ const Sidebar = ({ logout, user }) => {
     setIsOpen(newState);
     localStorage.setItem("sidebarState", JSON.stringify(newState));
   };
+  
 
   const menuItems = [
     { text: "Home", icon: <HouseIcon />, link: "/" },
