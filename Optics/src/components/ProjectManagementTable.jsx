@@ -93,7 +93,7 @@ const ProjectManagementTable = ({ workorders, deleteWorkorder, user, setWorkorde
       <TopIcons />
       <h1 className="page-header">Project Management</h1>
       <div className="workorder-functions">
-        <SearchInput placeholder="Input Work Order Number..." />
+        <SearchInput placeholder="Input Work Order Number..."/>
         <Button variant="contained" color="primary" className="add-work-order-button" onClick={() => setIsAddModalOpen(true)}>
           Add Work Order
         </Button>

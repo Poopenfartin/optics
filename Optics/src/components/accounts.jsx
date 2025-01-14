@@ -40,7 +40,7 @@ const Accounts = () => {
         toggleFullScreen={toggleFullScreen}
       />
       <div className="workorder-functions" style={{}}>
-        <SearchInput placeholder="Search For Account..." />
+        <SearchInput placeholder="Search For Account..." width="50%"/>
       </div>
       <Divider sx={{ mt: 3, backgroundColor: "green" }} />
       <table className="workorders-table">

@@ -2,7 +2,7 @@ import React from "react";
 import { TextField, InputAdornment } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 
-const SearchInput = ({ placeholder }) => {
+const SearchInput = ({ placeholder, width}) => {
   return (
     <TextField
       type="text"
@@ -23,7 +23,7 @@ const SearchInput = ({ placeholder }) => {
         }
       }}
       sx={{
-        flexGrow: 1,
+        width: width || "100%",
         marginRight: "20px",
         "& .MuiOutlinedInput-root": {
           borderRadius: "5px",
