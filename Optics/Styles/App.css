@@ -114,16 +114,18 @@ button:hover {
 /* Hide scrollbar for the entire page */
 body, html {
   overflow: hidden; /* This hides the scrollbar */
+  scroll-behavior: smooth; /* Enables smooth scrolling */
 }
 
-/* Hide scrollbar for a specific container */
+
+
+/* For the specific container */
 .hide-scrollbar {
-  overflow: hidden; /* This hides the scrollbar */
-  width: 100%; /* Ensures the container still expands fully */
-  height: 100%; /* Ensures the container still expands fully */
+  scroll-behavior: smooth; /* Enables smooth scrolling */
+  height: 100vh;
+  overflow-y: auto;
 }
 
-/* Hide scrollbar but allow scrolling */
 .hide-scrollbar::-webkit-scrollbar {
   display: none; /* For Chrome, Safari, and Opera */
 }
@@ -132,6 +134,7 @@ body, html {
   -ms-overflow-style: none; /* For Internet Explorer and Edge */
   scrollbar-width: none; /* For Firefox */
 }
+
 
 
 /* ---------------- END SCROLL BAR HIDE ---------------- */
@@ -197,25 +200,37 @@ body, html {
 
 /* ---------------- START Work Order Table Styling ---------------- */
 .workorders-table {
-  width: 100%;
+  width: 90%;
   border-collapse: collapse;
-  margin-top: 10px;
+  margin: 10px auto;
   font-size: 12.5px;
 }
 
 .workorders-table th {
-  border: none;
+  border-bottom: solid 1px #00ff08;
   padding: 10px;
   text-align: center;
-  color:#FFF;
-  font-weight: bold;
-  font-size: 16px;
+  color:lightgray;
+  font-weight: 200;
+  font-size: 12px;
+  padding: 20px;
+  cursor: pointer;
 }
+
+.workorders-table th:hover {
+  color: #FFF;
+  cursor: pointer;
+  transform: scale(1.1);
+  font-weight: bold;
+}
+
+
 .workorders-table td {
   padding: 10px;
   text-align: center;
   color: #FFF;
   font-weight: bold;
+  border-bottom: solid 1px rgba(0, 255, 8, 0.1);
 }
 
 .workorders-table td:hover {
@@ -234,20 +249,47 @@ body, html {
 }
 
 
-.WOAction-button {
+.WOAction-button-delete {
   padding: 3px 3px;
-  font-size: 12px;
+  font-size: 10px;
+  height: 30px;
+  width: 40px;
   font-weight:900;
   display: inline-block;
-  background-color: #fff;
-  color:red;
+  background-color: red;
+  color:#FFF;
   text-align: center;
   transition: transform 0.3s ease;
-
+  margin: 0 0px 0 4px;
+  border: none;
+  border-radius: 4px;
 }
 
-.WOAction-button:hover {
-  background-color: #ff0000;
+
+.WOAction-button-edit {
+  padding: 3px 3px;
+  font-size: 10px;
+  height: 30px;
+  width: 40px;
+  font-weight:900;
+  display: inline-block;
+  background-color: blue;
+  color:#FFF;
+  text-align: center;
+  transition: transform 0.3s ease;
+  margin: 0 0px 0 4px;
+  border: none;
+  border-radius: 4px;
+}
+
+.WOAction-button-edit:hover {
+  background-color: blue;
+  transform: scale(1.1);
+  color:black;
+}
+
+.WOAction-button-delete:hover {
+  background-color: red;
   transform: scale(1.1);
   color:black;
 }
@@ -257,22 +299,15 @@ body, html {
   display: flex; /* Use flexbox layout */
   justify-content: space-between; /* Spread items apart */
   align-items: center; /* Align items vertically centered */
-  width: 100%; /* Set the container width to 100% */
+  width: 90%; /* Set the container width to 100% */
   max-width: 100%; /* Ensure full width of parent element */
   margin: 0 auto; /* Optional: Center the container horizontally */
-  padding: 10px; /* Optional: Add some padding */
+  padding: 10px 0px; /* Optional: Add some padding */
   overflow: "hidden";
 }
 
-.WO-SearchBox {
-  flex-grow: 1; /* Take up remaining space */
-  padding: 10px; /* Add padding inside the text box */
-  font-size: 16px; /* Font size */
-  border: 1px solid #ccc; /* Border */
-  border-radius: 5px; /* Rounded corners */
-  margin-right: 20px; /* Add space between text box and button */
 
-}
+
 
 .add-work-order-button {
   padding: 10px 20px; /* Add padding inside the button */
@@ -286,6 +321,13 @@ body, html {
 
 .add-work-order-button:hover {
   background: linear-gradient(135deg, #45a049, #4CAF50); /* Hover effect */
+}
+
+
+.page-header {
+  margin: 0 auto 20px auto;
+  text-align: left;
+  width: 90%;
 }
 
 

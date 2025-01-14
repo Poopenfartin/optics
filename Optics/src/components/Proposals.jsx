@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import { Divider } from "@mui/material";
 import TopIcons from "./TopIcons"; 
+import SearchInput from "./SearchComponent";
 
 
 const proposals = ({}) => {
@@ -9,11 +10,7 @@ const proposals = ({}) => {
     <div>
       <TopIcons />
       <div className="workorder-functions">
-        <input
-          type="text"
-          className="WO-SearchBox"
-          placeholder="Search for proposals..."
-        />
+      <SearchInput placeholder="Search For Proposal..." />
 
       </div>
       <Divider sx={{ mt: 3, backgroundColor: "green" }} />

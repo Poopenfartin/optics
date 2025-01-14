@@ -158,7 +158,7 @@ const App = () => {
         sx={{
           flexGrow: 1,
           bgcolor: "#181818",
-          p: 3,
+          p: 2,
           minHeight: "100vh",
           overflowY: "auto",
           overflowX: "hidden",

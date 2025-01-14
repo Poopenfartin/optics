@@ -3,7 +3,8 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { Divider } from "@mui/material";
 import TopIcons from "./TopIcons";
-import "../../Styles/App.css"
+import "../../Styles/App.css";
+import SearchInput from "./SearchComponent";
 
 const Accounts = () => {
   const [customerAccounts, setCustomerAccounts] = useState([]);
@@ -17,7 +18,10 @@ const Accounts = () => {
         setCustomerAccounts(response.data);
       })
       .catch((error) => {
-        console.error("There was an error fetching the customer accounts!", error);
+        console.error(
+          "There was an error fetching the customer accounts!",
+          error
+        );
       });
   }, []);
 
@@ -31,9 +35,12 @@ const Accounts = () => {
 
   return (
     <div className="hide-scrollbar">
-      <TopIcons isFullScreen={isFullScreen} toggleFullScreen={toggleFullScreen} />
-      <div className="workorder-functions" style={{  }}>
-        <input type="text" className="WO-SearchBox" placeholder="Search for customer account..." />
+      <TopIcons
+        isFullScreen={isFullScreen}
+        toggleFullScreen={toggleFullScreen}
+      />
+      <div className="workorder-functions" style={{}}>
+        <SearchInput placeholder="Search For Account..." />
       </div>
       <Divider sx={{ mt: 3, backgroundColor: "green" }} />
       <table className="workorders-table">

@@ -1,6 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { Divider } from "@mui/material";
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 import Button from "@mui/material/Button";
 import EditIcon from "@mui/icons-material/Edit";
@@ -9,20 +8,24 @@ import Modal from "./Modal";
 import AddWorkOrderModal from "./AddWorkOrderModal";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import '../../Styles/App.css';
+import SearchInput from "../components/SearchComponent";
 
 const ProjectManagementTable = ({ workorders, deleteWorkorder, user, setWorkorders }) => {
   const filteredWorkorders = workorders.filter(workorder => workorder.projectManager === user.email);
   const [editingId, setEditingId] = useState(null);
   const [editedData, setEditedData] = useState({});
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
-  const [isAddModalOpen, setIsAddModalOpen] = useState(false); // State for add modal
+  const [isAddModalOpen, setIsAddModalOpen] = useState(false);
 
-  const formatPrice = (price) => {
-    return new Intl.NumberFormat("en-US", {
-      style: "currency",
-      currency: "USD",
-    }).format(price);
-  };
+  useEffect(() => {
+    const container = document.querySelector(".hide-scrollbar");
+    if (container) {
+      container.style.scrollBehavior = "smooth";
+    }
+  }, []);
+
+  const formatPrice = (price) => new Intl.NumberFormat("en-US", { style: "currency", currency: "USD" }).format(price);
 
   const handleEdit = (workorder) => {
     setEditingId(workorder._id);
@@ -32,87 +35,69 @@ const ProjectManagementTable = ({ workorders, deleteWorkorder, user, setWorkorde
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setEditedData({
-      ...editedData,
-      [name]: value,
-    });
+    setEditedData({ ...editedData, [name]: value });
   };
 
-  const notifySuccess = (message) => {
-    toast.success(message, {
-      position: "top-right",
-      autoClose: 3000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-    });
-  };
+  const notifySuccess = (message) => toast.success(message, {
+    position: "top-right",
+    autoClose: 3000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+  });
 
-  const notifyError = (message) => {
-    toast.error(message, {
-      position: "top-right",
-      autoClose: 3000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-    });
-  };
+  const notifyError = (message) => toast.error(message, {
+    position: "top-right",
+    autoClose: 3000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+  });
 
   const handleSave = async (id) => {
     try {
-      await axios.put(
-        `http://localhost:5000/api/workorders/${id}`,
-        editedData,
-        {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem("authToken")}`,
-          },
-        }
-      );
-      const updatedWorkorders = filteredWorkorders.map(workorder => workorder._id === id ? { ...workorder, ...editedData } : workorder);
+      await axios.put(`http://localhost:5000/api/workorders/${id}`, editedData, {
+        headers: { Authorization: `Bearer ${localStorage.getItem("authToken")}` },
+      });
+      const updatedWorkorders = filteredWorkorders.map(workorder => 
+        workorder._id === id ? { ...workorder, ...editedData } : workorder);
       setWorkorders(updatedWorkorders);
       setIsEditModalOpen(false);
       setEditingId(null);
       notifySuccess("Work Order Successfully Updated");
     } catch (error) {
-      console.error("There was an error updating the work order:", error);
+      console.error("Error updating the work order:", error);
       notifyError("Failed to update work order. Please try again.");
     }
   };
 
   const addWorkorder = async (newWorkorder) => {
     try {
-      const response = await axios.post(
-        "http://localhost:5000/api/workorders",
-        newWorkorder,
-        {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem("authToken")}`,
-          },
-        }
-      );
+      const response = await axios.post("http://localhost:5000/api/workorders", newWorkorder, {
+        headers: { Authorization: `Bearer ${localStorage.getItem("authToken")}` },
+      });
       setWorkorders([...filteredWorkorders, response.data]);
       notifySuccess("Work Order Successfully Added");
     } catch (error) {
-      console.error("There was an error adding the work order:", error);
+      console.error("Error adding the work order:", error);
       notifyError("Failed to add work order. Please try again.");
     }
   };
 
   return (
-    <div>
+    <div className="hide-scrollbar">
       <TopIcons />
+      <h1 className="page-header">Project Management</h1>
       <div className="workorder-functions">
-        <input type="text" className="WO-SearchBox" placeholder="Input Work Order Number..." />
+        <SearchInput placeholder="Input Work Order Number..." />
         <Button variant="contained" color="primary" className="add-work-order-button" onClick={() => setIsAddModalOpen(true)}>
           Add Work Order
         </Button>
       </div>
-      <Divider sx={{ mt: 3, backgroundColor: 'green' }} />
       <table className="workorders-table">
         <thead>
           <tr>
@@ -139,10 +124,10 @@ const ProjectManagementTable = ({ workorders, deleteWorkorder, user, setWorkorde
               <td>{workorder.priority}</td>
               <td>{new Date(workorder.deadline).toLocaleDateString()}</td>
               <td>
-                <button className="WOAction-button" onClick={() => handleEdit(workorder)}>
+                <button className="WOAction-button-edit" onClick={() => handleEdit(workorder)}>
                   <EditIcon />
                 </button>
-                <button className="WOAction-button" onClick={() => deleteWorkorder(workorder._id)}>
+                <button className="WOAction-button-delete" onClick={() => deleteWorkorder(workorder._id)}>
                   <DeleteForeverIcon />
                 </button>
               </td>
