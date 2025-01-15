@@ -3,6 +3,8 @@ import axios from "axios";
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 import EditIcon from "@mui/icons-material/Edit";
 import Modal from "../Modal";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const ProjectManagementTable = ({
   workorders,
@@ -41,8 +43,14 @@ const ProjectManagementTable = ({
         },
       });
       setWorkorders(workorders.filter((workorder) => workorder._id !== id));
+      toast.success("Work Order Successfully Deleted", {
+        autoClose: 3000,
+      });
     } catch (error) {
       console.error("Error deleting the work order:", error);
+      toast.error("Failed to delete work order. Please try again.", {
+        autoClose: 3000,
+      });
     }
   };
 
@@ -54,16 +62,23 @@ const ProjectManagementTable = ({
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("authToken")}`,
-        },
-      });
+          },
+        }
+      );
       const updatedWorkorders = filteredWorkorders.map((workorder) =>
         workorder._id === id ? { ...workorder, ...editedData } : workorder
       );
       setWorkorders(updatedWorkorders);
       setIsEditModalOpen(false);
       setEditingId(null);
+      toast.success("Work Order Successfully Updated", {
+        autoClose: 3000,
+      });
     } catch (error) {
       console.error("Error updating the work order:", error);
+      toast.error("Failed to update work order. Please try again.", {
+        autoClose: 3000,
+      });
     }
   };
 

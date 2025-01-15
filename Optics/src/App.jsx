@@ -3,7 +3,10 @@ import { Route, Routes, useNavigate, useLocation } from "react-router-dom";
 import { Box, CssBaseline } from "@mui/material";
 import axios from "axios";
 import "../Styles/App.css";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
+// Import Components
 import Sidebar from "./Sidebar";
 import ProjectManagement from "./components/ProjectManagement";
 import Accounts from "./components/accounts";
@@ -191,6 +194,7 @@ const App = () => {
             </>
           )}
         </Routes>
+        <ToastContainer />
       </Box>
     </Box>
   );

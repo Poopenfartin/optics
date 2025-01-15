@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import TopIcons from "./TopIcons";
 import Button from "@mui/material/Button";
+import { toast } from "react-toastify";
 import "../../Styles/App.css";
 import SearchInput from "../components/SearchComponent";
 import Tabs from "@mui/material/Tabs";
@@ -25,6 +26,9 @@ const ProjectManagement = ({ user }) => {
         setWorkorders(response.data);
       } catch (error) {
         console.error("Error fetching work orders:", error);
+        toast.error("Failed to fetch work orders. Please try again.", {
+          autoClose: 3000,
+        });
       }
     };
 
@@ -48,8 +52,14 @@ const ProjectManagement = ({ user }) => {
         },
       });
       setWorkorders([...workorders, response.data]);
+      toast.success("Work Order Successfully Added", {
+        autoClose: 3000,
+      });
     } catch (error) {
       console.error("Error adding the work order:", error);
+      toast.error("Failed to add work order. Please try again.", {
+        autoClose: 3000,
+      });
     } finally {
       setIsAddModalOpen(false);
     }
