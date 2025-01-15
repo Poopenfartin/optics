@@ -95,7 +95,7 @@ const Sidebar = ({ logout, user }) => {
               alignItems: "center",
               height: "100%",
             }}>
-            <IconButton onClick={toggleSidebar} sx={{ color: "#FFF" }}>
+            <IconButton onClick={toggleSidebar} sx={{ color: "#FFF", padding: "8px", margin: 0 }}>
               <MenuIcon />
             </IconButton>
           </Box>
@@ -152,7 +152,7 @@ const Sidebar = ({ logout, user }) => {
                 </UnderlineTypography>
               </Box>
             </Link>
-            <IconButton onClick={toggleSidebar} sx={{ color: "#FFF", padding: "0 16px" }}>
+            <IconButton onClick={toggleSidebar} sx={{ color: "#FFF", padding: "4px", marginRight: 1 }}>
               <MenuIcon />
             </IconButton>
           </Box>
@@ -196,6 +196,7 @@ const Sidebar = ({ logout, user }) => {
                   position: "absolute",
                   right: 0,
                   padding: 0,
+                  margin: 0,
                 }}>
                 <NotificationsIcon />
               </IconButton>
