@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import { Route, Routes, useNavigate, useLocation } from "react-router-dom";
 import { Box, CssBaseline } from "@mui/material";
 import axios from "axios";
@@ -21,7 +21,6 @@ const App = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  // Save the current pathname to local storage whenever it changes
   useEffect(() => {
     localStorage.setItem("lastPathname", location.pathname);
   }, [location.pathname]);
@@ -42,7 +41,6 @@ const App = () => {
         const parsedUser = JSON.parse(userData);
         setIsAuthenticated(true);
         setUser(parsedUser);
-        // Navigate to the saved pathname
         if (lastPathname && lastPathname !== "/login") {
           navigate(lastPathname);
         }
@@ -144,7 +142,8 @@ const App = () => {
           minHeight: "100vh",
           overflowY: "auto",
           overflowX: "hidden",
-        }}>
+        }}
+      >
         <Routes>
           <Route
             path="/"
@@ -174,7 +173,7 @@ const App = () => {
                 }
               />
               <Route path="/proposals" element={<Proposals />} />
-              <Route path="/accounts" element={<Accounts />} />              
+              <Route path="/accounts" element={<Accounts />} />
               <Route path="/accounts/:id" element={<AccountProfile />} />
             </>
           )}
@@ -184,7 +183,10 @@ const App = () => {
                 path="/project-management"
                 element={<LoginForm setIsAuthenticated={setIsAuthenticated} setUser={setUser} />}
               />
-              <Route path="/proposals" element={<LoginForm setIsAuthenticated={setIsAuthenticated} setUser={setUser} />} />
+              <Route
+                path="/proposals"
+                element={<LoginForm setIsAuthenticated={setIsAuthenticated} setUser={setUser} />}
+              />
               <Route path="/accounts" element={<LoginForm setIsAuthenticated={setIsAuthenticated} setUser={setUser} />} />
             </>
           )}

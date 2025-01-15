@@ -3,8 +3,6 @@ import axios from "axios";
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 import EditIcon from "@mui/icons-material/Edit";
 import Modal from "../Modal";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 
 const ProjectManagementTable = ({
   workorders,
@@ -35,28 +33,6 @@ const ProjectManagementTable = ({
     setEditedData({ ...editedData, [name]: value });
   };
 
-  const notifySuccess = (message) =>
-    toast.success(message, {
-      position: "top-right",
-      autoClose: 3000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-    });
-
-  const notifyError = (message) =>
-    toast.error(message, {
-      position: "top-right",
-      autoClose: 3000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-    });
-
   const deleteWorkorder = async (id) => {
     try {
       await axios.delete(`http://localhost:5000/api/workorders/${id}`, {
@@ -65,10 +41,8 @@ const ProjectManagementTable = ({
         },
       });
       setWorkorders(workorders.filter((workorder) => workorder._id !== id));
-      notifySuccess("Work Order Successfully Deleted");
     } catch (error) {
       console.error("Error deleting the work order:", error);
-      notifyError("Failed to delete work order. Please try again.");
     }
   };
 
@@ -80,19 +54,16 @@ const ProjectManagementTable = ({
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("authToken")}`,
-          },
-        }
-      );
+        },
+      });
       const updatedWorkorders = filteredWorkorders.map((workorder) =>
         workorder._id === id ? { ...workorder, ...editedData } : workorder
       );
       setWorkorders(updatedWorkorders);
       setIsEditModalOpen(false);
       setEditingId(null);
-      notifySuccess("Work Order Successfully Updated");
     } catch (error) {
       console.error("Error updating the work order:", error);
-      notifyError("Failed to update work order. Please try again.");
     }
   };
 
@@ -149,7 +120,6 @@ const ProjectManagementTable = ({
           closeModal={() => setIsEditModalOpen(false)}
         />
       )}
-      <ToastContainer />
     </div>
   );
 };

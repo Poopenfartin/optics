@@ -2,8 +2,6 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import TopIcons from "./TopIcons";
 import Button from "@mui/material/Button";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 import "../../Styles/App.css";
 import SearchInput from "../components/SearchComponent";
 import Tabs from "@mui/material/Tabs";
@@ -49,12 +47,9 @@ const ProjectManagement = ({ user }) => {
           Authorization: `Bearer ${localStorage.getItem("authToken")}`,
         },
       });
-      // Append the new work order with the unique ID from the response
       setWorkorders([...workorders, response.data]);
-      toast.success("Work Order Successfully Added");
     } catch (error) {
       console.error("Error adding the work order:", error);
-      toast.error("Failed to add work order. Please try again.");
     } finally {
       setIsAddModalOpen(false);
     }
@@ -110,7 +105,6 @@ const ProjectManagement = ({ user }) => {
           user={user}
         />
       )}
-      <ToastContainer />
     </div>
   );
 };
