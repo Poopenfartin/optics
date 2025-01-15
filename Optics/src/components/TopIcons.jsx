@@ -61,7 +61,7 @@ const TopIcons = ({ toggleDarkMode, darkMode }) => {
         zIndex: 1000,
         width: "100%",
         top: 0,
-        marginBottom: "50px",
+        marginBottom: "20px",
       }}>
       <Box
         sx={{

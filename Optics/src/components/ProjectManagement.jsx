@@ -94,7 +94,7 @@ const ProjectManagement = ({ user }) => {
           <Button
             variant="contained"
             color="primary"
-            className="add-work-order-button"
+            className="add-button"
             onClick={() => setIsAddModalOpen(true)}
           >
             Add Work Order

@@ -27,4 +27,16 @@ router.get('/:id', async (req, res) => {
   }
 });
 
+// Route to create a new customer account
+router.post('/', async (req, res) => {
+  try {
+    const newCustomerAccount = new CustomerAccount(req.body);
+    const savedAccount = await newCustomerAccount.save();
+    res.status(201).json(savedAccount);
+  } catch (err) {
+    console.error('Error creating customer account:', err);
+    res.status(500).json({ message: 'Internal Server Error', error: err.message });
+  }
+});
+
 module.exports = router;

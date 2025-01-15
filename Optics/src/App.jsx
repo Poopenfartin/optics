@@ -51,8 +51,12 @@ const App = () => {
         const parsedUser = JSON.parse(userData);
         setIsAuthenticated(true);
         setUser(parsedUser);
-        if (lastPathname && lastPathname !== "/login") {
-          navigate(lastPathname);
+        if (
+          lastPathname &&
+          lastPathname !== "/login" &&
+          location.pathname !== lastPathname
+        ) {
+          navigate(lastPathname, { replace: true });
         }
       } catch (error) {
         console.error("Error parsing user data:", error);
@@ -98,7 +102,10 @@ const App = () => {
                   console.log("Work orders fetched:", response.data);
                 })
                 .catch((error) => {
-                  console.error("Error fetching work orders with new token:", error);
+                  console.error(
+                    "Error fetching work orders with new token:",
+                    error
+                  );
                 });
             } else {
               setIsAuthenticated(false);
@@ -112,9 +119,12 @@ const App = () => {
 
   const refreshToken = async () => {
     try {
-      const response = await axios.post("http://localhost:5000/api/refresh-token", {
-        token: localStorage.getItem("refreshToken"),
-      });
+      const response = await axios.post(
+        "http://localhost:5000/api/refresh-token",
+        {
+          token: localStorage.getItem("refreshToken"),
+        }
+      );
 
       const newAccessToken = response.data.accessToken;
       localStorage.setItem("authToken", newAccessToken);
@@ -165,23 +175,32 @@ const App = () => {
     return <div>Loading...</div>;
   }
 
+  const isAuthRoute =
+    location.pathname === "/login" || location.pathname === "/register";
+
   return (
     <ThemeProvider theme={theme}>
-      <Box sx={{ display: "flex" }}>
+      <Box
+        sx={{
+          display: "flex",
+          bgcolor: isAuthRoute ? "#181818" : "background.default",
+        }}>
         <CssBaseline />
         {isAuthenticated && <Sidebar logout={logout} user={user} />}
         <Box
           component="main"
           sx={{
             flexGrow: 1,
-            bgcolor: "background.default",
+            bgcolor: isAuthRoute ? "#181818" : "background.default",
+            color: "#FFF", // Ensure text is visible in dark mode
             p: 2,
-            minHeight: "100vh",
+            minHeight: "100%",
             overflowY: "auto",
             overflowX: "hidden",
-          }}
-        >
-          <TopIcons toggleDarkMode={toggleDarkMode} darkMode={darkMode} />
+          }}>
+          {!isAuthRoute && (
+            <TopIcons toggleDarkMode={toggleDarkMode} darkMode={darkMode} />
+          )}
           <Routes>
             <Route
               path="/"
@@ -189,15 +208,26 @@ const App = () => {
                 isAuthenticated ? (
                   <Home user={user} />
                 ) : (
-                  <LoginForm setIsAuthenticated={setIsAuthenticated} setUser={setUser} />
+                  <LoginForm
+                    setIsAuthenticated={setIsAuthenticated}
+                    setUser={setUser}
+                  />
                 )
               }
             />
             <Route
               path="/login"
-              element={<LoginForm setIsAuthenticated={setIsAuthenticated} setUser={setUser} />}
+              element={
+                <LoginForm
+                  setIsAuthenticated={setIsAuthenticated}
+                  setUser={setUser}
+                />
+              }
             />
-            <Route path="/register" element={<RegisterForm setIsAuthenticated={setIsAuthenticated} />} />
+            <Route
+              path="/register"
+              element={<RegisterForm setIsAuthenticated={setIsAuthenticated} />}
+            />
             {isAuthenticated && (
               <>
                 <Route
@@ -219,13 +249,31 @@ const App = () => {
               <>
                 <Route
                   path="/project-management"
-                  element={<LoginForm setIsAuthenticated={setIsAuthenticated} setUser={setUser} />}
+                  element={
+                    <LoginForm
+                      setIsAuthenticated={setIsAuthenticated}
+                      setUser={setUser}
+                    />
+                  }
                 />
                 <Route
                   path="/proposals"
-                  element={<LoginForm setIsAuthenticated={setIsAuthenticated} setUser={setUser} />}
+                  element={
+                    <LoginForm
+                      setIsAuthenticated={setIsAuthenticated}
+                      setUser={setUser}
+                    />
+                  }
                 />
-                <Route path="/accounts" element={<LoginForm setIsAuthenticated={setIsAuthenticated} setUser={setUser} />} />
+                <Route
+                  path="/accounts"
+                  element={
+                    <LoginForm
+                      setIsAuthenticated={setIsAuthenticated}
+                      setUser={setUser}
+                    />
+                  }
+                />
               </>
             )}
           </Routes>
