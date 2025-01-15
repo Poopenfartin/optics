@@ -64,7 +64,10 @@ const Accounts = () => {
             setCustomerAccounts(response.data);
           })
           .catch((error) => {
-            console.error("There was an error fetching the customer accounts!", error);
+            console.error(
+              "There was an error fetching the customer accounts!",
+              error
+            );
           });
       })
       .catch((error) => {
@@ -73,14 +76,20 @@ const Accounts = () => {
   };
 
   return (
-    <div key={JSON.stringify(customerAccounts)} className="hide-scrollbar">
+    <div
+      key={JSON.stringify(customerAccounts)}
+      style={{ overflowY: "auto", overflowX: "hidden" }}>
       <div className="table-container" ref={tableRef}>
         <h1 className="page-header">Customer Accounts</h1>
         <h2 className="page-subheader">CUSTOMERS</h2>
-        <Divider sx={{ margin: "30px auto", backgroundColor: "green", width: "90%" }} />
+        <Divider
+          sx={{ margin: "30px auto", backgroundColor: "green", width: "90%" }}
+        />
         <div className="workorder-functions">
           <SearchInput placeholder="Search For Account..." width="80%" />
-          <button className="add-button" onClick={openModal}>Add New Account</button>
+          <button className="add-button" onClick={openModal}>
+            Add New Account
+          </button>
         </div>
       </div>
       <table className="workorders-table">
@@ -101,7 +110,9 @@ const Accounts = () => {
           ))}
         </tbody>
       </table>
-      {showModal && <AddAccountModal handleSave={handleSave} closeModal={closeModal} />}
+      {showModal && (
+        <AddAccountModal handleSave={handleSave} closeModal={closeModal} />
+      )}
     </div>
   );
 };

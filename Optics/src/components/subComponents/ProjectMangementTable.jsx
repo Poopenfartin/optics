@@ -109,7 +109,7 @@ const ProjectManagementTable = ({
               <td>{workorder.status}</td>
               <td>{workorder.priority}</td>
               <td>{new Date(workorder.deadline).toLocaleDateString()}</td>
-              <td>
+              <td style={{ whiteSpace: "nowrap" }}>
                 <button
                   className="WOAction-button-edit"
                   onClick={() => handleEdit(workorder)}

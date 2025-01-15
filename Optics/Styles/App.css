@@ -109,31 +109,17 @@ button:hover {
 
 /* ---------------- START SCROLL BAR HIDE ---------------- */
 
-
-/* Hide scrollbar for the entire page */
-body, html {
-  overflow: hidden; /* This hides the scrollbar */
-  scroll-behavior: smooth; /* Enables smooth scrolling */
-}
-
-
-
-/* For the specific container */
-.hide-scrollbar {
-  scroll-behavior: smooth; /* Enables smooth scrolling */
-  height: 100vh;
+.table-container {
   overflow-y: auto;
-}
-
-.hide-scrollbar::-webkit-scrollbar {
-  display: none; /* For Chrome, Safari, and Opera */
+  -webkit-overflow-scrolling: touch; /* for smooth scrolling on iOS */
+  /* other styles remain the same */
 }
 
 .hide-scrollbar {
-  -ms-overflow-style: none; /* For Internet Explorer and Edge */
-  scrollbar-width: none; /* For Firefox */
+  overflow-y: auto;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
-
 
 
 /* ---------------- END SCROLL BAR HIDE ---------------- */

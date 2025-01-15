@@ -18,11 +18,14 @@ const ProjectManagement = ({ user }) => {
   useEffect(() => {
     const fetchWorkorders = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/api/workorders", {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem("authToken")}`,
-          },
-        });
+        const response = await axios.get(
+          "http://localhost:5000/api/workorders",
+          {
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem("authToken")}`,
+            },
+          }
+        );
         setWorkorders(response.data);
       } catch (error) {
         console.error("Error fetching work orders:", error);
@@ -34,10 +37,8 @@ const ProjectManagement = ({ user }) => {
 
     fetchWorkorders();
 
-    const container = document.querySelector(".hide-scrollbar");
-    if (container) {
-      container.style.scrollBehavior = "smooth";
-    }
+    // Add smooth scrolling behavior to the whole document
+    document.documentElement.style.scrollBehavior = "smooth";
   }, []);
 
   const handleTabChange = (event, newValue) => {
@@ -46,11 +47,15 @@ const ProjectManagement = ({ user }) => {
 
   const addWorkorder = async (newWorkorder) => {
     try {
-      const response = await axios.post("http://localhost:5000/api/workorders", newWorkorder, {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("authToken")}`,
-        },
-      });
+      const response = await axios.post(
+        "http://localhost:5000/api/workorders",
+        newWorkorder,
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("authToken")}`,
+          },
+        }
+      );
       setWorkorders([...workorders, response.data]);
       toast.success("Work Order Successfully Added", {
         autoClose: 3000,
@@ -66,7 +71,9 @@ const ProjectManagement = ({ user }) => {
   };
 
   return (
-    <div className="hide-scrollbar">
+    <div
+      className="hide-scrollbar"
+      style={{ overflowY: "auto", overflowX: "hidden" }}>
       <div className="table-container">
         <h1 className="page-header">Project Management</h1>
         <h2 className="page-subheader">Overview</h2>
@@ -80,8 +87,7 @@ const ProjectManagement = ({ user }) => {
               "& .MuiTabs-flexContainer": { justifyContent: "flex-start" },
               "& .MuiTab-root": { color: "white" },
               "& .Mui-selected": { color: "#00ff08" },
-            }}
-          >
+            }}>
             <Tab label="Project Manage" />
             <Tab label="Estimator" />
             <Tab label="Test tab" />
@@ -95,8 +101,7 @@ const ProjectManagement = ({ user }) => {
             variant="contained"
             color="primary"
             className="add-button"
-            onClick={() => setIsAddModalOpen(true)}
-          >
+            onClick={() => setIsAddModalOpen(true)}>
             Add Work Order
           </Button>
         </div>
