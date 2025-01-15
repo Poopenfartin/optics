@@ -59,7 +59,6 @@ const Sidebar = ({ logout, user }) => {
     setIsOpen(newState);
     localStorage.setItem("sidebarState", JSON.stringify(newState));
   };
-  
 
   const menuItems = [
     { text: "Home", icon: <HouseIcon />, link: "/" },
@@ -75,11 +74,18 @@ const Sidebar = ({ logout, user }) => {
   return (
     <Box sx={{ display: "flex", flexDirection: "column", height: "100vh" }}>
       <Box
+        onClick={!isOpen ? toggleSidebar : null} // Add onClick event here
         sx={{
           backgroundColor: "#1f2a40",
           height: "100vh",
           width: isOpen ? 270 : 60,
-          transition: "width 0.3s",
+          transition: "width 0.3s, background-color 0.3s",
+          cursor: !isOpen ? "pointer" : "default",
+          "&:hover": {
+            backgroundColor: !isOpen ? "#2b344a" : "#1f2a40",
+            width: !isOpen ? 80 : 270,
+            transition: "background-color 0.3s, width 0.3s", // Adjust transition properties
+          },
         }}>
         {!isOpen && (
           <Box
@@ -127,15 +133,15 @@ const Sidebar = ({ logout, user }) => {
                   style={{
                     width: "40px",
                     height: "40px",
-                    marginRight: "4px", // Adjusted margin
+                    marginRight: "4px",
                   }}
                 />
                 <UnderlineTypography
                   variant="h6"
                   component="p"
                   style={{
-                    marginLeft: "4px", // Adjusted margin
-                    marginTop: "4px", // Adjusted margin
+                    marginLeft: "4px",
+                    marginTop: "4px",
                     fontWeight: "700",
                     fontSize: "16px",
                     textAlign: "center",
@@ -185,7 +191,7 @@ const Sidebar = ({ logout, user }) => {
                 <Typography
                   variant="body2"
                   component="p"
-                  style={{ margin: 0, color: "#00ff08"}}>
+                  style={{ margin: 0, color: "#00ff08" }}>
                   {user?.jobTitle}
                 </Typography>
               </Box>
@@ -248,5 +254,3 @@ const Sidebar = ({ logout, user }) => {
 };
 
 export default Sidebar;
-
-
