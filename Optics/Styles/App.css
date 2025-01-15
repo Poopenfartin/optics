@@ -160,12 +160,41 @@ button:hover {
 
 /* ---------------- START Top Icons Styling ---------------- */
 
+
+/* TopIcons.css */
 .top-icons-container {
-  position: absolute;
-  top: 16px;
-  right: 16px;
   display: flex;
-  gap: 8px;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 1rem;
+  position: relative;
+  z-index: 1000;
+  top: 0;
+  margin-bottom: 30px;
+  cursor: pointer;
+  border-radius: 2px;
+}
+
+.logo-container {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  margin-right: auto;
+}
+
+.logo-image {
+  margin-right: 10px;
+  width: 50px;
+  height: 50px;
+}
+
+.icons-container {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
 }
 
 .settings-icon,
@@ -178,6 +207,15 @@ button:hover {
 .fullscreen-icon:hover {
   color: #00ff00; /* Change to your desired hover color */
 }
+
+.icon-button {
+  color: inherit;
+}
+
+.icon-button:hover {
+  color: #00ff00; /* Change to your desired hover color */
+}
+
 
 
 /* ---------------- END Top Icons Styling ---------------- */
@@ -193,13 +231,13 @@ button:hover {
   margin: 0 auto;
   width: 95%;
   background-color: #2a3549;
-  border-radius: 20px;
+  border-radius: 10px;
 }
 
 /* Styling for the actual rendered table */
 .main-table {
   box-shadow:0px 4px 6px rgba(0,0,0,0.4);
-  border-radius: 20px;
+  border-radius: 10px;
   background-color: #2a3549; /* Set the table background color */
   width: 95%;
   border-collapse: collapse;

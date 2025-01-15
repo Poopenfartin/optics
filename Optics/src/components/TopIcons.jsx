@@ -8,6 +8,7 @@ import SettingsIcon from "@mui/icons-material/Settings";
 import OpticsLogo from "../assets/images/Optic_Logo.png";
 import { styled } from "@mui/material/styles";
 import Typography from "@mui/material/Typography";
+import "../../Styles/App.css"
 
 // Define the styled component with hover underline effect
 const UnderlineTypography = styled(Typography)(({ theme }) => ({
@@ -47,34 +48,12 @@ const TopIcons = ({ toggleDarkMode, darkMode }) => {
   };
 
   return (
-    <Box
-      className="top-icons-container"
-      sx={{
-        display: "flex",
-        cursor: "pointer",
-        alignItems: "center",
-        justifyContent: "space-between",
-        gap: 1,
-        padding: 1,
-        borderRadius: 2,
-        position: "relative",
-        zIndex: 1000,
-        width: "100%",
-        top: 0,
-        marginBottom: "20px",
-      }}>
-      <Box
-        sx={{
-          display: "flex",
-          alignItems: "center",
-          marginRight: "auto",
-          flexGrow: 1,
-          justifyContent: "center",
-        }}>
+    <Box className="top-icons-container">
+      <Box className="logo-container">
         <img
           src={OpticsLogo}
           alt="Optics Logo"
-          style={{ marginRight: "10px", width: "50px", height: "50px" }}
+          className="logo-image"
         />
         <UnderlineTypography
           variant="h1"
@@ -91,7 +70,7 @@ const TopIcons = ({ toggleDarkMode, darkMode }) => {
           OPTICS
         </UnderlineTypography>
       </Box>
-      <Box sx={{ display: "flex", alignItems: "center" }}>
+      <Box className="icons-container">
         <IconButton className="settings-icon" sx={{ color: darkMode ? "#FFF" : "#000" }}>
           <SettingsIcon />
         </IconButton>
