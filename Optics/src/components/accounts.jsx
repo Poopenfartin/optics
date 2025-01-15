@@ -79,20 +79,20 @@ const Accounts = () => {
     <div
       key={JSON.stringify(customerAccounts)}
       style={{ overflowY: "auto", overflowX: "hidden" }}>
-      <div className="table-container" ref={tableRef}>
+      <div className="main-table-container" ref={tableRef}>
         <h1 className="page-header">Customer Accounts</h1>
         <h2 className="page-subheader">CUSTOMERS</h2>
         <Divider
           sx={{ margin: "30px auto", backgroundColor: "green", width: "90%" }}
         />
-        <div className="workorder-functions">
+        <div className="main-table-functions">
           <SearchInput placeholder="Search For Account..." width="80%" />
           <button className="add-button" onClick={openModal}>
             Add New Account
           </button>
         </div>
       </div>
-      <table className="workorders-table">
+      <table className="main-table">
         <thead>
           <tr>
             <th>Customer Name</th>

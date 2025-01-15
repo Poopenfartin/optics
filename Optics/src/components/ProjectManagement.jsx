@@ -74,7 +74,7 @@ const ProjectManagement = ({ user }) => {
     <div
       className="hide-scrollbar"
       style={{ overflowY: "auto", overflowX: "hidden" }}>
-      <div className="table-container">
+      <div className="main-table-container">
         <h1 className="page-header">Project Management</h1>
         <h2 className="page-subheader">Overview</h2>
         <div className="tabs-container">
@@ -95,7 +95,7 @@ const ProjectManagement = ({ user }) => {
             <Tab label="Accounts" />
           </Tabs>
         </div>
-        <div className="workorder-functions">
+        <div className="main-table-functions">
           <SearchInput placeholder="Input Work Order Number..." width="80%" />
           <Button
             variant="contained"
