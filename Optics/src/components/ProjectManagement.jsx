@@ -81,7 +81,8 @@ const ProjectManagement = ({ user }) => {
             <Tab label="Project Manage" />
             <Tab label="Estimator" />
             <Tab label="Test tab" />
-            <Tab label="Bonnie" />
+            <Tab label="Proposals" />
+            <Tab label="Accounts" />
           </Tabs>
         </div>
         <div className="workorder-functions">
