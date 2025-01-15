@@ -194,7 +194,7 @@ const App = () => {
             bgcolor: isAuthRoute ? "#181818" : "background.default",
             color: "#FFF", // Ensure text is visible in dark mode
             p: 2,
-            minHeight: "100%",
+            height: "100vh", // Use 100vh to take up full viewport height
             overflowY: "auto",
             overflowX: "hidden",
           }}>
