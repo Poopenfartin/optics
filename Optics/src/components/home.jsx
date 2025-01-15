@@ -7,7 +7,6 @@ import "../../Styles/App.css";
 const Dashboard = ({ user }) => {
   return (
     <Box className="dashboard-container">
-      <TopIcons />
       <Box sx={{ display: "flex", flexDirection: "column", ml: -0.5, mb: -1 }}>
         <Box sx={{ display: "flex", alignItems: "center" }}>
           <Typography

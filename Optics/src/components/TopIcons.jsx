@@ -3,6 +3,7 @@ import { Box, IconButton } from "@mui/material";
 import FullscreenIcon from "@mui/icons-material/Fullscreen";
 import FullscreenExitIcon from "@mui/icons-material/FullscreenExit";
 import DarkModeIcon from '@mui/icons-material/DarkMode';
+import LightModeIcon from '@mui/icons-material/LightMode';
 import SettingsIcon from "@mui/icons-material/Settings";
 import OpticsLogo from "../assets/images/Optic_Logo.png";
 import { styled } from "@mui/material/styles";
@@ -23,7 +24,6 @@ const UnderlineTypography = styled(Typography)(({ theme }) => ({
     height: "2px",
     bottom: "-2px", // Adjust this value to add space between text and underline
     left: 0,
-    backgroundColor: "#FFF",
     transformOrigin: "bottom right",
     transition: "transform 0.25s ease-out",
   },
@@ -33,7 +33,7 @@ const UnderlineTypography = styled(Typography)(({ theme }) => ({
   },
 }));
 
-const TopIcons = () => {
+const TopIcons = ({ toggleDarkMode, darkMode }) => {
   const [isFullScreen, setIsFullScreen] = useState(false);
 
   const toggleFullScreen = () => {
@@ -84,23 +84,26 @@ const TopIcons = () => {
             letterSpacing: "3px",
             fontSize: "28px",
             marginTop: "4px",
+            "&:after": {
+              backgroundColor: darkMode ? "#FFF" : "#000",
+            },
           }}>
           OPTICS
         </UnderlineTypography>
       </Box>
       <Box sx={{ display: "flex", alignItems: "center" }}>
-        <IconButton className="settings-icon" sx={{ color: "#FFF" }}>
+        <IconButton className="settings-icon" sx={{ color: darkMode ? "#FFF" : "#000" }}>
           <SettingsIcon />
         </IconButton>
 
-        <IconButton className="settings-icon" sx={{ color: "#FFF" }}>
-          <DarkModeIcon />
+        <IconButton onClick={toggleDarkMode} className="settings-icon" sx={{ color: darkMode ? "#FFF" : "#000" }}>
+          {darkMode ? <LightModeIcon /> : <DarkModeIcon />}
         </IconButton>
 
         <IconButton
           className="fullscreen-icon"
           onClick={toggleFullScreen}
-          sx={{ color: "#FFF" }}>
+          sx={{ color: darkMode ? "#FFF" : "#000" }}>
           {isFullScreen ? <FullscreenExitIcon /> : <FullscreenIcon />}
         </IconButton>
       </Box>

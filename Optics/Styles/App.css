@@ -465,6 +465,26 @@ body, html {
 
 /* ---------------- END Work Order Modal Styling ---------------- */
 
+/* ---------------- START Sidebar Styling ---------------- */
+
+.profile-picture-sidebar {
+  width: 100px;
+  height: 100px;
+  margin-bottom: 8px;
+  border-radius: 50%;
+}
+
+.profile-picture-sidebar:hover {
+  cursor: pointer;
+  border: solid 3px #00ff08;
+  border-color: #00ff08;
+}
+
+
+/* ---------------- END Sidebar Styling ---------------- */
+
+
+
 .modal-overlay {
   position: fixed;
   top: 0;

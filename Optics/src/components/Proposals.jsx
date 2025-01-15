@@ -8,8 +8,9 @@ import SearchInput from "./SearchComponent";
 const proposals = ({}) => {
   return (
     <div>
-      <TopIcons />
+      <h1>Proposals</h1>
       <div className="workorder-functions">
+        
       <SearchInput placeholder="Search For Proposal..." />
 
       </div>

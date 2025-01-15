@@ -67,7 +67,6 @@ const ProjectManagement = ({ user }) => {
 
   return (
     <div className="hide-scrollbar">
-      <TopIcons />
       <div className="table-container">
         <h1 className="page-header">Project Management</h1>
         <h2 className="page-subheader">Overview</h2>

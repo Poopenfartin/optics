@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react";
 import { Route, Routes, useNavigate, useLocation } from "react-router-dom";
 import { Box, CssBaseline } from "@mui/material";
 import axios from "axios";
-import "../Styles/App.css";
 import { ToastContainer } from "react-toastify";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
 import "react-toastify/dist/ReactToastify.css";
 
 // Import Components
@@ -15,6 +15,7 @@ import LoginForm from "./components/LoginForm";
 import RegisterForm from "./components/RegisterForm";
 import Proposals from "./components/Proposals";
 import AccountProfile from "./components/AccountProfile";
+import TopIcons from "./components/TopIcons"; // Import TopIcons
 
 const App = () => {
   const [workorders, setWorkorders] = useState([]);
@@ -23,6 +24,12 @@ const App = () => {
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
   const location = useLocation();
+
+  // Read initial darkMode state from localStorage
+  const [darkMode, setDarkMode] = useState(() => {
+    const savedMode = localStorage.getItem("darkMode");
+    return savedMode ? JSON.parse(savedMode) : true;
+  });
 
   useEffect(() => {
     localStorage.setItem("lastPathname", location.pathname);
@@ -128,75 +135,104 @@ const App = () => {
     navigate("/login");
   };
 
+  const toggleDarkMode = () => {
+    setDarkMode((prevMode) => {
+      const newMode = !prevMode;
+      localStorage.setItem("darkMode", JSON.stringify(newMode));
+      return newMode;
+    });
+  };
+
+  const theme = createTheme({
+    palette: {
+      mode: darkMode ? "dark" : "light",
+      background: {
+        default: darkMode ? "#181818" : "#F5F5F5",
+      },
+    },
+    components: {
+      MuiIconButton: {
+        styleOverrides: {
+          root: {
+            color: darkMode ? "#FFF" : "#000",
+          },
+        },
+      },
+    },
+  });
+
   if (loading) {
     return <div>Loading...</div>;
   }
 
   return (
-    <Box sx={{ display: "flex" }}>
-      <CssBaseline />
-      {isAuthenticated && <Sidebar logout={logout} user={user} />}
-      <Box
-        component="main"
-        sx={{
-          flexGrow: 1,
-          bgcolor: "#181818",
-          p: 2,
-          minHeight: "100vh",
-          overflowY: "auto",
-          overflowX: "hidden",
-        }}
-      >
-        <Routes>
-          <Route
-            path="/"
-            element={
-              isAuthenticated ? (
-                <Home user={user} />
-              ) : (
-                <LoginForm setIsAuthenticated={setIsAuthenticated} setUser={setUser} />
-              )
-            }
-          />
-          <Route
-            path="/login"
-            element={<LoginForm setIsAuthenticated={setIsAuthenticated} setUser={setUser} />}
-          />
-          <Route path="/register" element={<RegisterForm setIsAuthenticated={setIsAuthenticated} />} />
-          {isAuthenticated && (
-            <>
-              <Route
-                path="/project-management"
-                element={
-                  <ProjectManagement
-                    workorders={workorders}
-                    user={user}
-                    setWorkorders={setWorkorders}
-                  />
-                }
-              />
-              <Route path="/proposals" element={<Proposals />} />
-              <Route path="/accounts" element={<Accounts />} />
-              <Route path="/accounts/:id" element={<AccountProfile />} />
-            </>
-          )}
-          {!isAuthenticated && (
-            <>
-              <Route
-                path="/project-management"
-                element={<LoginForm setIsAuthenticated={setIsAuthenticated} setUser={setUser} />}
-              />
-              <Route
-                path="/proposals"
-                element={<LoginForm setIsAuthenticated={setIsAuthenticated} setUser={setUser} />}
-              />
-              <Route path="/accounts" element={<LoginForm setIsAuthenticated={setIsAuthenticated} setUser={setUser} />} />
-            </>
-          )}
-        </Routes>
-        <ToastContainer />
+    <ThemeProvider theme={theme}>
+      <Box sx={{ display: "flex" }}>
+        <CssBaseline />
+        {isAuthenticated && <Sidebar logout={logout} user={user} />}
+        <Box
+          component="main"
+          sx={{
+            flexGrow: 1,
+            bgcolor: "background.default",
+            p: 2,
+            minHeight: "100vh",
+            overflowY: "auto",
+            overflowX: "hidden",
+          }}
+        >
+          <TopIcons toggleDarkMode={toggleDarkMode} darkMode={darkMode} />
+          <Routes>
+            <Route
+              path="/"
+              element={
+                isAuthenticated ? (
+                  <Home user={user} />
+                ) : (
+                  <LoginForm setIsAuthenticated={setIsAuthenticated} setUser={setUser} />
+                )
+              }
+            />
+            <Route
+              path="/login"
+              element={<LoginForm setIsAuthenticated={setIsAuthenticated} setUser={setUser} />}
+            />
+            <Route path="/register" element={<RegisterForm setIsAuthenticated={setIsAuthenticated} />} />
+            {isAuthenticated && (
+              <>
+                <Route
+                  path="/project-management"
+                  element={
+                    <ProjectManagement
+                      workorders={workorders}
+                      user={user}
+                      setWorkorders={setWorkorders}
+                    />
+                  }
+                />
+                <Route path="/proposals" element={<Proposals />} />
+                <Route path="/accounts" element={<Accounts />} />
+                <Route path="/accounts/:id" element={<AccountProfile />} />
+              </>
+            )}
+            {!isAuthenticated && (
+              <>
+                <Route
+                  path="/project-management"
+                  element={<LoginForm setIsAuthenticated={setIsAuthenticated} setUser={setUser} />}
+                />
+                <Route
+                  path="/proposals"
+                  element={<LoginForm setIsAuthenticated={setIsAuthenticated} setUser={setUser} />}
+                />
+                <Route path="/accounts" element={<LoginForm setIsAuthenticated={setIsAuthenticated} setUser={setUser} />} />
+              </>
+            )}
+          </Routes>
+          <ToastContainer />
+        </Box>
       </Box>
-    </Box>
+    </ThemeProvider>
   );
 };
 

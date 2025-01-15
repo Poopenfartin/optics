@@ -35,10 +35,6 @@ const Accounts = () => {
 
   return (
     <div className="hide-scrollbar">
-      <TopIcons
-        isFullScreen={isFullScreen}
-        toggleFullScreen={toggleFullScreen}
-      />
       <div className="table-container"> 
         <h1>Accounts</h1>
       <Divider sx={{ margin: "30px auto", backgroundColor: "green", width: "90%" }} />

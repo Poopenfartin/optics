@@ -169,12 +169,7 @@ const Sidebar = ({ logout, user }) => {
             <img
               src="https://img.freepik.com/free-psd/3d-illustration-human-avatar-profile_23-2150671142.jpg?w=826&t=st=1719374252~exp=1719374852~hmac=384d89c4c305fabcd0e40764416da0985d75085f7c38963ef024b12944d7975f"
               alt="User Avatar"
-              style={{
-                width: "100px",
-                height: "100px",
-                marginBottom: "8px",
-                borderRadius: "50%",
-              }}
+              className="profile-picture-sidebar" 
             />
             <Box
               sx={{
