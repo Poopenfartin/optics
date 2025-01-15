@@ -1,22 +1,22 @@
-import React, { useState } from "react";
+import React from "react";
 import axios from "axios";
 import { Divider } from "@mui/material";
-import TopIcons from "./TopIcons"; 
+import TopIcons from "./TopIcons";
 import SearchInput from "./SearchComponent";
 
-
-const proposals = ({}) => {
+const Proposals = () => {
   return (
     <div>
-      <h1>Proposals</h1>
-      <div className="workorder-functions">
-        
-      <SearchInput placeholder="Search For Proposal..." />
-
+      <div className="proposals-container">
+        <h1>Proposals</h1>
+        <Divider sx={{ margin: "20px auto", backgroundColor: "green", width: "90%" }} />
+        <div className="workorder-functions">
+          <SearchInput placeholder="Search For Proposal..." />
+          <button className="add-button">Add New Proposal</button>
+        </div>
       </div>
-      <Divider sx={{ mt: 3, backgroundColor: "green" }} />
-
-      <table className="workorders-table">
+      <Divider sx={{ mt: 3, mb: 2, backgroundColor: "green" }} />
+      <table className="proposals-table">
         <thead>
           <tr>
             <th>Proposal #</th>
@@ -28,11 +28,16 @@ const proposals = ({}) => {
             <th>Status</th>
             <th>Actions</th>
           </tr>
-        </thead>        
+        </thead>
+        <tbody>
+          {/* Add your proposal data rows here */}
+        </tbody>
       </table>
-
     </div>
   );
 };
 
-export default proposals;
+export default Proposals;
+
+
+
