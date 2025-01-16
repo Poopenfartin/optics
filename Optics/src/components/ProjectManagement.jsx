@@ -41,9 +41,6 @@ const ProjectManagement = ({ user }) => {
     };
 
     fetchWorkorders();
-
-    // Add smooth scrolling behavior to the whole document
-    document.documentElement.style.scrollBehavior = "smooth";
   }, []);
 
   const handleTabChange = (event, newValue) => {

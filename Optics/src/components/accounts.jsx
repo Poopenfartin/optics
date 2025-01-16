@@ -3,10 +3,11 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { Divider } from "@mui/material";
 import TopIcons from "./TopIcons";
-import "../../Styles/App.css";
 import SearchInput from "./SearchComponent";
 import AddAccountModal from "./modals/AddAccountModal"; 
 import Spinner from "./Spinner"; 
+import { showToast } from "./CustomToast"; // Import showToast
+
 const Accounts = () => {
   const [customerAccounts, setCustomerAccounts] = useState([]);
   const [isFullScreen, setIsFullScreen] = useState(false);
@@ -67,6 +68,8 @@ const Accounts = () => {
       .post("http://localhost:5000/api/customerAccounts", newAccount)
       .then((response) => {
         console.log("Response from server:", response.data);
+        showToast("success", "New customer added successfully!"); // Show success toast
+
         // Fetch the updated list of accounts
         axios
           .get("http://localhost:5000/api/customerAccounts")
@@ -90,6 +93,7 @@ const Accounts = () => {
       })
       .catch((error) => {
         console.error("There was an error adding the account!", error);
+        showToast("error", "There was an error adding the account."); // Show error toast
       });
   };
 
