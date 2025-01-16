@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import '../../styles/App.css';
+import '../../../styles/App.css';
 
 const AddWorkOrderModal = ({ isOpen, closeModal, addWorkorder, user }) => {
   const [newData, setNewData] = useState({

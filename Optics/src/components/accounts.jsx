@@ -5,14 +5,15 @@ import { Divider } from "@mui/material";
 import TopIcons from "./TopIcons";
 import "../../Styles/App.css";
 import SearchInput from "./SearchComponent";
-import AddAccountModal from "./AddAccountModal"; // Import the new component
-
+import AddAccountModal from "./modals/AddAccountModal"; 
+import Spinner from "./Spinner"; 
 const Accounts = () => {
   const [customerAccounts, setCustomerAccounts] = useState([]);
   const [isFullScreen, setIsFullScreen] = useState(false);
   const [showModal, setShowModal] = useState(false); // State to control modal visibility
+  const [loading, setLoading] = useState(true); // Add loading state
   const navigate = useNavigate();
-  const tableRef = useRef(null); // Create a reference for the table
+  const tableRef = useRef(null); 
 
   useEffect(() => {
     axios
@@ -29,13 +30,12 @@ const Accounts = () => {
 
         Promise.all(fetchBuildingsPromises).then(results => {
           setCustomerAccounts(results);
+          setLoading(false); // Set loading to false after data is fetched
         });
       })
       .catch((error) => {
-        console.error(
-          "There was an error fetching the customer accounts!",
-          error
-        );
+        console.error("There was an error fetching the customer accounts!", error);
+        setLoading(false); // Set loading to false even if there's an error
       });
   }, []);
 
@@ -85,16 +85,17 @@ const Accounts = () => {
             });
           })
           .catch((error) => {
-            console.error(
-              "There was an error fetching the customer accounts!",
-              error
-            );
+            console.error("There was an error fetching the customer accounts!", error);
           });
       })
       .catch((error) => {
         console.error("There was an error adding the account!", error);
       });
   };
+
+  if (loading) {
+    return <Spinner />;
+  }
 
   return (
     <div

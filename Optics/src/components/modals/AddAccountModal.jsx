@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "../../styles/App.css";
+import "../../../styles/App.css";
 
 const AddAccountModal = ({ handleSave, closeModal }) => {
   const [newAccount, setNewAccount] = useState({
