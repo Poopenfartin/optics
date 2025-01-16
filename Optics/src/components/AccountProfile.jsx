@@ -67,7 +67,7 @@ const AccountProfile = () => {
 
   return (
     <div>
-      <h1 className="page-header">{user.customerName}</h1>
+      <h1 className="page-header" style={{margin:0}}>{user.customerName}</h1>
       <p><strong>Active:</strong> {user.active ? "Yes" : "No"}</p>
       <p><strong>Number of Buildings:</strong> {user.numberOfBuildings}</p>
       <p><strong>Sales Representative:</strong> {user.salesRep}</p>

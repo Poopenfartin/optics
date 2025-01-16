@@ -6,7 +6,7 @@ import TopIcons from "./TopIcons";
 import SearchInput from "./SearchComponent";
 import AddAccountModal from "./modals/AddAccountModal"; 
 import Spinner from "./Spinner"; 
-import { showToast } from "./CustomToast"; // Import showToast
+import { showToast } from "./CustomToast"; 
 
 const Accounts = () => {
   const [customerAccounts, setCustomerAccounts] = useState([]);
@@ -32,6 +32,7 @@ const Accounts = () => {
         Promise.all(fetchBuildingsPromises).then(results => {
           setCustomerAccounts(results);
           setLoading(false); // Set loading to false after data is fetched
+          console.log(results);
         });
       })
       .catch((error) => {
