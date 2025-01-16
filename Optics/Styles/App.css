@@ -160,8 +160,6 @@ button:hover {
 
 /* ---------------- START Top Icons Styling ---------------- */
 
-
-/* TopIcons.css */
 .top-icons-container {
   display: flex;
   align-items: center;
@@ -174,6 +172,7 @@ button:hover {
   margin-bottom: 30px;
   cursor: pointer;
   border-radius: 2px;
+  user-select: none; 
 }
 
 .logo-container {
@@ -183,38 +182,45 @@ button:hover {
   display: flex;
   align-items: center;
   margin-right: auto;
+  user-select: none; 
 }
 
 .logo-image {
   margin-right: 10px;
   width: 50px;
   height: 50px;
+  user-select: none; 
 }
 
 .icons-container {
   display: flex;
   align-items: center;
   margin-left: auto;
+  user-select: none; 
 }
 
 .settings-icon,
 .fullscreen-icon {
   color: inherit;
   transition: color 0.3s ease;
+  user-select: none; 
 }
 
 .settings-icon:hover,
 .fullscreen-icon:hover {
   color: #00ff00; /* Change to your desired hover color */
+  user-select: none; 
 }
 
 .icon-button {
   color: inherit;
+  user-select: none; 
 }
 
 .icon-button:hover {
   color: #00ff00; /* Change to your desired hover color */
 }
+
 
 
 

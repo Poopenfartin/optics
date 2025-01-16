@@ -18,7 +18,18 @@ const Accounts = () => {
     axios
       .get("http://localhost:5000/api/customerAccounts")
       .then((response) => {
-        setCustomerAccounts(response.data);
+        const accounts = response.data;
+        const fetchBuildingsPromises = accounts.map(account =>
+          axios.get(`http://localhost:5000/api/buildings/customer/${account._id}`)
+            .then(buildingsResponse => ({
+              ...account,
+              buildings: buildingsResponse.data
+            }))
+        );
+
+        Promise.all(fetchBuildingsPromises).then(results => {
+          setCustomerAccounts(results);
+        });
       })
       .catch((error) => {
         console.error(
@@ -60,8 +71,18 @@ const Accounts = () => {
         axios
           .get("http://localhost:5000/api/customerAccounts")
           .then((response) => {
-            console.log("Updated customer accounts:", response.data);
-            setCustomerAccounts(response.data);
+            const accounts = response.data;
+            const fetchBuildingsPromises = accounts.map(account =>
+              axios.get(`http://localhost:5000/api/buildings/customer/${account._id}`)
+                .then(buildingsResponse => ({
+                  ...account,
+                  buildings: buildingsResponse.data
+                }))
+            );
+
+            Promise.all(fetchBuildingsPromises).then(results => {
+              setCustomerAccounts(results);
+            });
           })
           .catch((error) => {
             console.error(
@@ -98,6 +119,7 @@ const Accounts = () => {
             <th>Customer Name</th>
             <th>Active?</th>
             <th>Number of Buildings</th>
+            <th>Buildings</th>
           </tr>
         </thead>
         <tbody>
@@ -106,6 +128,11 @@ const Accounts = () => {
               <td>{account.customerName}</td>
               <td>{account.active ? "Yes" : "No"}</td>
               <td>{account.numberOfBuildings}</td>
+              <td>
+                {account.buildings.map(building => (
+                  <div key={building._id}>{building.address}</div>
+                ))}
+              </td>
             </tr>
           ))}
         </tbody>

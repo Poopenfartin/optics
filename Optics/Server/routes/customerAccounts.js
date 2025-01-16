@@ -5,7 +5,7 @@ const CustomerAccount = require('../models/CustomerAccount');
 // Route to get all customer accounts
 router.get('/', async (req, res) => {
   try {
-    const customerAccounts = await CustomerAccount.find();
+    const customerAccounts = await CustomerAccount.find().populate('buildings');
     res.json(customerAccounts);
   } catch (err) {
     console.error('Error fetching customer accounts:', err);
@@ -16,7 +16,7 @@ router.get('/', async (req, res) => {
 // Route to get a single customer account by ID
 router.get('/:id', async (req, res) => {
   try {
-    const customerAccount = await CustomerAccount.findById(req.params.id);
+    const customerAccount = await CustomerAccount.findById(req.params.id).populate('buildings');
     if (!customerAccount) {
       return res.status(404).json({ message: 'Customer Account not found' });
     }
