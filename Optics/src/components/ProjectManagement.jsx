@@ -8,12 +8,15 @@ import SearchInput from "../components/SearchComponent";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import ProjectManagementTable from "./subComponents/ProjectMangementTable";
-import AddWorkOrderModal from "./AddWorkOrderModal";
+import AddWorkOrderModal from "./modals/AddBuildingModal";
+import Spinner from "./Spinner"; // Import the Spinner component
 
 const ProjectManagement = ({ user }) => {
   const [workorders, setWorkorders] = useState([]);
   const [selectedTab, setSelectedTab] = useState(0);
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
+  const [loading, setLoading] = useState(true); // Add loading state
+  const [sidebarOpen, setSidebarOpen] = useState(JSON.parse(localStorage.getItem("sidebarState"))); // State to track the sidebar status
 
   useEffect(() => {
     const fetchWorkorders = async () => {
@@ -27,18 +30,17 @@ const ProjectManagement = ({ user }) => {
           }
         );
         setWorkorders(response.data);
+        setLoading(false); // Set loading to false after data is fetched
       } catch (error) {
         console.error("Error fetching work orders:", error);
         toast.error("Failed to fetch work orders. Please try again.", {
           autoClose: 3000,
         });
+        setLoading(false); // Set loading to false even if there's an error
       }
     };
 
     fetchWorkorders();
-
-    // Add smooth scrolling behavior to the whole document
-    document.documentElement.style.scrollBehavior = "smooth";
   }, []);
 
   const handleTabChange = (event, newValue) => {
@@ -70,11 +72,31 @@ const ProjectManagement = ({ user }) => {
     }
   };
 
+  const updateSidebarState = () => {
+    const sidebarState = JSON.parse(localStorage.getItem("sidebarState"));
+    setSidebarOpen(sidebarState);
+  };
+
+  useEffect(() => {
+    window.addEventListener('storage', updateSidebarState);
+    return () => {
+      window.removeEventListener('storage', updateSidebarState);
+    };
+  }, []);
+
+  useEffect(() => {
+    updateSidebarState();
+  }, [sidebarOpen]);
+
+  if (loading) {
+    return <Spinner sidebarOpen={sidebarOpen} />;
+  }
+
   return (
     <div
       className="hide-scrollbar"
       style={{ overflowY: "auto", overflowX: "hidden" }}>
-      <div className="table-container">
+      <div className="main-table-container">
         <h1 className="page-header">Project Management</h1>
         <h2 className="page-subheader">Overview</h2>
         <div className="tabs-container">
@@ -95,7 +117,7 @@ const ProjectManagement = ({ user }) => {
             <Tab label="Accounts" />
           </Tabs>
         </div>
-        <div className="workorder-functions">
+        <div className="main-table-functions">
           <SearchInput placeholder="Input Work Order Number..." width="80%" />
           <Button
             variant="contained"

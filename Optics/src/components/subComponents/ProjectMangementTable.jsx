@@ -84,7 +84,7 @@ const ProjectManagementTable = ({
 
   return (
     <div>
-      <table className="workorders-table">
+      <table className="main-table">
         <thead>
           <tr>
             <th>Customer Name</th>

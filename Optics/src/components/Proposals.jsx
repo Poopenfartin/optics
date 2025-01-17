@@ -16,16 +16,22 @@ const Proposals = () => {
 
   return (
     <div>
-      <div className="proposals-container">
+      <div className="main-table-container">
         <h1>Proposals</h1>
         <Divider sx={{ margin: "20px auto", backgroundColor: "green", width: "90%" }} />
+
         <div className="workorder-functions">
           <SearchInput placeholder="Search For Proposal..." />
           <button className="add-button" onClick={handleAddProposalClick}>Add New Proposal</button>
+
+        <div className="main-table-functions">
+          <SearchInput placeholder="Search For Proposal..." width="80%" />
+          <button className="add-button">Create New Proposal</button>
+
         </div>
       </div>
       <Divider sx={{ mt: 3, mb: 2, backgroundColor: "green" }} />
-      <table className="proposals-table">
+      <table className="main-table">
         <thead>
           <tr>
             <th>Proposal #</th>

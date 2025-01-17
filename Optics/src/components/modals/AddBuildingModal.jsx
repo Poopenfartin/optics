@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from "react";
-import "../../styles/App.css";
+import "../../../Styles/App.css";
 
-const AddAccountModal = ({ handleSave, closeModal }) => {
-  const [newAccount, setNewAccount] = useState({
-    customerName: "",
-    active: true,
-    numberOfBuildings: 1,
-    salesRep: ""
+const AddBuildingModal = ({ handleSave, closeModal }) => {
+  const [newBuilding, setNewBuilding] = useState({
+    address: "",
+    billingAddress: "",
+    contactInformation: "",
+    notes: "",
+    preferredServiceTechnician: ""
   });
 
   useEffect(() => {
@@ -18,12 +19,12 @@ const AddAccountModal = ({ handleSave, closeModal }) => {
 
   const handleChange = (event) => {
     const { name, value } = event.target;
-    setNewAccount({ ...newAccount, [name]: value });
+    setNewBuilding({ ...newBuilding, [name]: value });
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    handleSave(newAccount);
+    handleSave(newBuilding);
     closeModal();
   };
 
@@ -36,45 +37,53 @@ const AddAccountModal = ({ handleSave, closeModal }) => {
   return (
     <div className="modal-overlay" onClick={handleClickOutside}>
       <div className="modal-content">
-        <h2>Add New Account</h2>
+        <h2>Add New Building</h2>
         <form onSubmit={handleSubmit}>
           <div className="form-field">
-            <label>Customer Name:</label>
+            <label>Address:</label>
             <input
               type="text"
-              name="customerName"
-              value={newAccount.customerName}
+              name="address"
+              value={newBuilding.address}
               onChange={handleChange}
               required
             />
           </div>
           <div className="form-field">
-            <label>Active:</label>
-            <input
-              type="checkbox"
-              name="active"
-              checked={newAccount.active}
-              onChange={() => setNewAccount({ ...newAccount, active: !newAccount.active })}
-            />
-          </div>
-          <div className="form-field">
-            <label>Number of Buildings:</label>
-            <input
-              type="number"
-              name="numberOfBuildings"
-              value={newAccount.numberOfBuildings}
-              onChange={handleChange}
-              required
-            />
-          </div>
-          <div className="form-field">
-            <label>Sales Rep:</label>
+            <label>Billing Address:</label>
             <input
               type="text"
-              name="salesRep"
-              value={newAccount.salesRep}
+              name="billingAddress"
+              value={newBuilding.billingAddress}
               onChange={handleChange}
               required
+            />
+          </div>
+          <div className="form-field">
+            <label>Contact Information:</label>
+            <input
+              type="text"
+              name="contactInformation"
+              value={newBuilding.contactInformation}
+              onChange={handleChange}
+              required
+            />
+          </div>
+          <div className="form-field">
+            <label>Notes:</label>
+            <textarea
+              name="notes"
+              value={newBuilding.notes}
+              onChange={handleChange}
+            />
+          </div>
+          <div className="form-field">
+            <label>Preferred Service Technician:</label>
+            <input
+              type="text"
+              name="preferredServiceTechnician"
+              value={newBuilding.preferredServiceTechnician}
+              onChange={handleChange}
             />
           </div>
           <div className="button-container">
@@ -87,4 +96,4 @@ const AddAccountModal = ({ handleSave, closeModal }) => {
   );
 };
 
-export default AddAccountModal;
+export default AddBuildingModal;

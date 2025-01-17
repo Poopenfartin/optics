@@ -21,6 +21,7 @@ app.get('/', (req, res) => {
 const workOrderRoutes = require('./routes/workorders');
 const { protect, router: authRoutes } = require('./routes/auth');
 const customerAccountRoutes = require('./routes/customerAccounts'); // Correct path here
+const buildingRoutes = require('./routes/buildings'); // Adding building routes
 
 app.use('/api/auth', authRoutes);
 
@@ -30,6 +31,13 @@ app.use('/api/workorders', protect, workOrderRoutes);
 // Adding the customer accounts routes
 app.use('/api/customerAccounts', customerAccountRoutes); // Correct path here
 
+// Adding the building routes
+app.use('/api/buildings', buildingRoutes); // New line for buildings
+
 app.listen(port, () => {
   console.log(`Server is running on port: ${port}`);
 });
+
+// Import the models to register them
+const CustomerAccount = require('./models/CustomerAccount');
+const Building = require('./models/Building'); // Register the Building model

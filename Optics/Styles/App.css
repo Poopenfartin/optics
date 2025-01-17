@@ -161,67 +161,97 @@ button:hover {
 /* ---------------- START Top Icons Styling ---------------- */
 
 .top-icons-container {
-  position: absolute;
-  top: 16px;
-  right: 16px;
   display: flex;
-  gap: 8px;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;  
+  height: 70px;
+  padding: 1rem;
+  position: relative;
+  z-index: 1000;
+  top: 0;
+  margin-bottom: 30px;
+  border-radius: 2px;
+  user-select: none; 
+}
+
+.logo-container {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  margin-right: auto;
+  user-select: none; 
+  cursor: pointer;
+}
+
+.logo-image {
+  margin-right: 10px;
+  width: 50px;
+  height: 50px;
+  user-select: none; 
+}
+
+.icons-container {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+  user-select: none; 
 }
 
 .settings-icon,
 .fullscreen-icon {
   color: inherit;
   transition: color 0.3s ease;
+  user-select: none; 
 }
 
 .settings-icon:hover,
 .fullscreen-icon:hover {
   color: #00ff00; /* Change to your desired hover color */
+  user-select: none; 
 }
+
+.icon-button {
+  color: inherit;
+  user-select: none; 
+}
+
+.icon-button:hover {
+  color: #00ff00; /* Change to your desired hover color */
+}
+
+
 
 
 /* ---------------- END Top Icons Styling ---------------- */
 
 
+
 /* ---------------- START Work Order Table Styling ---------------- */
 
-
-.table-container{
+/* Styling for the actual rendered table */
+.main-table-container{
   box-shadow:0px 4px 6px rgba(0,0,0,0.4);
   padding: 30px 0;
   margin: 0 auto;
   width: 95%;
-  background-color: #1f2a40;
-  border-radius: 20px;
+  background-color: #2a3549;
+  border-radius: 10px;
 }
 
-
-.workorders-table {
+/* Styling for the actual rendered table */
+.main-table {
   box-shadow:0px 4px 6px rgba(0,0,0,0.4);
-  border-radius: 20px;
-  background-color: #1f2a40; /* Set the table background color */
+  border-radius: 10px;
+  background-color: #2a3549; /* Set the table background color */
   width: 95%;
   border-collapse: collapse;
   margin: 15px auto;
   font-size: 12.5px;
   overflow-y: auto;
 }
-
-.proposals-container {
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.4);
-  padding: 30px 20px; /* Adjusted padding */
-  margin: 0 auto;
-  width: 90%; /* Updated width for a larger box */
-  background-color: #1f2a40;
-  border-radius: 20px;
-  margin-top: 20px; /* Optional: Adjust to add spacing at the top */
-}
-
-/* Specific styling for the proposals heading */
-.proposals-container h1 {
-  margin-bottom: 10px; /* Adjust this value to control the distance between the heading and divider */
-}
-
 
 
 .tabs-container {
@@ -230,7 +260,7 @@ button:hover {
 }
 
 
-.workorders-table th {
+.main-table th {
   border-bottom: solid 1px #00ff08;
   padding: 10px;
   text-align: center;
@@ -241,7 +271,7 @@ button:hover {
   cursor: pointer;
 }
 
-.workorders-table th:hover {
+.main-table th:hover {
   color: #00ff00;
   cursor: pointer;
   transform: scale(1.1);
@@ -249,7 +279,7 @@ button:hover {
 }
 
 
-.workorders-table td {
+.main-table td {
   padding: 10px;
   text-align: center;
   color: #FFF;
@@ -257,7 +287,7 @@ button:hover {
   border-bottom: solid 1px rgba(0, 255, 8, 0.2);
 }
 
-.workorders-table td:hover {
+.main-table td:hover {
   cursor: pointer;
   color: #000;
   transform: scale(1.1);
@@ -265,10 +295,7 @@ button:hover {
 
 
 
-.workorders-table tr {
-}
-
-.workorders-table tr:hover {
+.main-table tr:hover {
   border-radius:80%;
   background-color: gray;
 }
@@ -320,7 +347,7 @@ button:hover {
 }
 
 
-.workorder-functions {
+.main-table-functions {
   display: flex; /* Use flexbox layout */
   justify-content: space-between;
   width: 90%; /* Set the container width to 100% */
@@ -361,65 +388,6 @@ button:hover {
   width: 90%;
 }
 
-.proposals-container {
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.4);
-  padding: 30px 20px;
-  margin: 0 auto;
-  width: 90%;
-  background-color: #1f2a40;
-  border-radius: 20px;
-  margin-top: 20px;
-}
-
-.proposals-container h1 {
-  margin-bottom: 10px;
-}
-
-.proposals-table {
-  box-shadow:0px 4px 6px rgba(0,0,0,0.4);
-  border-radius: 20px;
-  background-color: #1f2a40;
-  width: 95%;
-  border-collapse: collapse;
-  margin: 15px auto;
-  font-size: 12.5px;
-  overflow-y: auto;
-}
-
-.proposals-table th {
-  border-bottom: solid 1px #00ff08;
-  padding: 10px;
-  text-align: center;
-  color: lightgray;
-  font-weight: 200;
-  font-size: 12px;
-  cursor: pointer;
-}
-
-.proposals-table th:hover {
-  color: #00ff00;
-  transform: scale(1.1);
-  font-weight: bold;
-}
-
-.proposals-table td {
-  padding: 10px;
-  text-align: center;
-  color: #FFF;
-  font-weight: bold;
-  border-bottom: solid 1px rgba(0, 255, 8, 0.2);
-}
-
-.proposals-table td:hover {
-  cursor: pointer;
-  color: #000;
-  transform: scale(1.1);
-}
-
-.proposals-table tr:hover {
-  background-color: gray;
-}
-
 
 
 
@@ -427,9 +395,6 @@ button:hover {
 
 
 /* ---------------- Start Work Order Modal Styling ---------------- */
-
-/* Modal.css */
-
 .modal-overlay {
   position: fixed;
   top: 0;
@@ -438,9 +403,13 @@ button:hover {
   bottom: 0;
   background: rgba(0, 0, 0, 0.5);
   display: flex;
-  justify-content: flex-start; /* Align items to the left */
-  align-items: center;
+  justify-content: center; /* Default: center items horizontally */
+  align-items: center; /* Center items vertically */
   z-index: 1000;
+}
+
+.modal-overlay.align-left {
+  justify-content: flex-start; /* Align items to the left */
 }
 
 .modal-content {
@@ -448,15 +417,21 @@ button:hover {
   padding: 30px; /* Increase padding for more spacing inside the modal */
   border-radius: 10px; /* Adjust border radius if needed */
   width: 70%; /* Set width */
-  height: 70%; /* Increase height */
+  height: 70%; /* Set height */
   max-width: 1000px; /* Set a maximum width */
-  max-height: 80%; /* Increase the maximum height */
+  max-height: 80%; /* Set a maximum height */
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   overflow-y: auto; /* Enable vertical scroll if content overflows */
   margin-left: calc((100vw - 100%) / 2 + 280px); /* Center between sidebar and right edge */
+  -ms-overflow-style: none;  /* Hide scrollbar in Internet Explorer */
+  scrollbar-width: none;  /* Hide scrollbar in Firefox */
 }
 
-
+/* Large Modal */
+.large-modal {
+  width: 80%; /* Increase width for large modal */
+  height: 90%; /* Increase height for large modal */
+}
 
 .modal-h2 {
   font-weight: bold;
@@ -499,11 +474,6 @@ button:hover {
   background: transparent; /* Optional: make scrollbar transparent */
 }
 
-.modal-content {
-  -ms-overflow-style: none;  /* Hide scrollbar in Internet Explorer */
-  scrollbar-width: none;  /* Hide scrollbar in Firefox */
-}
-
 .button-container {
   display: flex;
   justify-content: flex-end; /* Align items to the right */
@@ -523,9 +493,8 @@ button:hover {
 }
 
 .modal-content button:hover {
-  background-color:rgb(92, 182, 74);
+  background-color: rgb(92, 182, 74);
 }
-
 
 
 
@@ -548,85 +517,6 @@ button:hover {
 
 
 /* ---------------- END Sidebar Styling ---------------- */
-
-
-
-.modal-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.5);
-  display: flex;
-  justify-content: center; /* Center items horizontally */
-  align-items: center; /* Center items vertically */
-  z-index: 1000;
-}
-
-.modal-content {
-  background: #fff;
-  padding: 30px; /* Increase padding for more spacing inside the modal */
-  border-radius: 10px; /* Adjust border radius if needed */
-  width: 70%; /* Set width */
-  height: 70%; /* Set height */
-  max-width: 1000px; /* Set a maximum width */
-  max-height: 80%; /* Set a maximum height */
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  overflow-y: auto; /* Enable vertical scroll if content overflows */
-}
-
-.large-modal {
-  width: 80%; /* Increase width for large modal */
-  height: 90%; /* Increase height for large modal */
-}
-
-.button-container {
-  display: flex;
-  justify-content: flex-end; /* Align items to the right */
-  margin-top: 20px; /* Add margin at the top if needed */
-}
-
-.modal-content button {
-  padding: 10px;
-  margin-left: 10px; /* Add margin between buttons */
-  font-size: 15px;
-  cursor: pointer;
-  background-color: #00ff08;
-  color: #000;
-  border: 2px solid #000;
-  border-radius: 5px;
-}
-
-.modal-content .form-field {
-  display: flex;
-  align-items: flex-start; /* Align items at the top */
-  margin-bottom: 15px;
-}
-
-.modal-content label {
-  width: 30%; /* Adjust width as needed */
-  margin-right: 10px;
-  font-family: 'Arial', sans-serif; /* Change to your desired font */
-  font-size: 16px; /* Change font size as needed */
-  vertical-align: top; /* Align the label with the top of the input box */
-}
-
-.modal-content input,
-.modal-content textarea,
-.modal-content select {
-  width: 70%; /* Adjust width as needed */
-  height: 100px; /* Adjust height as needed */
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 3px;
-  resize: vertical; /* Allow vertical resizing */
-  font-family: 'Arial', sans-serif; /* Change to your desired font */
-  font-size: 16px; /* Change font size as needed */
-}
-
-
-
 
 /* ---------------- START LOGINFORM Styling ---------------- */
 
@@ -827,10 +717,4 @@ button:hover {
   font-weight: bold; /* Adjust the font weight as needed */
 }
 /* ---------------- END Builing Landing Styling ---------------- */
-
-
-
-
-
-
 

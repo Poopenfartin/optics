@@ -5,7 +5,7 @@ const CustomerAccountSchema = new mongoose.Schema({
   active: { type: Boolean, required: true },
   numberOfBuildings: { type: Number, required: true },
   salesRep: { type: String, required: true },
-
+  buildings: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Building' }]  // Added buildings reference
 }, { collection: 'accounts' });
 
 const CustomerAccount = mongoose.model('CustomerAccount', CustomerAccountSchema);
