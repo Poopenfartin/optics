@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "../../styles/App.css";
+import "../../../styles/App.css";
 
 const AddProposalsModal = ({ handleSave, closeModal }) => {
   const [newProposal, setNewProposal] = useState({
@@ -122,6 +122,3 @@ const AddProposalsModal = ({ handleSave, closeModal }) => {
 };
 
 export default AddProposalsModal;
-
-
-
