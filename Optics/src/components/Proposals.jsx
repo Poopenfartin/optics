@@ -1,18 +1,33 @@
-import React from "react";
-import axios from "axios";
-import { Divider } from "@mui/material";
-import TopIcons from "./TopIcons";
-import SearchInput from "./SearchComponent";
+import React, { useState } from 'react';
+import { Divider } from '@mui/material';
+import SearchInput from './SearchInput';
+import AddProposalsModal from './AddProposalsModal'; // Ensure this path is correct
 
 const Proposals = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleAddProposalClick = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+  };
+
   return (
     <div>
       <div className="main-table-container">
         <h1>Proposals</h1>
         <Divider sx={{ margin: "20px auto", backgroundColor: "green", width: "90%" }} />
+
+        <div className="workorder-functions">
+          <SearchInput placeholder="Search For Proposal..." />
+          <button className="add-button" onClick={handleAddProposalClick}>Add New Proposal</button>
+
         <div className="main-table-functions">
           <SearchInput placeholder="Search For Proposal..." width="80%" />
           <button className="add-button">Create New Proposal</button>
+
         </div>
       </div>
       <Divider sx={{ mt: 3, mb: 2, backgroundColor: "green" }} />
@@ -26,13 +41,13 @@ const Proposals = () => {
             <th>Building</th>
             <th>Created By</th>
             <th>Status</th>
-            <th>Actions</th>
           </tr>
         </thead>
         <tbody>
-          {/* Add your proposal data rows here */}
+          {/* Table rows go here */}
         </tbody>
       </table>
+      <AddProposalsModal isOpen={isModalOpen} onClose={handleCloseModal} />
     </div>
   );
 };
