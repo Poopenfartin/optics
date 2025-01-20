@@ -167,7 +167,7 @@ const App = () => {
                 <Route path="/proposals" element={<Proposals />} />
                 <Route path="/accounts" element={<Accounts />} />
                 <Route path="/accounts/:id" element={<AccountProfile />} />
-                <Route path="/profile-page" element={<ProfilePage />} />
+                <Route path="/profile-page" element={<ProfilePage user={user} />} />
               </>
             )}
             {!isAuthenticated && (

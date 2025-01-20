@@ -33,7 +33,6 @@ h1 {
     font-weight: 700;
     margin: 0 0 100px 5%;
     text-align: left;
-    
 }
 
 
@@ -717,4 +716,36 @@ button:hover {
   font-weight: bold; /* Adjust the font weight as needed */
 }
 /* ---------------- END Builing Landing Styling ---------------- */
+
+
+
+/* ---------------- START Profile Page Styling ---------------- */
+
+.profile-page-users-name {
+  margin:0;
+}
+
+
+.top-profile-page {
+  padding: 15px;
+  width: 90%;
+  height: 100%;
+  margin: 0 auto;
+  text-align: center;
+  background-color: gray;
+  border-radius: 10px;
+}
+
+.profile-sales-info {
+  padding: 15px;
+  width: 90%;
+  height: 100%;
+  margin: 0 auto;
+  text-align: center;
+  background-color: gray;
+  border-radius: 10px;
+  margin-top: 20px;
+}
+
+/* ---------------- END Profile Page  Styling ---------------- */
 
