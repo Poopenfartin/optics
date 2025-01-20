@@ -16,11 +16,11 @@ import HouseIcon from "@mui/icons-material/House";
 import EngineeringIcon from "@mui/icons-material/Engineering";
 import RequestQuoteIcon from "@mui/icons-material/RequestQuote";
 import LocationCityIcon from "@mui/icons-material/LocationCity";
-import NotificationsIcon from '@mui/icons-material/Notifications';
-import SupervisorAccountIcon from '@mui/icons-material/SupervisorAccount';
+import NotificationsIcon from "@mui/icons-material/Notifications";
+import SupervisorAccountIcon from "@mui/icons-material/SupervisorAccount";
 import { Link, useLocation } from "react-router-dom";
 import { styled } from "@mui/material/styles";
-import logo from './assets/images/Optic_Logo.png'; // Import the logo
+import logo from "./assets/images/Optic_Logo.png"; // Import the logo
 
 const UnderlineTypography = styled(Typography)(({ theme }) => ({
   position: "relative",
@@ -95,7 +95,9 @@ const Sidebar = ({ logout, user }) => {
               alignItems: "center",
               height: "100%",
             }}>
-            <IconButton onClick={toggleSidebar} sx={{ color: "#FFF", padding: "8px", margin: 0 }}>
+            <IconButton
+              onClick={toggleSidebar}
+              sx={{ color: "#FFF", padding: "8px", margin: 0 }}>
               <MenuIcon />
             </IconButton>
           </Box>
@@ -125,8 +127,15 @@ const Sidebar = ({ logout, user }) => {
               height: "64px",
               marginBottom: "16px",
             }}>
-            <Link to="/" style={{ textDecoration: "none" }}>
-              <Box sx={{ display: "flex", alignItems: "center", padding: "0 16px" }}>
+            <Link
+              to="/"
+              style={{ textDecoration: "none" }}>
+              <Box
+                sx={{
+                  display: "flex",
+                  alignItems: "center",
+                  padding: "0 16px",
+                }}>
                 <img
                   src={logo}
                   alt="Optics Logo"
@@ -152,7 +161,9 @@ const Sidebar = ({ logout, user }) => {
                 </UnderlineTypography>
               </Box>
             </Link>
-            <IconButton onClick={toggleSidebar} sx={{ color: "#FFF", padding: "4px", marginRight: 1 }}>
+            <IconButton
+              onClick={toggleSidebar}
+              sx={{ color: "#FFF", padding: "4px", marginRight: 1 }}>
               <MenuIcon />
             </IconButton>
           </Box>
@@ -166,11 +177,14 @@ const Sidebar = ({ logout, user }) => {
               backgroundColor: "#1f2a40",
               color: "#FFF",
             }}>
-            <img
-              src="https://img.freepik.com/free-psd/3d-illustration-human-avatar-profile_23-2150671142.jpg?w=826&t=st=1719374252~exp=1719374852~hmac=384d89c4c305fabcd0e40764416da0985d75085f7c38963ef024b12944d7975f"
-              alt="User Avatar"
-              className="profile-picture-sidebar" 
-            />
+            <Link to ="/profile-page">
+              <img
+                src="https://img.freepik.com/free-psd/3d-illustration-human-avatar-profile_23-2150671142.jpg?w=826&t=st=1719374252~exp=1719374852~hmac=384d89c4c305fabcd0e40764416da0985d75085f7c38963ef024b12944d7975f"
+                alt="User Avatar"
+                className="profile-picture-sidebar"
+              />
+            </Link>
+
             <Box
               sx={{
                 display: "flex",
@@ -180,7 +194,10 @@ const Sidebar = ({ logout, user }) => {
                 position: "relative",
               }}>
               <Box sx={{ textAlign: "center" }}>
-                <Typography variant="h6" component="p" style={{ margin: 0 }}>
+                <Typography
+                  variant="h6"
+                  component="p"
+                  style={{ margin: 0 }}>
                   {user?.firstName} {user?.lastName}
                 </Typography>
                 <Typography
@@ -211,14 +228,18 @@ const Sidebar = ({ logout, user }) => {
                   component={Link}
                   to={item.link}
                   sx={{
-                    borderLeft: location.pathname === item.link ? "4px solid #00ff00" : "none",
+                    borderLeft:
+                      location.pathname === item.link
+                        ? "4px solid #00ff00"
+                        : "none",
                     color: location.pathname === item.link ? "#00ff00" : "#FFF",
                     cursor: "pointer",
-                    "&:hover": { backgroundColor: "#1f2a39" }
+                    "&:hover": { backgroundColor: "#1f2a39" },
                   }}>
                   <ListItemIcon
                     sx={{
-                      color: location.pathname === item.link ? "#00ff00" : "#FFF", 
+                      color:
+                        location.pathname === item.link ? "#00ff00" : "#FFF",
                     }}>
                     {item.icon}
                   </ListItemIcon>

@@ -11,9 +11,11 @@ import LoginForm from "./components/LoginForm";
 import RegisterForm from "./components/RegisterForm";
 import Proposals from "./components/Proposals";
 import AccountProfile from "./components/AccountProfile";
+import ProfilePage from "./components/Profile-Page";
 import TopIcons from "./components/TopIcons";
 import CustomToast from "./components/CustomToast";
-import Spinner from "./components/Spinner"; 
+import Spinner from "./components/Spinner";
+
 const useDarkMode = () => {
   const savedMode = localStorage.getItem("darkMode");
   return savedMode ? JSON.parse(savedMode) : true;
@@ -29,12 +31,9 @@ const App = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
-
-
   useEffect(() => {
     localStorage.setItem("lastPathname", location.pathname);
   }, [location.pathname]);
-
 
   useEffect(() => {
     const authenticateAndFetchData = async () => {
@@ -60,9 +59,12 @@ const App = () => {
             navigate(lastPathname, { replace: true });
           }
 
-          const response = await axios.get("http://localhost:5000/api/workorders", {
-            headers: { Authorization: `Bearer ${accessToken}` },
-          });
+          const response = await axios.get(
+            "http://localhost:5000/api/workorders",
+            {
+              headers: { Authorization: `Bearer ${accessToken}` },
+            }
+          );
           setWorkorders(response.data);
         } catch (error) {
           console.error("Error:", error);
@@ -161,11 +163,11 @@ const App = () => {
 
               <>
                 {/* prettier-ignore */}
-                <Route path="/project-management" element={<ProjectManagement workorders={workorders} user={user} setWorkorders={setWorkorders} />} />
+                <Route path="/project-management" element={<ProjectManagement user={user} />} />
                 <Route path="/proposals" element={<Proposals />} />
                 <Route path="/accounts" element={<Accounts />} />
-
                 <Route path="/accounts/:id" element={<AccountProfile />} />
+                <Route path="/profile-page" element={<ProfilePage />} />
               </>
             )}
             {!isAuthenticated && (
@@ -176,6 +178,8 @@ const App = () => {
                 <Route path="/proposals" element={<LoginForm setIsAuthenticated={setIsAuthenticated} setUser={setUser} />} />
                 {/* prettier-ignore */}
                 <Route path="/accounts" element={<LoginForm setIsAuthenticated={setIsAuthenticated} setUser={setUser} />} />
+                {/* prettier-ignore */}
+                <Route path="/profile-page" element={<LoginForm setIsAuthenticated={setIsAuthenticated} setUser={setUser} />} />
               </>
             )}
           </Routes>
