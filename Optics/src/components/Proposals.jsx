@@ -42,7 +42,7 @@ const Proposals = () => {
         </div>
       </div>
 
-      <Divider sx={{ mt: 3, mb: 2, backgroundColor: "green" }} />
+      <Divider sx={{ mt: 3, mb: 2, backgroundColor: "green"}} />
 
       <table className="main-table">
         <thead>

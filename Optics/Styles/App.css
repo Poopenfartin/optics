@@ -45,6 +45,25 @@ h2 {
   margin: 0 0 45px 0;
 }
 
+h3 {
+  display: block;
+  font-family: 'Source Sans Pro', sans-serif;
+  color: #FFF;
+  font-size: 16px;
+  font-weight: 200;
+  margin: 0px 0 10px 0%;
+  text-align: left;
+}
+
+h4 {
+  display: block;
+  font-family: 'Source Sans Pro', sans-serif;
+  color: #FFF;
+  font-size: 16px;
+  font-weight: 200;
+  margin: 0 0 10px 0%;
+  text-align: left;
+}
 
 ul {
   list-style: none;
@@ -721,19 +740,22 @@ button:hover {
 
 /* ---------------- START Profile Page Styling ---------------- */
 
-.profile-page-users-name {
-  margin:0;
+.profile-page-container {
+  display: flex;
+  justify-content: flex-start; /* Align the .top-profile-page to the left */
+  padding: 10px;
 }
 
-
 .top-profile-page {
-  padding: 15px;
-  width: 90%;
-  height: 100%;
-  margin: 0 auto;
-  text-align: center;
+  width: 20%;
+  padding: 30px;
+  text-align: center; /* Ensure the contents inside are aligned to the left */
   background-color: gray;
   border-radius: 10px;
+}
+
+.profile-page-users-name {
+  margin: 0;
 }
 
 .profile-sales-info {
@@ -747,5 +769,30 @@ button:hover {
   margin-top: 20px;
 }
 
+.profile-container {
+  overflow: "hidden"
+}
+
+.profile-header {
+  font-size: 3rem !important; /* Smaller font size for header */
+  color: #ffffff !important; /* Set the header text color to white */
+  font-family: 'Source Sans Pro', sans-serif !important; /* Add the custom font */
+}
+
+.profile-subheader {
+  font-size: 1rem !important;  /* Smaller font size for subheader */
+  margin-bottom: 24px !important;
+  color: #00ff08 !important; /* Set the subheader text color to white */
+  font-family: 'Source Sans Pro', sans-serif !important; /* Add the custom font */
+}
+
+.profile-paper {
+  padding: 16px !important;
+  background-color: #1f2a40 !important; /* Set the card color to match the theme */
+  color: #ffffff !important; /* Set the paper text color to white */
+  font-size: 1rem !important; /* Smaller font size for paper content */
+  border: 1px solid #2a3f54 !important; /* Optional: Add a border for contrast */
+  font-family: 'Source Sans Pro', sans-serif !important; /* Add the custom font */
+}
 /* ---------------- END Profile Page  Styling ---------------- */
 
