@@ -20,10 +20,62 @@ BACKGROUND: #141b2d (Deep Blue)
   overflow: hidden;
 }
 
+/* Profile Page Specific Styles */
+.profile-h1 {
+  display: block;
+  font-family: 'Source Sans Pro', sans-serif;
+  color: #FFF;
+  font-size: 32px;
+  font-weight: 700;
+  margin: 0 0 20px 0; /* Adjusted margin */
+  text-align: left;
+}
 
+.profile-h2 {
+  display: block;
+  font-family: 'Source Sans Pro', sans-serif;
+  color: #FFF;
+  font-size: 12px;
+  font-weight: 900;
+  margin: 0 0 20px 0; /* Adjusted margin */
+}
 
+.profile-h3 {
+  display: block;
+  font-family: 'Source Sans Pro', sans-serif;
+  color: #FFF;
+  font-size: 16px;
+  font-weight: 200;
+  margin: 0 0 10px 0; /* Adjusted margin */
+  text-align: left;
+}
 
+.profile-h4 {
+  display: block;
+  font-family: 'Source Sans Pro', sans-serif;
+  color: #FFF;
+  font-size: 16px;
+  font-weight: 200;
+  margin: 0 0 10px 0; /* Adjusted margin */
+  text-align: left;
+}
 
+.profile-picture-no-hover {
+  width: 100px;
+  height: 100px;
+  margin-bottom: 16px; /* Added margin for spacing */
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.profile-page-users-name {
+  font-family: 'Source Sans Pro', sans-serif;
+  color: #FFF;
+  font-size: 16px;
+  font-weight: 200;
+  margin: 0 0 10px 0;
+  text-align: left;
+}
 
 h1 {
     display: block;
@@ -521,10 +573,11 @@ button:hover {
 /* ---------------- START Sidebar Styling ---------------- */
 
 .profile-picture-sidebar {
-  width: 100px;
-  height: 100px;
+  width: 100px; 
+  height: 100px; 
   margin-bottom: 8px;
-  border-radius: 50%;
+  border-radius: 50%; 
+  object-fit: cover; 
 }
 
 .profile-picture-sidebar:hover {
@@ -533,6 +586,13 @@ button:hover {
   border-color: #00ff08;
 }
 
+.profile-picture-no-hover {
+  width: 100px; 
+  height: 100px; 
+  margin-bottom: 8px; 
+  border-radius: 50%; 
+  object-fit: cover;
+}
 
 /* ---------------- END Sidebar Styling ---------------- */
 
