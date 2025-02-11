@@ -13,7 +13,7 @@ const ProfilePage = ({ user }) => {
             display: "flex",
             flexDirection: "column",
             flex: 1,
-            backgroundColor: "#2c2c2c",
+            backgroundColor: "#000",
             padding: 3, // Increased padding for better spacing
             borderRadius: 2,
             alignItems: "center", // Center content horizontally
@@ -39,7 +39,7 @@ const ProfilePage = ({ user }) => {
             display: "flex",
             flexDirection: "column",
             flex: 1,
-            backgroundColor: "#2c2c2c",
+            backgroundColor: "#000",
             padding: 3, // Increased padding for better spacing
             borderRadius: 2,
           }}

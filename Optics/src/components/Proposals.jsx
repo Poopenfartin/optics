@@ -29,7 +29,7 @@ const Proposals = () => {
       <div className="main-table-container">
         <h1 className="page-header ">Proposals</h1>
         <Divider
-          sx={{ margin: "20px auto", backgroundColor: "green", width: "90%" }}
+          sx={{ margin: "20px auto", backgroundColor: "grey", width: "90%" }}
         />
 
         <div className="main-table-functions">
@@ -42,7 +42,7 @@ const Proposals = () => {
         </div>
       </div>
 
-      <Divider sx={{ mt: 3, mb: 2, backgroundColor: "green"}} />
+      <Divider sx={{ mt: 3, mb: 2, backgroundColor: "grey"}} />
 
       <table className="main-table">
         <thead>

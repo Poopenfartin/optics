@@ -18,25 +18,24 @@ const Dashboard = ({ user }) => {
       </Box>
 
       {/* Dashboard Subheader */}
-      <h2 className="dashboard-subheader" style={{ marginLeft: "5.1rem", color: "white", marginBottom: "1rem" }}>
+      <h2 className="dashboard-subheader" style={{ marginLeft: "5.1rem", color: "white", marginBottom: "2rem" }}>
         Overview
       </h2>
       <Divider sx={{ mb: 6, ml: 2, mr: 2 }} />
 
       {/* Grid Layout for Sections */}
-      <Grid container spacing={3} sx={{ padding: "0 2rem" }}> {/* Added padding to the grid container */}
+      <Grid container spacing={3} sx={{ padding: "0 2rem" }}>
         {/* Welcome Section */}
         <Grid item xs={12}>
           <Paper
-            className="dashboard-paper"
             sx={{
               padding: 3,
-              backgroundColor: "#2c2c2c",
+              backgroundColor: "#000", // Ensure this takes precedence
               borderRadius: 2,
               textAlign: "center", // Center align content
             }}
           >
-            <h2 style={{ color: "white", marginBottom: "8px" }}>
+            <h2 style={{ color: "white", marginBottom: "8px", fontSize: "1.5rem" }}>
               Welcome, {user?.firstName} {user?.lastName}
             </h2>
             <p style={{ color: "white", margin: 0 }}>Here is your dashboard overview.</p>
@@ -46,10 +45,9 @@ const Dashboard = ({ user }) => {
         {/* Statistics Section */}
         <Grid item xs={12} md={6}>
           <Paper
-            className="dashboard-paper"
             sx={{
               padding: 3,
-              backgroundColor: "#2c2c2c",
+              backgroundColor: "#000", // Ensure this takes precedence
               borderRadius: 2,
               height: "300px", // Fixed height for square shape
               display: "flex",
@@ -64,10 +62,9 @@ const Dashboard = ({ user }) => {
         </Grid>
         <Grid item xs={12} md={6}>
           <Paper
-            className="dashboard-paper"
             sx={{
               padding: 3,
-              backgroundColor: "#2c2c2c",
+              backgroundColor: "#000", // Ensure this takes precedence
               borderRadius: 2,
               height: "300px", // Fixed height for square shape
               display: "flex",
@@ -84,10 +81,9 @@ const Dashboard = ({ user }) => {
         {/* Additional Boxes for Future Components */}
         <Grid item xs={12} md={6}>
           <Paper
-            className="dashboard-paper"
             sx={{
               padding: 3,
-              backgroundColor: "#2c2c2c",
+              backgroundColor: "#000", // Ensure this takes precedence
               borderRadius: 2,
               height: "300px", // Fixed height for square shape
               display: "flex",
@@ -102,10 +98,9 @@ const Dashboard = ({ user }) => {
         </Grid>
         <Grid item xs={12} md={6}>
           <Paper
-            className="dashboard-paper"
             sx={{
               padding: 3,
-              backgroundColor: "#2c2c2c",
+              backgroundColor: "#000", // Ensure this takes precedence
               borderRadius: 2,
               height: "300px", // Fixed height for square shape
               display: "flex",
@@ -122,10 +117,9 @@ const Dashboard = ({ user }) => {
         {/* Recent Activities Section */}
         <Grid item xs={12}>
           <Paper
-            className="dashboard-paper"
             sx={{
               padding: 3,
-              backgroundColor: "#2c2c2c",
+              backgroundColor: "#000", // Ensure this takes precedence
               borderRadius: 2,
             }}
           >
