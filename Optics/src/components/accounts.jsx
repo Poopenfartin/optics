@@ -106,11 +106,11 @@ const Accounts = () => {
     <div
       key={JSON.stringify(customerAccounts)}
       style={{ overflowY: "auto", overflowX: "hidden" }}>
-      <div className="main-table-container" ref={tableRef}>
+      <div className="accounts-main-table-container" ref={tableRef}>
         <h1 className="page-header">Customer Accounts</h1>
-        <h2 className="page-subheader">CUSTOMERS</h2>
+        <h5 className="page-subheader">CUSTOMERS</h5>
         <Divider
-          sx={{ margin: "30px auto", backgroundColor: "green", width: "90%" }}
+          sx={{ margin: "30px auto", backgroundColor: "grey", width: "90%" }}
         />
         <div className="main-table-functions">
           <SearchInput placeholder="Search For Account..." width="80%" />

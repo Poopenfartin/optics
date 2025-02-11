@@ -8,9 +8,9 @@ const Dashboard = ({ user }) => {
 
   return (
     <Box className="dashboard-container">
+      {/* Dashboard Header */}
       <Box sx={{ display: "flex", flexDirection: "column", ml: -0.5, mb: -1 }}>
         <Box sx={{ display: "flex", alignItems: "center" }}>
-          {/* Dashboard Header */}
           <h1 className="dashboard-header" style={{ fontSize: "1rem", color: "white" }}>
             Dashboard
           </h1>
@@ -18,13 +18,13 @@ const Dashboard = ({ user }) => {
       </Box>
 
       {/* Dashboard Subheader */}
-      <h2 className="dashboard-subheader" style={{ marginLeft: "5.1rem", color: "white" }}>
+      <h2 className="dashboard-subheader" style={{ marginLeft: "5.1rem", color: "white", marginBottom: "1rem" }}>
         Overview
       </h2>
       <Divider sx={{ mb: 6, ml: 2, mr: 2 }} />
 
       {/* Grid Layout for Sections */}
-      <Grid container spacing={2}>
+      <Grid container spacing={3} sx={{ padding: "0 2rem" }}> {/* Added padding to the grid container */}
         {/* Welcome Section */}
         <Grid item xs={12}>
           <Paper
