@@ -1,11 +1,15 @@
 import React from "react";
-import Box from '@mui/material/Box';
+import Box from "@mui/material/Box";
 import "../../Styles/App.css";
 import SearchComponent from "../components/SearchComponent";
+import { useTheme } from "@mui/material/styles";
 
 const ProfilePage = ({ user }) => {
+  const theme = useTheme();
+  const isDarkMode = theme.palette.mode === "dark";
+
   return (
-    <Box className="profile-container">
+    <Box className="profile-container" data-theme={isDarkMode ? "dark" : "light"}>
       <Box sx={{ display: "flex", flexDirection: "row", ml: -0.5, mb: -1, gap: 2 }}>
         {/* Left Box: User Info */}
         <Box
@@ -13,10 +17,15 @@ const ProfilePage = ({ user }) => {
             display: "flex",
             flexDirection: "column",
             flex: 1,
-            backgroundColor: "#000",
+            backgroundColor: isDarkMode ? "#000" : "#fff",
             padding: 3, // Increased padding for better spacing
             borderRadius: 2,
             alignItems: "center", // Center content horizontally
+            color: isDarkMode ? "#fff" : "#000", // Dynamic text color
+            border: isDarkMode ? "1px solid rgba(255, 255, 255, 0.1)" : "1px solid #e0e0e0", // Subtle border for both modes
+            boxShadow: isDarkMode
+              ? "0 4px 12px rgba(255, 255, 255, 0.05)" // Soft shadow for dark mode
+              : "0 4px 12px rgba(0, 0, 0, 0.1)", // Subtle shadow for light mode
           }}
         >
           <h1 className="profile-h1">Profile</h1>
@@ -39,16 +48,21 @@ const ProfilePage = ({ user }) => {
             display: "flex",
             flexDirection: "column",
             flex: 1,
-            backgroundColor: "#000",
+            backgroundColor: isDarkMode ? "#000" : "#fff",
             padding: 3, // Increased padding for better spacing
             borderRadius: 2,
+            color: isDarkMode ? "#fff" : "#000", // Dynamic text color
+            border: isDarkMode ? "1px solid rgba(255, 255, 255, 0.1)" : "1px solid #e0e0e0", // Subtle border for both modes
+            boxShadow: isDarkMode
+              ? "0 4px 12px rgba(255, 255, 255, 0.05)" // Soft shadow for dark mode
+              : "0 4px 12px rgba(0, 0, 0, 0.1)", // Subtle shadow for light mode
           }}
         >
           <h1 className="profile-h1">Overview</h1>
           <Box sx={{ display: "flex", flexDirection: "column", gap: 1 }}>
-            <p style={{ color: "white" }}>Total Projects: 10</p>
-            <p style={{ color: "white" }}>Completed Projects: 7</p>
-            <p style={{ color: "white" }}>Pending Projects: 3</p>
+            <p className="overview-text">Total Projects: 10</p>
+            <p className="overview-text">Completed Projects: 7</p>
+            <p className="overview-text">Pending Projects: 3</p>
           </Box>
         </Box>
       </Box>

@@ -11,6 +11,9 @@ BACKGROUND: #141b2d (Deep Blue)
 
 /* ----------------- CSS STYLES ------------------ */
 
+
+
+
 .dashboard-container {
   padding: 20px;
 }
@@ -75,10 +78,13 @@ BACKGROUND: #141b2d (Deep Blue)
 }
 
 /* Profile Page Specific Styles */
+.profile-container {
+  padding: 20px;
+}
+
 .profile-h1 {
   display: block;
   font-family: 'Source Sans Pro', sans-serif;
-  color: #FFF;
   font-size: 32px;
   font-weight: 700;
   margin: 0 0 20px 0; /* Adjusted margin */
@@ -88,7 +94,6 @@ BACKGROUND: #141b2d (Deep Blue)
 .profile-h2 {
   display: block;
   font-family: 'Source Sans Pro', sans-serif;
-  color: #FFF;
   font-size: 12px;
   font-weight: 900;
   margin: 0 0 20px 0; /* Adjusted margin */
@@ -97,7 +102,6 @@ BACKGROUND: #141b2d (Deep Blue)
 .profile-h3 {
   display: block;
   font-family: 'Source Sans Pro', sans-serif;
-  color: #FFF;
   font-size: 16px;
   font-weight: 200;
   margin: 0 0 10px 0; /* Adjusted margin */
@@ -107,7 +111,6 @@ BACKGROUND: #141b2d (Deep Blue)
 .profile-h4 {
   display: block;
   font-family: 'Source Sans Pro', sans-serif;
-  color: #FFF;
   font-size: 16px;
   font-weight: 200;
   margin: 0 0 10px 0; /* Adjusted margin */
@@ -124,11 +127,37 @@ BACKGROUND: #141b2d (Deep Blue)
 
 .profile-page-users-name {
   font-family: 'Source Sans Pro', sans-serif;
-  color: #FFF;
   font-size: 16px;
   font-weight: 200;
   margin: 0 0 10px 0;
   text-align: left;
+}
+
+.overview-text {
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 16px;
+  font-weight: 200;
+  margin: 0;
+}
+
+/* Light Mode Styles */
+[data-theme="light"] .profile-h1,
+[data-theme="light"] .profile-h2,
+[data-theme="light"] .profile-h3,
+[data-theme="light"] .profile-h4,
+[data-theme="light"] .profile-page-users-name,
+[data-theme="light"] .overview-text {
+  color: #000; /* Black text for light mode */
+}
+
+/* Dark Mode Styles */
+[data-theme="dark"] .profile-h1,
+[data-theme="dark"] .profile-h2,
+[data-theme="dark"] .profile-h3,
+[data-theme="dark"] .profile-h4,
+[data-theme="dark"] .profile-page-users-name,
+[data-theme="dark"] .overview-text {
+  color: #fff; /* White text for dark mode */
 }
 
 h1 {

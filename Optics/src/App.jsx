@@ -117,7 +117,7 @@ const App = () => {
   const theme = createTheme({
     palette: {
       mode: darkMode ? "dark" : "light",
-      background: { default: darkMode ? "#181818" : "#F5F5F5" },
+      background: { default: darkMode ? "#1E1E1E" : "#E0E0E0" },
     },
     components: {
       MuiIconButton: {
