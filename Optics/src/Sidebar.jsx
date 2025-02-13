@@ -20,6 +20,7 @@ import NotificationsIcon from "@mui/icons-material/Notifications";
 import SupervisorAccountIcon from "@mui/icons-material/SupervisorAccount";
 import { Link, useLocation } from "react-router-dom";
 import { styled } from "@mui/material/styles";
+import { useTheme } from "@mui/material/styles"; // Import useTheme
 import logo from "./assets/images/Optic_Logo.png"; // Import the logo
 
 const UnderlineTypography = styled(Typography)(({ theme }) => ({
@@ -46,6 +47,8 @@ const UnderlineTypography = styled(Typography)(({ theme }) => ({
 const Sidebar = ({ logout, user }) => {
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
+  const theme = useTheme(); // Get the current theme
+  const isDarkMode = theme.palette.mode === "dark"; // Check if dark mode is enabled
 
   useEffect(() => {
     const savedState = localStorage.getItem("sidebarState");
@@ -76,13 +79,13 @@ const Sidebar = ({ logout, user }) => {
       <Box
         onClick={!isOpen ? toggleSidebar : null} // Add onClick event here
         sx={{
-          backgroundColor: "#1f2a40",
+          backgroundColor: isDarkMode ? "#000" : "#FFF", // Dynamic background color
           height: "100vh",
           width: isOpen ? 270 : 60,
           transition: "width 0.3s, background-color 0.3s",
           cursor: !isOpen ? "pointer" : "default",
           "&:hover": {
-            backgroundColor: !isOpen ? "#2b344a" : "#1f2a40",
+            backgroundColor: !isOpen ? (isDarkMode ? "#1a1a1a" : "#f0f0f0") : (isDarkMode ? "#000" : "#FFF"), // Dynamic hover background color
             width: !isOpen ? 80 : 270,
             transition: "background-color 0.3s, width 0.3s", // Adjust transition properties
           },
@@ -97,7 +100,7 @@ const Sidebar = ({ logout, user }) => {
             }}>
             <IconButton
               onClick={toggleSidebar}
-              sx={{ color: "#FFF", padding: "8px", margin: 0 }}>
+              sx={{ color: isDarkMode ? "#FFF" : "#000", padding: "8px", margin: 0 }}> {/* Dynamic icon color */}
               <MenuIcon />
             </IconButton>
           </Box>
@@ -111,7 +114,7 @@ const Sidebar = ({ logout, user }) => {
             [`& .MuiDrawer-paper`]: {
               width: 270,
               boxSizing: "border-box",
-              backgroundColor: "#1f2a40",
+              backgroundColor: isDarkMode ? "#000" : "#FFF", // Dynamic background color
               overflowY: "auto",
               transition: "background-color 0.3s",
             },
@@ -119,7 +122,7 @@ const Sidebar = ({ logout, user }) => {
           <Box
             sx={{
               padding: "16px 0",
-              background: "linear-gradient(to bottom, #1f2a40, #121a2f)",
+              background: isDarkMode ? "linear-gradient(to bottom, #000, #121212)" : "linear-gradient(to bottom, #FFF, #f0f0f0)", // Dynamic gradient
               display: "flex",
               flexDirection: "row",
               justifyContent: "space-between",
@@ -155,7 +158,7 @@ const Sidebar = ({ logout, user }) => {
                     fontSize: "16px",
                     textAlign: "center",
                     cursor: "pointer",
-                    color: "#FFF",
+                    color: isDarkMode ? "#FFF" : "#000", // Dynamic text color
                   }}>
                   Optics
                 </UnderlineTypography>
@@ -163,7 +166,7 @@ const Sidebar = ({ logout, user }) => {
             </Link>
             <IconButton
               onClick={toggleSidebar}
-              sx={{ color: "#FFF", padding: "4px", marginRight: 1 }}>
+              sx={{ color: isDarkMode ? "#FFF" : "#000", padding: "4px", marginRight: 1 }}> {/* Dynamic icon color */}
               <MenuIcon />
             </IconButton>
           </Box>
@@ -174,10 +177,10 @@ const Sidebar = ({ logout, user }) => {
               flexDirection: "column",
               alignItems: "center",
               padding: "16px",
-              backgroundColor: "#1f2a40",
-              color: "#FFF",
+              backgroundColor: isDarkMode ? "#000" : "#FFF", // Dynamic background color
+              color: isDarkMode ? "#FFF" : "#000", // Dynamic text color
             }}>
-            <Link to ="/profile-page">
+            <Link to="/profile-page">
               <img
                 src="https://img.freepik.com/free-psd/3d-illustration-human-avatar-profile_23-2150671142.jpg?w=826&t=st=1719374252~exp=1719374852~hmac=384d89c4c305fabcd0e40764416da0985d75085f7c38963ef024b12944d7975f"
                 alt="User Avatar"
@@ -197,19 +200,19 @@ const Sidebar = ({ logout, user }) => {
                 <Typography
                   variant="h6"
                   component="p"
-                  style={{ margin: 0 }}>
+                  style={{ margin: 0, color: isDarkMode ? "#FFF" : "#000" }}> {/* Dynamic text color */}
                   {user?.firstName} {user?.lastName}
                 </Typography>
                 <Typography
                   variant="body2"
                   component="p"
-                  style={{ margin: 0, color: "#00ff08" }}>
+                  style={{ margin: 0, color: "#00ff08" }}> {/* Keep accent color */}
                   {user?.jobTitle}
                 </Typography>
               </Box>
               <IconButton
                 sx={{
-                  color: "#FFF",
+                  color: isDarkMode ? "#FFF" : "#000", // Dynamic icon color
                   position: "absolute",
                   right: 0,
                   padding: 0,
@@ -232,21 +235,21 @@ const Sidebar = ({ logout, user }) => {
                       location.pathname === item.link
                         ? "4px solid #00ff00"
                         : "none",
-                    color: location.pathname === item.link ? "#00ff00" : "#FFF",
+                    color: location.pathname === item.link ? "#00ff00" : (isDarkMode ? "#FFF" : "#000"), // Dynamic text color
                     cursor: "pointer",
-                    "&:hover": { backgroundColor: "#1f2a39" },
+                    "&:hover": { backgroundColor: isDarkMode ? "#1a1a1a" : "#f0f0f0" }, // Dynamic hover background color
                   }}>
                   <ListItemIcon
                     sx={{
                       color:
-                        location.pathname === item.link ? "#00ff00" : "#FFF",
+                        location.pathname === item.link ? "#00ff00" : (isDarkMode ? "#FFF" : "#000"), // Dynamic icon color
                     }}>
                     {item.icon}
                   </ListItemIcon>
                   <ListItemText primary={item.text} />
                 </ListItem>
                 {index < menuItems.length - 1 && (
-                  <Divider sx={{ backgroundColor: "#000", opacity: "10%" }} />
+                  <Divider sx={{ backgroundColor: isDarkMode ? "#333" : "#e0e0e0" }} /> // Dynamic divider color
                 )}
               </React.Fragment>
             ))}

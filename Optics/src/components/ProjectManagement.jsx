@@ -10,6 +10,7 @@ import Tab from "@mui/material/Tab";
 import ProjectManagementTable from "./subComponents/ProjectMangementTable";
 import AddWorkOrderModal from "./modals/AddBuildingModal";
 import Spinner from "./Spinner"; // Import the Spinner component
+import { useTheme } from "@mui/material/styles"; // Import useTheme
 
 const ProjectManagement = ({ user }) => {
   const [workorders, setWorkorders] = useState([]);
@@ -17,6 +18,8 @@ const ProjectManagement = ({ user }) => {
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
   const [loading, setLoading] = useState(true); // Add loading state
   const [sidebarOpen, setSidebarOpen] = useState(JSON.parse(localStorage.getItem("sidebarState"))); // State to track the sidebar status
+  const theme = useTheme(); // Get the current theme
+  const isDarkMode = theme.palette.mode === "dark"; // Check if dark mode is enabled
 
   useEffect(() => {
     const fetchWorkorders = async () => {
@@ -96,9 +99,20 @@ const ProjectManagement = ({ user }) => {
     <div
       className="hide-scrollbar"
       style={{ overflowY: "auto", overflowX: "hidden" }}>
-      <div className="main-table-container">
-        <h1 className="page-header">Project Management</h1>
-        <h2 className="page-subheader">Overview</h2>
+      <div
+        className="main-table-container"
+        style={{
+          backgroundColor: isDarkMode ? "#000" : "#FFF", // Dynamic background color
+          color: isDarkMode ? "#FFF" : "#000", // Dynamic text color
+          padding: "20px",
+          borderRadius: "8px",
+          border: isDarkMode ? "1px solid rgba(255, 255, 255, 0.1)" : "1px solid #e0e0e0", // Dynamic border
+          boxShadow: isDarkMode
+            ? "0 4px 12px rgba(255, 255, 255, 0.05)" // Soft shadow for dark mode
+            : "0 4px 12px rgba(0, 0, 0, 0.1)", // Subtle shadow for light mode
+        }}>
+        <h1 className="page-header" style={{ color: isDarkMode ? "#FFF" : "#000" }}>Project Management</h1>
+        <h2 className="page-subheader" style={{ color: isDarkMode ? "#FFF" : "#000" }}>Overview</h2>
         <div className="tabs-container">
           <Tabs
             value={selectedTab}
@@ -107,7 +121,7 @@ const ProjectManagement = ({ user }) => {
             textColor="inherit"
             sx={{
               "& .MuiTabs-flexContainer": { justifyContent: "flex-start" },
-              "& .MuiTab-root": { color: "white" },
+              "& .MuiTab-root": { color: isDarkMode ? "#FFF" : "#000" }, // Dynamic tab text color
               "& .Mui-selected": { color: "#00ff08" },
             }}>
             <Tab label="Project Manage" />
@@ -132,6 +146,7 @@ const ProjectManagement = ({ user }) => {
         workorders={workorders}
         user={user}
         setWorkorders={setWorkorders}
+        isDarkMode={isDarkMode} // Pass isDarkMode to the table component
       />
       {isAddModalOpen && (
         <AddWorkOrderModal
