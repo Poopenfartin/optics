@@ -8,7 +8,7 @@ import SearchInput from "../components/SearchComponent";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import ProjectManagementTable from "./subComponents/ProjectMangementTable";
-import AddWorkOrderModal from "./modals/AddBuildingModal";
+import AddWorkOrderModal from "./modals/AddWorkOrderModal";
 import Spinner from "./Spinner"; // Import the Spinner component
 import { useTheme } from "@mui/material/styles"; // Import useTheme
 
@@ -112,7 +112,7 @@ const ProjectManagement = ({ user }) => {
             : "0 4px 12px rgba(0, 0, 0, 0.1)", // Subtle shadow for light mode
         }}>
         <h1 className="page-header" style={{ color: isDarkMode ? "#FFF" : "#000" }}>Project Management</h1>
-        <h2 className="page-subheader" style={{ color: isDarkMode ? "#FFF" : "#000" }}>Overview</h2>
+        <h2 className="page-subheader">OVERVIEW</h2>
         <div className="tabs-container">
           <Tabs
             value={selectedTab}

@@ -40,6 +40,7 @@ const Proposals = () => {
         }}
       >
         <h1 className="page-header" style={{ color: isDarkMode ? "#fff" : "#000" }}>Proposals</h1>
+        <h2 className="page-subheader">OVERVIEW</h2>
         <Divider
           sx={{
             margin: "20px auto",

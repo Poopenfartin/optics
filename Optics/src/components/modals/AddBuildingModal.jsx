@@ -36,7 +36,7 @@ const AddBuildingModal = ({ handleSave, closeModal }) => {
 
   return (
     <div className="modal-overlay" onClick={handleClickOutside}>
-      <div className="modal-content">
+      <div className="modal-content large-modal">
         <h2>Add New Building</h2>
         <form onSubmit={handleSubmit}>
           <div className="form-field">

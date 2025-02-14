@@ -117,6 +117,7 @@ const Sidebar = ({ logout, user }) => {
               backgroundColor: isDarkMode ? "#000" : "#FFF", // Dynamic background color
               overflowY: "auto",
               transition: "background-color 0.3s",
+              
             },
           }}>
           <Box
@@ -200,13 +201,13 @@ const Sidebar = ({ logout, user }) => {
                 <Typography
                   variant="h6"
                   component="p"
-                  style={{ margin: 0, color: isDarkMode ? "#FFF" : "#000" }}> {/* Dynamic text color */}
+                  style={{ margin: 0, color: isDarkMode ? "#FFF" : "#000", fontWeight: "600" }}> {/* Dynamic text color */}
                   {user?.firstName} {user?.lastName}
                 </Typography>
                 <Typography
                   variant="body2"
                   component="p"
-                  style={{ margin: 0, color: "#00ff08" }}> {/* Keep accent color */}
+                  style={{ margin: 0, color: "#00ff08", fontWeight: "600", letterSpacing: "1px" }}> {/* Keep accent color */}
                   {user?.jobTitle}
                 </Typography>
               </Box>
@@ -246,7 +247,7 @@ const Sidebar = ({ logout, user }) => {
                     }}>
                     {item.icon}
                   </ListItemIcon>
-                  <ListItemText primary={item.text} />
+                  <ListItemText primary={<Typography variant="body1" fontWeight="600" fontSize="15px">{item.text}</Typography>} />
                 </ListItem>
                 {index < menuItems.length - 1 && (
                   <Divider sx={{ backgroundColor: isDarkMode ? "#333" : "#e0e0e0" }} /> // Dynamic divider color

@@ -123,7 +123,7 @@ const Accounts = () => {
             : "0 4px 12px rgba(0, 0, 0, 0.1)", // Subtle shadow for light mode
         }}>
         <h1 className="page-header" style={{ color: isDarkMode ? "#FFF" : "#000" }}>Customer Accounts</h1>
-        <h5 className="page-subheader" style={{ color: isDarkMode ? "#FFF" : "#000" }}>CUSTOMERS</h5>
+        <h2 className="page-subheader">OVERVIEW</h2>
         <Divider
           sx={{ margin: "30px auto", backgroundColor: isDarkMode ? "#333" : "#e0e0e0", width: "90%" }} // Dynamic divider color
         />

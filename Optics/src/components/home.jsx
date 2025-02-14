@@ -12,14 +12,14 @@ const Dashboard = ({ user }) => {
       {/* Dashboard Header */}
       <Box sx={{ display: "flex", flexDirection: "column", ml: -0.5, mb: -1 }}>
         <Box sx={{ display: "flex", alignItems: "center" }}>
-          <h1 className="dashboard-header" style={{ fontSize: "1rem", color: isDarkMode ? "#fff" : "#000" }}>
+          <h1 className="dashboard-header" style={{ fontSize: "1rem", color: isDarkMode ? "#fff" : "#000", marginLeft: "40px" }}>
             Dashboard
           </h1>
         </Box>
       </Box>
 
       {/* Dashboard Subheader */}
-      <h2 className="dashboard-subheader" style={{ marginLeft: "5.1rem", color: isDarkMode ? "#fff" : "#000", marginBottom: "2rem" }}>
+      <h2 className="dashboard-subheader" style={{ marginLeft: "40px", color: isDarkMode ? "#fff" : "#000", marginBottom: "2rem" }}>
         Overview
       </h2>
       <Divider sx={{ mb: 6, ml: 2, mr: 2 }} />
@@ -43,7 +43,7 @@ const Dashboard = ({ user }) => {
             <h2 style={{ color: isDarkMode ? "#fff" : "#000", marginBottom: "8px", fontSize: "1.5rem" }}>
               Welcome, {user?.firstName} {user?.lastName}
             </h2>
-            <p style={{ color: isDarkMode ? "#fff" : "#000", margin: 0 }}>Here is your dashboard overview.</p>
+            <p style={{ color: "#00ff08", fontWeight: "600", margin: 0 }}>Here is your dashboard overview.</p>
           </Paper>
         </Grid>
 
@@ -66,7 +66,7 @@ const Dashboard = ({ user }) => {
             }}
           >
             <h3 style={{ color: isDarkMode ? "#fff" : "#000", marginBottom: "16px" }}>Active Projects</h3>
-            <p style={{ color: isDarkMode ? "#fff" : "#000", fontSize: "2rem", margin: 0 }}>5</p>
+            <p style={{ color: isDarkMode ? "#fff" : "#000", fontSize: "2rem", margin: '0' }}>5</p>
           </Paper>
         </Grid>
         <Grid item xs={12} md={6}>

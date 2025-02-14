@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import '../../../styles/App.css';
 
+
 const AddWorkOrderModal = ({ isOpen, closeModal, addWorkorder, user }) => {
   const [newData, setNewData] = useState({
     customerName: '',
@@ -54,7 +55,7 @@ const AddWorkOrderModal = ({ isOpen, closeModal, addWorkorder, user }) => {
   return (
     <div className="modal-overlay" onClick={handleClickOutside}>
       <div className="modal-content large-modal">
-        <h2>Add New Work Order</h2>
+        <h2  className="modal-h2">Add New Work Order</h2>
         <div className="form-field">
           <label>Customer Name:</label>
           <textarea
