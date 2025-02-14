@@ -59,12 +59,12 @@ const TopIcons = ({ toggleDarkMode, darkMode }) => {
           variant="h1"
           sx={{
             margin: 0,
-            color: "#00ff08",
+            color: darkMode ? "#FFF" : "#000",
             letterSpacing: "3px",
             fontSize: "28px",
             marginTop: "4px",
             "&:after": {
-              backgroundColor: darkMode ? "#FFF" : "#000",
+              backgroundColor: darkMode ? "#00ff08" : "#00ff08",
             },
           }}>
           OPTICS

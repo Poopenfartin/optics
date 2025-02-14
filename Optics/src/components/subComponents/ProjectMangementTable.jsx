@@ -5,12 +5,16 @@ import EditIcon from "@mui/icons-material/Edit";
 import Modal from "../Modal";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useTheme } from "@mui/material/styles"; // Import useTheme
 
 const ProjectManagementTable = ({
   workorders,
   user,
   setWorkorders,
 }) => {
+  const theme = useTheme(); // Get the current theme
+  const isDarkMode = theme.palette.mode === "dark"; // Check if dark mode is enabled
+
   const filteredWorkorders = workorders.filter(
     (workorder) => workorder.projectManager === user.email
   );
@@ -84,41 +88,52 @@ const ProjectManagementTable = ({
 
   return (
     <div>
-      <table className="main-table">
+      <table
+        className="main-table"
+        style={{
+          backgroundColor: isDarkMode ? "#000" : "#FFF", // Dynamic background color
+          color: isDarkMode ? "#FFF" : "#000", // Dynamic text color
+          border: isDarkMode ? "1px solid rgba(255, 255, 255, 0.1)" : "1px solid #e0e0e0", // Dynamic border
+          boxShadow: isDarkMode
+            ? "0 4px 12px rgba(255, 255, 255, 0.05)" // Soft shadow for dark mode
+            : "0 4px 12px rgba(0, 0, 0, 0.1)", // Subtle shadow for light mode
+        }}>
         <thead>
           <tr>
-            <th>Customer Name</th>
-            <th>Name</th>
-            <th>Job Description</th>
-            <th>Price</th>
-            <th>Labor Notes</th>
-            <th>Status</th>
-            <th>Priority</th>
-            <th>Deadline</th>
-            <th>Actions</th>
+            <th style={{ color: isDarkMode ? "#FFF" : "#000" }}>Customer Name</th>
+            <th style={{ color: isDarkMode ? "#FFF" : "#000" }}>Name</th>
+            <th style={{ color: isDarkMode ? "#FFF" : "#000" }}>Job Description</th>
+            <th style={{ color: isDarkMode ? "#FFF" : "#000" }}>Price</th>
+            <th style={{ color: isDarkMode ? "#FFF" : "#000" }}>Labor Notes</th>
+            <th style={{ color: isDarkMode ? "#FFF" : "#000" }}>Status</th>
+            <th style={{ color: isDarkMode ? "#FFF" : "#000" }}>Priority</th>
+            <th style={{ color: isDarkMode ? "#FFF" : "#000" }}>Deadline</th>
+            <th style={{ color: isDarkMode ? "#FFF" : "#000" }}>Actions</th>
           </tr>
         </thead>
         <tbody>
           {filteredWorkorders.map((workorder) => (
             <tr key={workorder._id}>
-              <td>{workorder.customerName}</td>
-              <td>{workorder.name}</td>
-              <td>{workorder.jobDescription}</td>
-              <td>{formatPrice(workorder.price)}</td>
-              <td>{workorder.laborNotes}</td>
-              <td>{workorder.status}</td>
-              <td>{workorder.priority}</td>
-              <td>{new Date(workorder.deadline).toLocaleDateString()}</td>
+              <td style={{ color: isDarkMode ? "#FFF" : "#000" }}>{workorder.customerName}</td>
+              <td style={{ color: isDarkMode ? "#FFF" : "#000" }}>{workorder.name}</td>
+              <td style={{ color: isDarkMode ? "#FFF" : "#000" }}>{workorder.jobDescription}</td>
+              <td style={{ color: isDarkMode ? "#FFF" : "#000" }}>{formatPrice(workorder.price)}</td>
+              <td style={{ color: isDarkMode ? "#FFF" : "#000" }}>{workorder.laborNotes}</td>
+              <td style={{ color: isDarkMode ? "#FFF" : "#000" }}>{workorder.status}</td>
+              <td style={{ color: isDarkMode ? "#FFF" : "#000" }}>{workorder.priority}</td>
+              <td style={{ color: isDarkMode ? "#FFF" : "#000" }}>{new Date(workorder.deadline).toLocaleDateString()}</td>
               <td style={{ whiteSpace: "nowrap" }}>
                 <button
                   className="WOAction-button-edit"
                   onClick={() => handleEdit(workorder)}
+                  style={{ color: isDarkMode ? "#FFF" : "#000" }} // Dynamic icon color
                 >
                   <EditIcon />
                 </button>
                 <button
                   className="WOAction-button-delete"
                   onClick={() => deleteWorkorder(workorder._id)}
+                  style={{ color: isDarkMode ? "#FFF" : "#000" }} // Dynamic icon color
                 >
                   <DeleteForeverIcon />
                 </button>
@@ -133,6 +148,7 @@ const ProjectManagementTable = ({
           handleChange={handleChange}
           handleSave={() => handleSave(editingId)}
           closeModal={() => setIsEditModalOpen(false)}
+          isDarkMode={isDarkMode} // Pass isDarkMode to the Modal component
         />
       )}
     </div>
