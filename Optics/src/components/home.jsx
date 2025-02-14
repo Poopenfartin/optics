@@ -10,7 +10,7 @@ const Dashboard = ({ user }) => {
   return (
     <Box className="dashboard-container" data-theme={isDarkMode ? "dark" : "light"}>
       {/* Dashboard Header */}
-      <Box sx={{ display: "flex", flexDirection: "column", ml: -0.5, mb: -1 }}>
+      <Box sx={{ display: "flex", paddingTop: '60px', flexDirection: "column", ml: -0.5, mb: -1 }}>
         <Box sx={{ display: "flex", alignItems: "center" }}>
           <h1 className="dashboard-header" style={{ fontSize: "1rem", color: isDarkMode ? "#fff" : "#000", marginLeft: "40px" }}>
             Dashboard

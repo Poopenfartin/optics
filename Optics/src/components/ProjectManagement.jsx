@@ -104,12 +104,13 @@ const ProjectManagement = ({ user }) => {
         style={{
           backgroundColor: isDarkMode ? "#000" : "#FFF", // Dynamic background color
           color: isDarkMode ? "#FFF" : "#000", // Dynamic text color
-          padding: "20px",
+          padding: "60px 20px 20px 20px",
           borderRadius: "8px",
           border: isDarkMode ? "1px solid rgba(255, 255, 255, 0.1)" : "1px solid #e0e0e0", // Dynamic border
           boxShadow: isDarkMode
             ? "0 4px 12px rgba(255, 255, 255, 0.05)" // Soft shadow for dark mode
             : "0 4px 12px rgba(0, 0, 0, 0.1)", // Subtle shadow for light mode
+            marginTop:  "60px",
         }}>
         <h1 className="page-header" style={{ color: isDarkMode ? "#FFF" : "#000" }}>Project Management</h1>
         <h2 className="page-subheader">OVERVIEW</h2>

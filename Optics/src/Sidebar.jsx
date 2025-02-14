@@ -15,9 +15,9 @@ import MenuIcon from "@mui/icons-material/Menu";
 import HouseIcon from "@mui/icons-material/House";
 import EngineeringIcon from "@mui/icons-material/Engineering";
 import RequestQuoteIcon from "@mui/icons-material/RequestQuote";
-import LocationCityIcon from "@mui/icons-material/LocationCity";
-import NotificationsIcon from "@mui/icons-material/Notifications";
 import SupervisorAccountIcon from "@mui/icons-material/SupervisorAccount";
+import NotificationsIcon from "@mui/icons-material/Notifications";
+import SettingsIcon from "@mui/icons-material/Settings";
 import { Link, useLocation } from "react-router-dom";
 import { styled } from "@mui/material/styles";
 import { useTheme } from "@mui/material/styles"; // Import useTheme
@@ -74,6 +74,10 @@ const Sidebar = ({ logout, user }) => {
     { text: "Proposals", icon: <RequestQuoteIcon />, link: "/proposals" },
   ];
 
+  const supportItems = [
+    { text: "Settings", icon: <SettingsIcon />, link: "/settings" },
+  ];
+
   return (
     <Box sx={{ display: "flex", flexDirection: "column", height: "100vh" }}>
       <Box
@@ -117,7 +121,6 @@ const Sidebar = ({ logout, user }) => {
               backgroundColor: isDarkMode ? "#000" : "#FFF", // Dynamic background color
               overflowY: "auto",
               transition: "background-color 0.3s",
-              
             },
           }}>
           <Box
@@ -211,16 +214,6 @@ const Sidebar = ({ logout, user }) => {
                   {user?.jobTitle}
                 </Typography>
               </Box>
-              <IconButton
-                sx={{
-                  color: isDarkMode ? "#FFF" : "#000", // Dynamic icon color
-                  position: "absolute",
-                  right: 0,
-                  padding: 0,
-                  margin: 0,
-                }}>
-                <NotificationsIcon />
-              </IconButton>
             </Box>
           </Box>
 
@@ -256,7 +249,50 @@ const Sidebar = ({ logout, user }) => {
             ))}
           </List>
 
-          <Box sx={{ flexGrow: 1 }}></Box>
+          {/* Support Section */}
+          <Box sx={{ marginTop: "auto" }}>
+            <Typography
+              variant="body2"
+              sx={{
+                padding: "16px 16px 8px 16px",
+                color: isDarkMode ? "#FFF" : "#000", // Dynamic text color
+                fontWeight: "600",
+              }}>
+              Support
+            </Typography>
+            <List>
+              {supportItems.map((item, index) => (
+                <React.Fragment key={item.text}>
+                  <ListItem
+                    data-button="true"
+                    component={Link}
+                    to={item.link}
+                    sx={{
+                      borderLeft:
+                        location.pathname === item.link
+                          ? "4px solid #00ff00"
+                          : "none",
+                      color: location.pathname === item.link ? "#00ff00" : (isDarkMode ? "#FFF" : "#000"), // Dynamic text color
+                      cursor: "pointer",
+                      "&:hover": { backgroundColor: isDarkMode ? "#1a1a1a" : "#f0f0f0" }, // Dynamic hover background color
+                    }}>
+                    <ListItemIcon
+                      sx={{
+                        color:
+                          location.pathname === item.link ? "#00ff00" : (isDarkMode ? "#FFF" : "#000"), // Dynamic icon color
+                      }}>
+                      {item.icon}
+                    </ListItemIcon>
+                    <ListItemText primary={<Typography variant="body1" fontWeight="600" fontSize="15px">{item.text}</Typography>} />
+                  </ListItem>
+                  {index < supportItems.length - 1 && (
+                    <Divider sx={{ backgroundColor: isDarkMode ? "#333" : "#e0e0e0" }} /> // Dynamic divider color
+                  )}
+                </React.Fragment>
+              ))}
+            </List>
+          </Box>
+
           <Button
             onClick={logout}
             sx={{

@@ -15,6 +15,7 @@ import ProfilePage from "./components/Profile-Page";
 import TopIcons from "./components/TopIcons";
 import CustomToast from "./components/CustomToast";
 import Spinner from "./components/Spinner";
+import Settings from "./components/Settings";
 
 const useDarkMode = () => {
   const savedMode = localStorage.getItem("darkMode");
@@ -151,10 +152,11 @@ const App = () => {
           />
         )}
         {/* prettier-ignore */}
-        <Box component="main" sx={{flexGrow: 1, bgcolor: isAuthRoute ? '#181818' : 'background.default', color: '#FFF', p: 2, height: '100vh', overflowY: 'auto', overflowX: 'hidden' }}>
+        <Box component="main" sx={{flexGrow: 1, bgcolor: isAuthRoute ? '#181818' : 'background.default', color: '#FFF', padadingTop: "60px", height: "calc(100vh - 60px)", p: 2, height: '100vh', overflowY: 'auto', overflowX: 'hidden' }}>
           {!isAuthRoute && <TopIcons toggleDarkMode={toggleDarkMode} darkMode={darkMode} />}
           <Routes>
             {/* prettier-ignore */}
+            <Route path="/settings" element={<Settings darkMode={darkMode} toggleDarkMode={toggleDarkMode} />} />
             <Route path="/" element={isAuthenticated ? <Home user={user} /> : <LoginForm setIsAuthenticated={setIsAuthenticated} setUser={setUser} />} />
             <Route path="/login" element={<LoginForm setIsAuthenticated={setIsAuthenticated} setUser={setUser} />} />
             <Route path="/register" element={<RegisterForm setIsAuthenticated={setIsAuthenticated} />} />

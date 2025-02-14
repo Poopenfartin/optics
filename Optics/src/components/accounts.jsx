@@ -121,6 +121,7 @@ const Accounts = () => {
           boxShadow: isDarkMode
             ? "0 4px 12px rgba(255, 255, 255, 0.05)" // Soft shadow for dark mode
             : "0 4px 12px rgba(0, 0, 0, 0.1)", // Subtle shadow for light mode
+            marginTop:  "60px",
         }}>
         <h1 className="page-header" style={{ color: isDarkMode ? "#FFF" : "#000" }}>Customer Accounts</h1>
         <h2 className="page-subheader">OVERVIEW</h2>

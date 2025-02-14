@@ -29,6 +29,7 @@ const Proposals = () => {
       <div
         className="main-table-container"
         style={{
+          marginTop: "60px",
           backgroundColor: isDarkMode ? "#000" : "#fff", // Dynamic background color
           color: isDarkMode ? "#fff" : "#000", // Dynamic text color
           padding: "20px",
